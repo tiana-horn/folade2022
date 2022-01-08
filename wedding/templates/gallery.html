@@ -1,4 +1,3 @@
-{% extends 'base.html' %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -7,6 +6,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
   <body>
-
+    
+    <article class="cf">
+        <nav class="dt w-100 mw8 center"> 
+            <div class="dtc w2 v-mid pa3">
+            </div>
+            <div class="dtc v-mid tr pa3">
+              <a class="f6 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
+              <a class="f6 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
+              <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
+              <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
+              <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'travel' %}" >Travel</a> 
+              <a class="f6 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
+            </div>
+          </nav> 
+      <div class="fl w-50 w-25-ns">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="Pointing up" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/134067664_10224901462228576_535091589612460598_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_ohc=7uqRoPHa6YoAX9ZCVSF&_nc_ht=scontent-iad3-2.xx&oh=00_AT8jknL5bcq0Xyrruwyyi4Ju4zyLTlhXgn0NGx2eGCnSMQ&oe=61FD085E);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+      <div class="fl w-50 w-25-ns">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="Cross" style="background-image:url(https://i.pinimg.com/originals/6a/7c/08/6a7c0888f2768e4c19775e9f8d9d5fed.jpg);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+      <div class="fl w-50 w-25-ns">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="Elegant gown and suit" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/144334309_10219703544724825_2344596862114062374_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=ieiD2e2daKoAX9lBZ46&_nc_ht=scontent-iad3-2.xx&oh=00_AT_3NnJBjwIkQ-uJ6-mCzGLPibAjKYmUmOJ62n0arxl1aQ&oe=61FD7632);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+      <div class="fl w-50 w-25-ns">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="Engagement picture" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/134837659_10224901462308578_4735392372558658880_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=730e14&_nc_ohc=-zoh7VqZ4XQAX_T3Uxm&_nc_ht=scontent-iad3-2.xx&oh=00_AT8wxNkc5P10uTne6prekgLf4fdFNmNBwuF7WPRJGAR6lw&oe=61FC97FA);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+      <div class="fl w-50">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="Showing engagement ring" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/133605145_10224901462468582_1554730838349773702_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=730e14&_nc_ohc=sTTMawMqbBQAX_U9PHd&_nc_ht=scontent-iad3-2.xx&oh=00_AT_Tc15ATbwRuZ7EKC0oVYXGORd5ASYLe-RzP_mdRIuNhw&oe=61FE70F5);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+      <div class="fl w-50 w-25-ns">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="Palm leaves" style="background-image:url(https://secure.img1-fg.wfcdn.com/im/38217963/resize-h800-w800%5Ecompr-r85/5896/58965317/Zigler+Removable+Tropical+Palm+Leaves+9.17%27+L+x+175%22+W+Peel+and+Stick+Wallpaper+Roll.jpg);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+      <div class="fl w-100 w-25-ns">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="laughing picture" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/202062446_10220565591195448_1433346210014337004_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=730e14&_nc_ohc=ntg-bQ27tMkAX-i2A_-&_nc_ht=scontent-iad3-2.xx&oh=00_AT9hbgDvqqT48mDCD77xXSZZ667uaeal67laBEPs4ZX3KQ&oe=61FFC217);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+      <div class="fl w-50 w-25-ns">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="flowers" style="background-image:url(https://images.pexels.com/photos/1070863/pexels-photo-1070863.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+      <div class="fl w-50 w-25-ns">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="Diamond stems" style="background-image:url(https://i.pinimg.com/564x/d4/98/c1/d498c16e618ec0259fd1b619728d5fc6.jpg);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+      <div class="fl w-100 w-50-m w-25-ns">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="Doctorate picture" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/202396924_10220565591315451_5692520841295324924_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=730e14&_nc_ohc=H0z258PPpNwAX9MNQPz&_nc_ht=scontent-iad3-2.xx&oh=00_AT9vAQFIlywBqEe6cFc7sCQ1XcO4bdHOB5t69NZRpL8lKQ&oe=61FF70DD);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="Lade and Fola laughing" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/133799881_10224901462148574_9179690226858515029_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=730e14&_nc_ohc=mIzzcmVIIywAX8knalh&_nc_ht=scontent-iad3-2.xx&oh=00_AT-Owc1VJaTZzJgpvAsKSI7NgLVDy4Hv_ABLVmz9PlVVtg&oe=61FD9273);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+      <div class="fl w-100 w-50-m w-25-l">
+        <div class="fl w-100">
+          <div class="db aspect-ratio aspect-ratio--1x1 dim">
+            <span role="img" aria-label="Lade holding flowers" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/133694535_10224901462268577_7163156152021766235_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=H2-iG9ITTt4AX_Urq8T&_nc_ht=scontent-iad3-2.xx&oh=00_AT_3lwDKqAMgk_qOGbniV9WJKsY78Uaw0_dl1OdZJdjxcw&oe=61FE0482);" class="bg-center cover aspect-ratio--object"></span>
+          </div>
+        </div>
+        <div class="fl w-100">
+          <div class="fl w-50">
+            <div class="db aspect-ratio aspect-ratio--1x1 dim">
+              <span role="img" aria-label="Woven basket with flowers" style="background-image:url(https://i.etsystatic.com/10962687/r/il/9bd106/3301226415/il_570xN.3301226415_95kg.jpg);" class="bg-center cover aspect-ratio--object"></span>
+            </div>
+          </div>
+          <div class="fl w-50">
+            <div class="db aspect-ratio aspect-ratio--1x1 dim">
+              <span role="img" aria-label="Blurred showing rings" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/133585445_10224901462348579_5970393694347741908_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=7BaQgXJWy74AX8vnQWP&_nc_ht=scontent-iad3-2.xx&oh=00_AT9gZ6dkQjAFh7oD2JE1nvu1g47pjAL88-aOeWOP0WEWYA&oe=61FEAEDB);" class="bg-center cover aspect-ratio--object"></span>
+            </div>
+          </div>
+          <div class="fl w-50">
+            <div class="db aspect-ratio aspect-ratio--1x1 dim">
+              <span role="img" aria-label="Sitting graduation picture" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/201476170_10220565591435454_4856039632074450693_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=730e14&_nc_ohc=NCqNBSQBXTwAX-Fq7KD&_nc_ht=scontent-iad3-2.xx&oh=00_AT8Tm37CWePp-w1MVFKF5FmMeIdLciaoqeExUuJbFWxMrA&oe=61FFD5D0);" class="bg-center cover aspect-ratio--object"></span>
+            </div>
+          </div>
+          <div class="fl w-50">
+            <div class="db aspect-ratio aspect-ratio--1x1 dim">
+              <span role="img" aria-label="White roses" style="background-image:url(https://i.pinimg.com/564x/b2/05/0e/b2050efc408b32553130644257fcd392.jpg);" class="bg-center cover aspect-ratio--object"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fl w-100 w-50-l">
+        <div class="db aspect-ratio aspect-ratio--1x1 dim">
+          <span role="img" aria-label="Doctorate graduation" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/202875347_10220565591235449_5069960762998464591_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_ohc=QK5c4-OiLBwAX88Olud&_nc_ht=scontent-iad3-2.xx&oh=00_AT9y2PYphYj-9dHbnj_mURRU1r32G-yw9hBzI0HXfXgnTQ&oe=6200716B);" class="bg-center cover aspect-ratio--object"></span>
+        </div>
+      </div>
+    </article>
   </body>
 </html>

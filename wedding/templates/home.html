@@ -16,18 +16,18 @@
         <div class="cover bg-left bg-center-l" style="background-image: url(http://127.0.0.1:8000/static/img/IMG_4149.jpg)">
           <div class="bg-black-80 pb5 pb6-m pb7-l">
             <nav class="dt w-100 mw8 center"> 
-              <div class="dtc w2 v-mid pa3">
-              </div>
-              <div class="dtc v-mid tr pa3">
-                <a class="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="/" >Our Story</a> 
-                <a class="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="/" >Registry</a> 
-                <a class="f6 fw4 hover-white no-underline white-70 dn dib-l pv2 ph3" href="/" >Wedding Party</a> 
-                <a class="f6 fw4 hover-white no-underline white-70 dn dib-l pv2 ph3" href="/" >Gallery</a> 
-                <a class="f6 fw4 hover-white no-underline white-70 dn dib-l pv2 ph3" href="/" >Schedule</a> 
-                <a class="f6 fw4 hover-white no-underline white-70 dn dib-l pv2 ph3" href="/" >Travel</a> 
-                <a class="f6 fw4 hover-white no-underline white-70 dib ml2 pv2 ph3 ba" href="/" >RSVP</a> 
-              </div>
-            </nav> 
+                <div class="dtc w2 v-mid pa3">
+                </div>
+                <div class="dtc v-mid tr pa3">
+                  <a class="f6 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
+                  <a class="f6 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
+                  <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
+                  <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
+                  <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
+                  <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'travel' %}" >Travel</a> 
+                  <a class="f6 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
+                </div>
+              </nav> 
             <div class="tc mt4 mt5-m mt6-l center ph3">
               <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Fola & Lade</h1>
               <h2 class="fw1 f3 white-80 mt3 mb1">"I have found the one whom my soul loves"</h2>
