@@ -26,6 +26,6 @@ def schedule(request):
 def story(request):
     return render(request, 'story.html')
 
-def travel(request):
-    return render(request, 'travel.html')
+def accomodations(request):
+    return render(request, 'accomodations.html')
 

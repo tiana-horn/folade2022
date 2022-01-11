@@ -6,17 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
   <body>
+    <div class="cover bg-left bg-center-l" style="background-image: url(http://127.0.0.1:8000/static/img/grad.png)">
+    <div class="bg-black-80  ">
     <nav class="dt w-100 mw8 center"> 
         <div class="dtc w2 v-mid pa3">
         </div>
         <div class="dtc v-mid tr pa3">
-          <a class="f6 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
-          <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
-          <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
-          <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
-          <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'travel' %}" >Travel</a> 
-          <a class="f6 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
+          <a class="f6 fw4 hover-green no-underline white dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
+          <a class="f6 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
+          <a class="f6 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
+          <a class="f6 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
+          <a class="f6 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
+          <a class="f6 fw4 hover-green no-underline white dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
         </div>
       </nav> 
+      <div class="pb3 tc pb5-ns">
+        <h1 class="f2 white-90 mb3 ph2 lh-title">Registry</h1>
+        </div>
+      </div>
+      </div>
+      <a class="zola-registry-embed" href="https://www.zola.com/wedding/baileyandjessica2021/registry" data-registry-key="baileyandjessica2021">Our Zola Wedding Registry</a><script>!function(e,t,n){var s,a=e.getElementsByTagName(t)[0];e.getElementById(n)||(s=e.createElement(t),s.id=n,s.async=!0,s.src="https://widget.zola.com/js/widget.js",a.parentNode.insertBefore(s,a))}(document,"script","zola-wjs");</script>
+
+      
   </body>
 </html>
