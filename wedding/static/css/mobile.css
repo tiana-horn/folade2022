@@ -1,3 +1,15 @@
+.imperial {
+  font-family: 'Imperial Script', cursive;
+}
+
+.forumfont {
+  font-family: 'Forum', cursive;
+}
+
+.homescreenimg {
+  background-image: url(http://127.0.0.1:8000/static/img/splashscreen1.png);
+
+}
 .partycontainer {
     max-width: 60%;
     margin-right: 20%;

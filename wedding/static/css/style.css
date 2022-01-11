@@ -1,9 +1,14 @@
-.h1 {
-
+.imperial {
+  font-family: 'Imperial Script', cursive;
 }
 
-.h2{
-    
+.forumfont {
+  font-family: 'Forum', cursive;
+}
+
+.homescreenimg {
+  background-image: url(http://127.0.0.1:8000/static/img/IMG_4149.jpg);
+
 }
 
 .schedcontainer {

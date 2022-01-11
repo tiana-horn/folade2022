@@ -1,25 +1,39 @@
+{% extends 'base.html' %}
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
+  {% block title %}
   <title> Gallery </title>
+  {% endblock title %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-  <body>
+  {% block header %}
+
+
+{% endblock header %}
+
+
+{% block content %}
+
+
+
+  <body class= 'forumfont'>
     
     <article class="cf">
-        <nav class="dt w-100 mw8 center"> 
-            <div class="dtc w2 v-mid pa3">
-            </div>
-            <div class="dtc v-mid tr pa3">
-              <a class="f6 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
-              <a class="f6 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
-              <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
-              <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
-              <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
-              <a class="f6 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
-            </div>
-          </nav> 
+      <nav class="dt w-100 mw8 center"> 
+        <div class="dtc w2 v-mid pa3">
+        </div>
+        <div class="dtc v-mid tr pa3">
+          <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
+          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
+          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
+          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
+          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
+          <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
+          <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
+        </div>
+      </nav> 
       <div class="fl w-50 w-25-ns">
         <div class="db aspect-ratio aspect-ratio--1x1 dim">
           <span role="img" aria-label="Pointing up" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/134067664_10224901462228576_535091589612460598_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_ohc=7uqRoPHa6YoAX9ZCVSF&_nc_ht=scontent-iad3-2.xx&oh=00_AT8jknL5bcq0Xyrruwyyi4Ju4zyLTlhXgn0NGx2eGCnSMQ&oe=61FD085E);" class="bg-center cover aspect-ratio--object"></span>
@@ -109,4 +123,11 @@
       </div>
     </article>
   </body>
+  {% endblock content %}
+
+{% block footer %}
+
+
+
+{% endblock footer %}
 </html>

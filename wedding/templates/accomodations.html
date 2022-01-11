@@ -1,34 +1,49 @@
+{% extends 'base.html' %}
 {% load static %}
+
+
 
 <!DOCTYPE html>
 <html lang="en">
+  {% block title %}
   <title> Accomodations </title>
+  {% endblock title %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+ 
+  {% block header %}
+
+
+  {% endblock header %}
+  
+  
+  {% block content %}
+ 
   <body>
     <nav class="dt w-100 mw8 center"> 
-        <div class="dtc w2 v-mid pa3">
-        </div>
-        <div class="dtc v-mid tr pa3">
-          <a class="f6 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
-          <a class="f6 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
-          <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
-          <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
-          <a class="f6 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
-          <a class="f6 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
-        </div>
-      </nav> 
-      <section class="mw7 center avenir">
-        <h1 class="baskerville tc fw1 ph3 ph0-l">Accomodations</h1>
+      <div class="dtc w2 v-mid pa3">
+      </div>
+      <div class="dtc v-mid tr pa3">
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
+        <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
+      </div>
+    </nav> 
+      <section class="mw7 center  forumfont ">
+        <h1 class="imperial f1 tc fw1 ph3 ph0-l">Accomodations</h1>
         <article class="bt bb b--black-10">
           <a class="db pv4 ph3 ph0-l no-underline black dim" href="#0">
             <div class="flex flex-column flex-row-ns">
               <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
                 <img src="https://www.gannett-cdn.com/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg?width=660&height=373&fit=crop&format=pjpg&auto=webp" 
-                class="db" alt="Photo of a dimly lit room with a computer interface terminal.">
+                class="db" alt="Photo of a hotel room.">
               </div>
               <div class="w-100 w-60-ns pl3-ns">
-                <h1 class="f3 fw1 baskerville mt0 lh-title">Hotel Block</h1>
+                <h1 class="f3 fw1  mt0 lh-title">Hotel Block</h1>
                 <p class="f6 f5-l lh-copy">
                     For your convenience, a block of rooms has been reserved at 
                     [name of hotel] in [city]. When calling to make your reservation, 
@@ -47,10 +62,10 @@
             <div class="flex flex-column flex-row-ns">
               <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
                 <img src="https://images.ctfassets.net/77l22z9el0aa/3SEra8x52mSJ9aixWrTJCS/3d396a57c007a07deb873e8e88a64064/Hero_RomanticFallWeddingatSummerourStudio_SummerourStudio.jpg" 
-                class="db" alt="Photo of a warehouse with stacked shelves.">
+                class="db" alt="Photo of a bride and groom in front of a wedding shuttle.">
               </div>
               <div class="w-100 w-60-ns pl3-ns">
-                <h1 class="f3 fw1 baskerville mt0 lh-title">Event Shuttles</h1>
+                <h1 class="f3 fw1  mt0 lh-title">Event Shuttles</h1>
                 <p class="f6 f5-l lh-copy">
                     Transportation will be provided from the ceremony to the reception so you can 
                     safely and leisurely enjoy out wedding ceremony and reception. 
@@ -66,4 +81,11 @@
       </section>
       
   </body>
+  {% endblock content %}
+  
+  {% block footer %}
+  
+  
+  
+  {% endblock footer %}
 </html>

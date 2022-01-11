@@ -1,27 +1,32 @@
+{% extends 'base.html' %}
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
+  {% block title %}
   <title> RSVP </title>
+  {% endblock title %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-  <body>
+  {% block content %}
+  <body class='forumfont'>
     <div class="cover bg-left bg-center-l" style="background-image: url(http://127.0.0.1:8000/static/img/grad.png)">
         <div class="bg-black-80  ">
-        <nav class="dt w-100 mw8 center"> 
+          <nav class="dt w-100 mw8 center"> 
             <div class="dtc w2 v-mid pa3">
             </div>
             <div class="dtc v-mid tr pa3">
-              <a class="f6 fw4 hover-green no-underline white dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
-              <a class="f6 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
-              <a class="f6 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
-              <a class="f6 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
-              <a class="f6 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
-              <a class="f6 fw4 hover-green no-underline white dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >Registry</a> 
+              <a class="f4 fw4 hover-green no-underline white dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
+              <a class="f4 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
+              <a class="f4 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
+              <a class="f4 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
+              <a class="f4 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
+              <a class="f4 fw4 hover-green no-underline white dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
+              <a class="f4 fw4 hover-green no-underline white dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
             </div>
           </nav> 
           <div class="pb3 tc pb5-ns">
-            <h1 class="f2 white-90 mb3 ph2 lh-title">RSVP</h1>
+            <h1 class="f1 white-90 mb3 ph2 imperial lh-title">rsvp</h1>
             </div>
           </div>
           </div>
@@ -43,5 +48,5 @@
           </article>
           
   </body>
-  
+  {% endblock content %}
 </html>
