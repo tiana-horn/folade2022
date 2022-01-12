@@ -7,6 +7,10 @@ name = "pypi"
 django = "*"
 python-dotenv = "*"
 psycopg2 = "*"
+boto3 = "*"
+gspread = "*"
+google-auth = "*"
+oauth2client = "*"
 
 [dev-packages]
 

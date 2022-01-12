@@ -26,18 +26,32 @@
               <h1 class="f1 f1-l fw2 white-90 mb0 imperial lh-title">Fola & Lade</h1>
               <h2 class="fw1 f3 white-80 mt3 mb1">"I have found the one whom my soul loves"</h2>
               <h3 class="fw1 f5 white-80 mt1 mb5"> - Song of Solomon  3:4"</h3>
-              <a class="f3 no-underline grow dib v-mid bg-green white  ph3 pv2 mb5" href="story">Enter Site</a>
+              <a class="f3 no-underline grow dib v-mid bg-green white  ph3 pv2 mb5" href="{% url 'story' %}">Enter Site</a>
             </div>
             
           </div>
         </div> 
-
+        {% if messages %}
+        {% for message in messages %}
+            
+            <h5 class="{{ message.tags }} f3 mv1 pb3">
+                {{ message }}
+            </h5>
+        {% endfor %}
+        {%else%} 
         <h5 class="f4 mt3 mv2 tc container">Interested in attending?</h5> 
-        <h5 class="f5 mt2 tc container">Fill out this form & we will be in contact</h5> 
-        <a class="f3 no-underline grow dib v-mid bg-green white  ph3 pv2 mb5" href='interest'>Express Interest</a>
+        <h5 class="f5 mt2 tc container">Fill out this form & we will be in contact</h5>   
 
-
+        <br>
        
+        <div class="f5 mt2 mv1 pb3 tc container">
+        <form role = "form" action="" method = "post" >
+            {% csrf_token %}
+            {{ form.as_table }}
+            <button class="b ph3 input-reset ba b--black bg-transparent grow pointer f6" type = "send">Express Interest</button>
+        </form>
+        </div>
+        {% endif %}
   </body>
   {% endblock content %}
 

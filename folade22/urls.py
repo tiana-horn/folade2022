@@ -24,6 +24,7 @@ urlpatterns = [
     path('', wedding_views.home, name='home'),
     path('admin/', admin.site.urls),
     path('gallery/', wedding_views.gallery, name='gallery'),
+    path('interest/', wedding_views.interest, name='interest'),
     path('party/', wedding_views.party, name='party'),
     path('registry/', wedding_views.registry, name='registry'),
     path('rsvp/', wedding_views.rsvp, name='rsvp'),
