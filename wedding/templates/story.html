@@ -3,10 +3,45 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  {% block title %}
   <title> Our Story </title>
+  {% endblock title %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-  <body>
-
+  {% block content %}
+  <body class='forumfont'>
+    <nav class="dt w-100 mw8 center"> 
+      <div class="dtc w2 v-mid pa3">
+      </div>
+      <div class="dtc v-mid tr pa3">
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
+        <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
+      </div>
+    </nav> 
+    <article class="pa3 tc pa5-ns">
+        <h1 class="f1 imperial">Our  Story</h1>
+        <img src="http://127.0.0.1:8000/static/img/IMG_4149.jpg" class="w-100 f5 measure" alt="Photo of outer space">
+        <p class="measure center lh-copy">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+          tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos <b class="f3"> At
+          et accusam et justo </b>  duo dolores et ea rebum. Stet clita kasd gubergren,
+          no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </p>
+        <p class="measure center lh-copy">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+          tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+          vero eos et accusam et justo <b class="f3"> Lorem ipsum dolor </b> 
+          duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem 
+          ipsum dolor sit amet.
+        </p>
+        <img src="https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/133605145_10224901462468582_1554730838349773702_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=730e14&_nc_ohc=sTTMawMqbBQAX_U9PHd&_nc_ht=scontent-iad3-2.xx&oh=00_AT_Tc15ATbwRuZ7EKC0oVYXGORd5ASYLe-RzP_mdRIuNhw&oe=61FE70F5" class="w-100 f5 measure" alt="Photo of outer space">
+      </article>
+      
   </body>
+  {% endblock content %}
 </html>

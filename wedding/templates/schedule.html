@@ -3,10 +3,75 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  {% block title %}
   <title> Schedule </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-  <body>
+  {% endblock title %}
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" media="screen and (max-width: 1024px)" href="{% static 'css/mobile.css' %}"/>
+  </head>
+  
+  {% block content %}
+  <body class = 'forumfont'>
+    <nav class="dt w-100 mw8 center"> 
+      <div class="dtc w2 v-mid pa3">
+      </div>
+      <div class="dtc v-mid tr pa3">
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
+        <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
+      </div>
+    </nav> 
+      <h1 class="f1 mw6 center imperial tc">Schedule</h1>
 
+      <ul class="list pl0 schedcontainer">
+        <li class="pa3 pa4-ns bb b--black-10">
+          <b class="db f3 mb1">traditional</b>
+          <span class="f5 db lh-copy measure">
+            Saturday, April 22, 2022 
+          </span>
+          <span class="f5 db lh-copy measure">
+            7 o'clock in the evening
+          </span>
+          <span class="f5 db lh-copy measure">
+            123 Love Lane, Houston TX
+          </span>
+        </li>
+        <li class="pa3 pa4-ns bb b--black-10">
+          <b class="db f3 mb1">
+            white wedding
+          </b>
+          <span class="f5 db lh-copy measure">
+            Sunday, April 23, 2022 
+          </span>
+          <span class="f5 db lh-copy measure">
+            4 o'clock in the evening
+          </span>
+          <span class="f5 db lh-copy measure">
+            123 Love Lane, Houston TX
+          </span>
+        </li>
+        <li class="pa3 pa4-ns bb b--black-10">
+          <b class="db f3 mb1">
+            reception
+          </b>
+          <span class="f5 db lh-copy measure">
+            Sunday, April 23, 2022 
+          </span>
+          <span class="f5 db lh-copy measure">
+            7 o'clock in the evening
+          </span>
+          <span class="f5 db lh-copy measure">
+            123 Love Lane, Houston TX
+          </span>
+        </li>
+        </ul>
   </body>
+  {% endblock content %}
 </html>
