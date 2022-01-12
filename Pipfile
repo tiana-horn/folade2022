@@ -12,6 +12,8 @@ gspread = "*"
 google-auth = "*"
 oauth2client = "*"
 django-lockdown = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 
