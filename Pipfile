@@ -11,6 +11,7 @@ boto3 = "*"
 gspread = "*"
 google-auth = "*"
 oauth2client = "*"
+django-lockdown = "*"
 
 [dev-packages]
 

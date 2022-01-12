@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "92dc59a23b5a7076f3c74ddd7efbedb4518b620df5dda95bdd3a73e79666df95"
+            "sha256": "34915c437fbda5bddae12a8415359b2e09ab514f0c0d98b499875b7e961acc4f"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -70,6 +70,14 @@
             ],
             "index": "pypi",
             "version": "==4.0.1"
+        },
+        "django-lockdown": {
+            "hashes": [
+                "sha256:6e70431382ea9dfdc2144d0882070d1d0c9669fc4f44aece76a6cafd5fcff0cf",
+                "sha256:ac3635e455038f8ed9e473e37eda7254061a02c4f1937793360b0c1104367552"
+            ],
+            "index": "pypi",
+            "version": "==4.0.0"
         },
         "google-auth": {
             "hashes": [

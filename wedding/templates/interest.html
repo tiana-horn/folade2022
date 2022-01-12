@@ -12,7 +12,7 @@
   </head>
 
   {% block content %}
-        <body class='forumfont'>
+        <body class='forumfont fadeColor'>
             <div class="cover bg-left bg-center-l" style="background-image: url(http://127.0.0.1:8000/static/img/grad.png)">
                 <div class="bg-black-80  ">
                     <div class="dtc w2 v-mid pa3">
@@ -22,21 +22,21 @@
                     </div>
                   </div>
                   </div>
-                  <div class="schedcontainer">
+                  <div class="schedcontainer ">
                     {% if messages %}
                     {% for message in messages %}
                         
-                        <h5 class="{{ message.tags }} f3 mv1 pb3">
+                        <h5 class="{{ message.tags }} f3 ph3 mv1 pb3">
                             {{ message }}
                         </h5>
                     {% endfor %}
                     {%else%} 
-                    <h5 class="f4 mt3 mv2 tc container">Interested in attending?</h5> 
-                    <h5 class="f5 mt2 tc container">Fill out this form & we will be in contact</h5>   
+                    <h5 class="f3 mt3 mv2 ph3 tc container">Interested in attending our wedding?</h5> 
+                    <h5 class="f4 mt2 tc ph3 container">Fill out this form & we will be in contact</h5>   
 
                     <br>
                 
-                    <div class="f5 mt2 mv1 pb3 tc container">
+                    <div class="f5 mt1 mv1 pt1 pb3 tc container">
                     <form role = "form" action="" method = "post" >
                         {% csrf_token %}
                         {{ form.as_table }}
@@ -48,8 +48,11 @@
                   </div>
                  
 
-                  
+                  {% endblock content %}
+                  {% block footer %}
+                  {% endblock footer %}
+
+           
         </body>
-  {% endblock content %}
 
 </html>

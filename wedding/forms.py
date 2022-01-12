@@ -1,4 +1,6 @@
 from django import forms
+from django.forms import ModelForm
+# from wedding.models import Guest
 
 class InterestForm(forms.Form):
     Name = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Name'}))
@@ -10,3 +12,8 @@ class InterestForm(forms.Form):
     State = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'State'}))
     Country = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Country'}))
     Zipcode = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Zipcode'}))
+
+# class GuestForm(ModelForm):
+#     class Meta:
+#         model = Guest
+#         fields = ('rsvp','full_name','email','phone','street_address','street_address_line_2','city','state','country','zipcode')

@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from wedding.forms import InterestForm
+from lockdown.decorators import lockdown
 import boto3
 import json
 
@@ -66,24 +67,48 @@ def interest(request):
         'form': form,
     })
 
+@lockdown()
 def gallery(request):
     return render(request, 'gallery.html')
 
+@lockdown()
 def party(request):
     return render(request, 'party.html')
 
+@lockdown()
 def registry(request):
     return render(request, 'registry.html')
 
+@lockdown()
 def rsvp(request):
-    return render(request, 'rsvp.html')
+    # guest_found = Guest.objects.filter(name_unaccent_icontains=name)
+    # guest = Guest.objects.get(pk=pk)
+    # form_class = GuestForm
 
+    # if request.method == 'POST':
+    #     form = form_class(data=request.POST, instance=guest)
+    #     if form.is_valid():
+    #         form.save()
+    #         django_message = "Thank you for your response!"
+    #         messages.add_message(request, messages.SUCCESS, django_message)
+    #         return redirect('rsvp')
+    # else:   
+
+
+
+    return render(request, 'rsvp.html', {
+        # 'form': form,
+    })
+
+@lockdown()
 def schedule(request):
     return render(request, 'schedule.html')
 
+@lockdown()
 def story(request):
     return render(request, 'story.html')
 
+@lockdown()
 def accomodations(request):
     return render(request, 'accomodations.html')
 

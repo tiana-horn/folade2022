@@ -2,8 +2,15 @@
   font-family: 'Imperial Script', cursive;
 }
 
+.fadeColor{
+  background: linear-gradient(to bottom, white, white,#ffffe2, #98ff98 );
+  height:100vh;
+
+}
+
 .forumfont {
   font-family: 'Forum', cursive;
+
 }
 
 .homescreenimg {
@@ -30,4 +37,3 @@
     margin-left: 20%;
     margin-top:0%;
   }
-  
