@@ -1,18 +1,40 @@
 import gspread
+from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
 from wedding.models import User
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
-from wedding.forms import InterestForm
+from wedding.forms import InterestForm, AccessForm
 from lockdown.decorators import lockdown
 import boto3
 import json
+import os
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
+
+def access(request):
+    form = AccessForm
+    
+    if request.method == 'POST':
+        form = form(data=request.POST)
+        form_data = form(data=request.POST)
+
+        if form.is_valid():
+            password = form.cleaned_data['password']
+            if password != os.getenv("LOCKDOWN_PASSWORDS"):
+                django_message = f'{password} is not the correct password. Please check your invitation or contact Fola or Lade'
+                messages.add_message(request, messages.ERROR, django_message)
+            else:
+                return redirect('story')
+    
+
+    return render(request, 'access.html', {
+        'form': form,
+    })
 
 def interest(request):
     form = InterestForm

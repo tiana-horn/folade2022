@@ -7,9 +7,14 @@
   <title> Our Story </title>
   {% endblock title %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
   {% block content %}
-  <body class='forumfont'>
+
+  <body class='forumfont' >
+
+
     <nav class="dt w-100 mw8 center"> 
       <div class="dtc w2 v-mid pa3">
       </div>
@@ -42,6 +47,10 @@
         <img src="https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/133605145_10224901462468582_1554730838349773702_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=730e14&_nc_ohc=sTTMawMqbBQAX_U9PHd&_nc_ht=scontent-iad3-2.xx&oh=00_AT_Tc15ATbwRuZ7EKC0oVYXGORd5ASYLe-RzP_mdRIuNhw&oe=61FE70F5" class="w-100 f5 measure" alt="Photo of outer space">
       </article>
       
-  </body>
   {% endblock content %}
+  {% block footer %}
+  {% endblock footer %}
+
+</body>
+
 </html>

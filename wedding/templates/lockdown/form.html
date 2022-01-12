@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  {% block title %}
+  <title> Access </title>
+  {% endblock title %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+  {% block content %}
+  <body class='forumfont' id='lockdown'>
+    <div class="cover bg-left bg-center-l" style="background-image: url(http://127.0.0.1:8000/static/img/grad.png)">
+        <div class="bg-black-80  ">
+            <div class="dtc w2 v-mid pa3">
+            </div>
+          <div class="pb3 tc pb5-ns">
+            <h1 class="f1 white-90 mb3 ph2 imperial lh-title">Access Site</h1>
+            </div>
+          </div>
+          </div>
+          <div class="schedcontainer ">
+            {% if messages %}
+            {% for message in messages %}
+                
+                <h5 class="{{ message.tags }} f3 pa4 ma4 ">
+                    {{ message }}
+                </h5>
+            {% endfor %}
+            {%else%} 
+            <h5 class="f4 mt2 tc pt3 pb0 container">Please enter the guest password.</h5>   
+
+            <br>
+        
+            <div class="f5  pb3 tc container">
+                {% if form %}
+
+                <form role = "form" action="" method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <input class="b ph3 mt3 input-reset bg-green ba b--black bg-transparent grow pointer f4" type="submit" value="Enter Site">
+                </form>
+              
+                {% endif %}
+            </div>
+            {% endif %}
+          </div>
+  </body>
+  {% endblock content %}
+</html>
