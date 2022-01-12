@@ -1,17 +1,40 @@
 import gspread
+from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
 from wedding.models import User
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
-from wedding.forms import InterestForm
+from wedding.forms import InterestForm, AccessForm
+from lockdown.decorators import lockdown
 import boto3
 import json
+import os
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
+
+def access(request):
+    form = AccessForm
+    
+    if request.method == 'POST':
+        form = form(data=request.POST)
+        form_data = form(data=request.POST)
+
+        if form.is_valid():
+            password = form.cleaned_data['password']
+            if password != os.getenv("LOCKDOWN_PASSWORDS"):
+                django_message = f'{password} is not the correct password. Please check your invitation or contact Fola or Lade'
+                messages.add_message(request, messages.ERROR, django_message)
+            else:
+                return redirect('story')
+    
+
+    return render(request, 'access.html', {
+        'form': form,
+    })
 
 def interest(request):
     form = InterestForm
@@ -66,24 +89,48 @@ def interest(request):
         'form': form,
     })
 
+@lockdown()
 def gallery(request):
     return render(request, 'gallery.html')
 
+@lockdown()
 def party(request):
     return render(request, 'party.html')
 
+@lockdown()
 def registry(request):
     return render(request, 'registry.html')
 
+@lockdown()
 def rsvp(request):
-    return render(request, 'rsvp.html')
+    # guest_found = Guest.objects.filter(name_unaccent_icontains=name)
+    # guest = Guest.objects.get(pk=pk)
+    # form_class = GuestForm
 
+    # if request.method == 'POST':
+    #     form = form_class(data=request.POST, instance=guest)
+    #     if form.is_valid():
+    #         form.save()
+    #         django_message = "Thank you for your response!"
+    #         messages.add_message(request, messages.SUCCESS, django_message)
+    #         return redirect('rsvp')
+    # else:   
+
+
+
+    return render(request, 'rsvp.html', {
+        # 'form': form,
+    })
+
+@lockdown()
 def schedule(request):
     return render(request, 'schedule.html')
 
+@lockdown()
 def story(request):
     return render(request, 'story.html')
 
+@lockdown()
 def accomodations(request):
     return render(request, 'accomodations.html')
 

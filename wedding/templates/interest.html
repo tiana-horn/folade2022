@@ -7,52 +7,59 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-    <link rel="stylesheet" href="{% static 'css/style.css?v=1.555' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css?v=1.777' %}">
 	<link rel="stylesheet" media="screen and (max-width: 1024px)" href="{% static 'css/mobile.css?v=1.777' %}"/>
   </head>
 
   {% block content %}
-  <body class='forumfont'>
-      
-      
-        <div class="cover homescreenimg mb2 bg-left bg-center-l" >
-          <div class="bg-black-80 pb5 pb6-m pb7-l">
-            <nav class="dt w-100 white mw8 center"> 
-                <div class="dtc w2 v-mid pa3">
-                </div>
+        <body class='forumfont '>
+            <div class="cover bg-left bg-center-l" style="background-image: url(http://127.0.0.1:8000/static/img/grad.png)">
+                <div class="bg-black-80  ">
+                    <div class="dtc w2 v-mid pa3">
+                    </div>
+                    <nav class="dt w-100 mw8 center"> 
+                        <div class="dtc w2 v-mid pa3">
+                        </div>
+                        <div class="dtc v-mid tr pa3">
+                          <a class="f4 fw4 hover-green no-underline white dib ml2 pv2 ph3 ba" href="{% url 'access' %}" >Enter Site</a> 
+                        </div>
+                      </nav> 
+                  <div class="pb3 tc pb5-ns">
+                    <h1 class="f1 white-90 mb3 ph2 imperial lh-title">Fola & Lade</h1>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="schedcontainer ">
+                    {% if messages %}
+                    {% for message in messages %}
+                        
+                        <h5 class="{{ message.tags }} f3 pa4 ma4 ">
+                            {{ message }}
+                        </h5>
+                    {% endfor %}
+                    {%else%} 
+                    <h5 class="f3 mt3 mv2 ph3 tc container">Interested in attending our wedding?</h5> 
+                    <h5 class="f4 mt2 tc ph3 container">Fill out this form & we will be in contact</h5>   
 
-              </nav> 
-            <div class="tc mt4 mt5-m mt6-l center ph3">
-              <h1 class="f1 f1-l fw2 white-90 mb0 imperial lh-title">Fola & Lade</h1>
-              <h2 class="fw1 f3 white-80 mt3 mb1">"I have found the one whom my soul loves"</h2>
-              <h3 class="fw1 f5 white-80 mt1 mb5"> - Song of Solomon  3:4"</h3>
-              <a class="f3 no-underline grow dib v-mid bg-green white  ph3 pv2 mb5" href="{% url 'story' %}">Enter Site</a>
-            </div>
-            
-          </div>
-        </div> 
-        {% if messages %}
-        {% for message in messages %}
-            
-            <h5 class="{{ message.tags }} f3 mv1 pb3">
-                {{ message }}
-            </h5>
-        {% endfor %}
-        {%else%} 
-        <h5 class="f4 mt3 mv2 tc container">Interested in attending?</h5> 
-        <h5 class="f5 mt2 tc container">Fill out this form & we will be in contact</h5>   
+                    <br>
+                
+                    <div class="f5 mt1 mv1 pt1 pb3 tc container">
+                    <form role = "form" action="" method = "post" >
+                        {% csrf_token %}
+                        {{ form.as_table }}
+                        <br>
+                        <button class="b ph3 mt3 input-reset bg-green ba b--black bg-transparent grow pointer f4" type = "send">Express Interest</button>
+                    </form>
+                    </div>
+                    {% endif %}
+                  </div>
+                 
 
-        <br>
-       
-        <div class="f5 mt2 mv1 pb3 tc container">
-        <form role = "form" action="" method = "post" >
-            {% csrf_token %}
-            {{ form.as_table }}
-            <button class="b ph3 input-reset ba b--black bg-transparent grow pointer f6" type = "send">Express Interest</button>
-        </form>
-        </div>
-        {% endif %}
-  </body>
-  {% endblock content %}
+                  {% endblock content %}
+                  {% block footer %}
+                  {% endblock footer %}
+
+           
+        </body>
 
 </html>
