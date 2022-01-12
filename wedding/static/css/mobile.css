@@ -7,12 +7,27 @@
 }
 
 .homescreenimg {
-  background-image: url(http://127.0.0.1:8000/static/img/splashscreen1.png);
+  background-image: url(http://127.0.0.1:8000/static/img/splashscreen2.png);
+  height:100vh;
 
 }
+
+.blackback {
+  background-color: rgba(0, 0, 0, .8);
+  height:100vh;
+}
+
+.schedcontainer {
+  max-width: 100%;
+  margin-right: 0%;
+  margin-left: 0%;
+  margin-top:0%;
+}
+
 .partycontainer {
     max-width: 60%;
     margin-right: 20%;
     margin-left: 20%;
     margin-top:0%;
   }
+  

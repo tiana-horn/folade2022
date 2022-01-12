@@ -8,7 +8,11 @@
 
 .homescreenimg {
   background-image: url(http://127.0.0.1:8000/static/img/IMG_4149.jpg);
+  background-size: cover !important;
+}
 
+.blackback {
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .schedcontainer {
@@ -17,3 +21,4 @@
     margin-left: 20%;
     margin-top:0%;
   }
+  
