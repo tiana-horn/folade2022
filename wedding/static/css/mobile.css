@@ -128,7 +128,7 @@ body
 
 #menuToggle span:nth-last-child(2)
 {
-  transform-origin: 0% 100%;
+  transform-origin: -50% 100%;
 }
 
 /* 
@@ -138,7 +138,7 @@ body
 #menuToggle input:checked ~ span
 {
   opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
+  transform: rotate(90deg) ;
   background:black;
 }
 
@@ -156,7 +156,7 @@ body
  */
 #menuToggle input:checked ~ span:nth-last-child(2)
 {
-  transform: rotate(-45deg) translate(0, -1px);
+  transform:  translate(-14px, -14px);
 }
 
 /*

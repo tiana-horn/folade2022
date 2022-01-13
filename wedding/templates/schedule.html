@@ -15,7 +15,7 @@
   
   {% block content %}
   <body class = 'forumfont'>
-    <nav class="dt w-100 mw8 center"> 
+    <nav class="dt w-100 regmenu mw8 center"> 
       <div class="dtc w2 v-mid pa3">
       </div>
       <div class="dtc v-mid tr pa3">
@@ -28,6 +28,47 @@
         <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
       </div>
     </nav> 
+    <div class="mobilemenu black">
+      <nav role="navigation">
+        <div id="menuToggle">
+          <!--
+          A fake / hidden checkbox is used as click reciever,
+          so you can use the :checked selector on it.
+          -->
+          <input type="checkbox" />
+          
+          <!--
+          Some spans to act as a hamburger.
+          
+          They are acting like a real hamburger,
+          not that McDonalds stuff.
+          -->
+          <span></span>
+          <span></span>
+          <span></span>
+          
+          <!--
+          Too bad the menu has to be inside of the button
+          but hey, it's pure CSS magic.
+          -->
+          <ul id="menu" class="mobilemenu">
+            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'story' %}" >Our Story</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'schedule' %}" >Schedule</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'accomodations' %}" >Accomodations</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'party' %}" >Wedding Party</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'gallery' %}" >Gallery</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mb7  mv6 " href="{% url 'registry' %}" >Registry</a>
+            <br> 
+            <a class="f2  hover-green no-underline black  mv4  ba" href="{% url 'rsvp' %}" >RSVP</a> 
+          </ul>
+        </div>
+      </nav>
+    </div>
       <h1 class="f1 mw6 center imperial tc">Schedule</h1>
 
       <ul class="list pl0 schedcontainer">

@@ -12,8 +12,8 @@
   {% block content %}
   <body class="forumfont">
     <div class="cover bg-left bg-center-l" style="background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/grad.png)">
-    <div class="bg-black-80  ">
-      <nav class="dt w-100 white mw8 center"> 
+    <div class="bg-black-50  ">
+      <nav class="dt w-100 white regmenu mw8 center"> 
         <div class="dtc w2 v-mid pa3">
         </div>
         <div class="dtc v-mid tr pa3">
@@ -26,6 +26,47 @@
           <a class="f4 fw4 hover-green no-underline white dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
         </div>
       </nav> 
+      <div class="mobilemenu ">
+        <nav role="navigation">
+          <div id="menuToggle">
+            <!--
+            A fake / hidden checkbox is used as click reciever,
+            so you can use the :checked selector on it.
+            -->
+            <input type="checkbox" />
+            
+            <!--
+            Some spans to act as a hamburger.
+            
+            They are acting like a real hamburger,
+            not that McDonalds stuff.
+            -->
+            <span></span>
+            <span></span>
+            <span></span>
+            
+            <!--
+            Too bad the menu has to be inside of the button
+            but hey, it's pure CSS magic.
+            -->
+            <ul id="menu" class="mobilemenu">
+              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'story' %}" >Our Story</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'schedule' %}" >Schedule</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'accomodations' %}" >Accomodations</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'party' %}" >Wedding Party</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'gallery' %}" >Gallery</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mb7  mv6 " href="{% url 'registry' %}" >Registry</a>
+              <br> 
+              <a class="f2  hover-green no-underline black  mv4  ba" href="{% url 'rsvp' %}" >RSVP</a> 
+            </ul>
+          </div>
+        </nav>
+      </div>
       <div class="pb3 tc pb5-ns">
         <h1 class="f1 white-90 mb3 ph2 imperial lh-title">Registry</h1>
         </div>
