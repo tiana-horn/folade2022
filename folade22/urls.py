@@ -31,5 +31,11 @@ urlpatterns = [
     path('schedule/', wedding_views.schedule, name='schedule'),
     path('story/', wedding_views.story, name='story'),
     path('accomodations/', wedding_views.accomodations, name='accomodations'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
+handler400 = 'wedding.views.bad_request_view'
+handler403 = 'wedding.views.permission_denied_view'
+handler404 = 'wedding.views.page_not_found_view'
+handler500 = 'wedding.views.error_view'
+
 

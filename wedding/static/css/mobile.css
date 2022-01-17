@@ -2,6 +2,10 @@
   font-family: 'Imperial Script', cursive;
 }
 
+a:hover {
+  cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/pointer.png), auto ;
+}
+
 .fadeColor{
   background: linear-gradient(to bottom, white, white,#ffffe2, #98ff98 );
 
@@ -9,7 +13,7 @@
 
 .forumfont {
   font-family: 'Forum', cursive;
-
+  cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/ring.png), auto ;
 }
 
 .homescreenimg {
@@ -55,6 +59,14 @@ body
 
 }
 
+.errorcontainer {
+  max-width: 60%;
+  max-height: 50%;
+  margin-right: 20%;
+  margin-left: 20%;
+  margin-top:0%;
+}
+
 #menuToggle
 {
   display: block;
@@ -91,7 +103,7 @@ body
   top: -7px;
   left: -5px;
   
-  cursor: pointer;
+  cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/pointer.png), auto ;
   
   opacity: 0; /* hide this */
   z-index: 2; /* and place it over the hamburger */
