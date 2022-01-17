@@ -2,13 +2,14 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User
+from wedding.models import User, Guest
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
-from wedding.forms import InterestForm, AccessForm
+from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
 from lockdown.decorators import lockdown
+from wedding.filters import GuestFilter
 import boto3
 import json
 import os
@@ -83,25 +84,45 @@ def registry(request):
     return render(request, 'registry.html')
 
 @lockdown()
-def rsvp(request):
-    # guest_found = Guest.objects.filter(name_unaccent_icontains=name)
-    # guest = Guest.objects.get(pk=pk)
-    # form_class = GuestForm
+def rsvp(request,pk):
+    guest = Guest.objects.get(pk=pk)
+    form_class = GuestForm
 
-    # if request.method == 'POST':
-    #     form = form_class(data=request.POST, instance=guest)
-    #     if form.is_valid():
-    #         form.save()
-    #         django_message = "Thank you for your response!"
-    #         messages.add_message(request, messages.SUCCESS, django_message)
-    #         return redirect('rsvp')
-    # else:   
+    if request.method == 'POST':
+        form = form_class(data=request.POST, instance=guest)
+        if form.is_valid():
+            form.save()
+            django_message = "Thank you for your response!"
+            messages.add_message(request, messages.SUCCESS, django_message)
+            return redirect('rsvp', pk=guest.pk)
+    else:   
+        form = form_class(instance=guest)
+        return render(request, 'rsvp.html', {
+            'form': form,
+            'guest':guest,
+        })
+
+@lockdown()
+def guest_list(request):
+    form = SearchForm
+    searchresults = False
+
+    if request.method == 'POST':
+        form = form(data=request.POST)
+
+        if form.is_valid():
+            fullName = form.cleaned_data['fullName']
+            try: 
+                searchresults = Guest.objects.filter(fullName=fullName)
+            except:
+                django_message = "We couldn't find your name, please check your invitation or contact Fola & Lade if you think there is an error"
+                messages.add_message(request, messages.ERROR, django_message)
 
 
-
-    return render(request, 'rsvp.html', {
-        # 'form': form,
-    })
+    return render(request, 'findguest.html',{
+        'form':form,    
+        'searchresults':searchresults,
+        })
 
 @lockdown()
 def schedule(request):
