@@ -6,6 +6,7 @@ from wedding.models import User
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
+from django.template.loader import get_template
 from wedding.forms import InterestForm, AccessForm
 from lockdown.decorators import lockdown
 import boto3
@@ -114,3 +115,14 @@ def story(request):
 def accomodations(request):
     return render(request, 'accomodations.html')
 
+def bad_request_view(request, exception):
+    return render(request, '400.html', status=400)
+
+def permission_denied_view(request, exception):
+    return render(request, '403.html', status=403)
+
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)
+
+def error_view(request):
+    return render(request, '500.html', status=500)
