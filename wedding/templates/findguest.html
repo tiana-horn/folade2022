@@ -85,20 +85,25 @@
         <input type="submit" value="Find" />
     </form>
     {% if searchresults %}
+    <h5 class="tc f5 ">
+        Click your name to continue
+    </h5>
         {% for result in searchresults %}
-        <a class=" tc f3 no-underline black grow ma5 pa5" href="{% url 'rsvp' pk=result.pk %}"> 
-            {{ result.fullName }} - {{ result.email }}<br /> 
+        <a class="no-underline black grow" href="{% url 'rsvp' pk=result.pk %}"> 
+           <h2 class=" tc f3 errorcontainer "> 
+               {{ result.fullName }} - {{ result.email }}<br />  
+            </h2> 
         </a> 
         {% endfor %}
-    {% endif %}
 
-    {% if messages %}
-        {% for message in messages %}
-            
-            <h5 class="{{ message.tags }} f3">
-                {{ message }}
-            </h5>
-        {% endfor %}
+        {%else%}
+
+        {% if messages %}                
+                <h5 class="tc f3 errorcontainer">
+                    Sorry, we couldn't find your name. Please make sure you're using the full name on your invitation or contact Fola & Lade if you think there is an error
+                </h5>
+        {% endif %}
+
     {% endif %}
 
     </article>

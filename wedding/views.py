@@ -114,6 +114,9 @@ def guest_list(request):
             fullName = form.cleaned_data['fullName']
             try: 
                 searchresults = Guest.objects.filter(fullName=fullName)
+                if searchresults == none():
+                    django_message = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
+                    messages.add_message(request, messages.ERROR, django_message)
             except:
                 django_message = "We couldn't find your name, please check your invitation or contact Fola & Lade if you think there is an error"
                 messages.add_message(request, messages.ERROR, django_message)
