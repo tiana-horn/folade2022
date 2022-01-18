@@ -105,6 +105,28 @@ def rsvp(request,pk):
         })
 
 @lockdown()
+def invite(request,pk):
+    invite = Invitation.objects.get(pk=pk)
+    guest = invite.guest
+    form_class = InviteForm
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST, instance=invite)
+        if form.is_valid():
+            attending = form.cleaned_data['attending']
+            form.save()
+            django_message = "Thank you for your response!"
+            messages.add_message(request, messages.SUCCESS, django_message)
+            return redirect('rsvp', pk=guest.pk)
+    else:   
+        form = form_class(instance=invite)
+        return render(request, 'rsvp.html', {
+            'form': form,
+            'guest':guest,
+            'invite':invite,
+        })
+
+@lockdown()
 def diet(request,pk):
     guest = Guest.objects.get(pk=pk)
     form_class = DietForm
