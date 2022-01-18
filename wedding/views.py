@@ -2,14 +2,13 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest
+from wedding.models import User
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
 from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
 from lockdown.decorators import lockdown
-from wedding.filters import GuestFilter
 import boto3
 import json
 import os
@@ -111,15 +110,14 @@ def guest_list(request):
         form = form(data=request.POST)
 
         if form.is_valid():
-            fullName = form.cleaned_data['fullName']
+            name = form.cleaned_data['name']
             try: 
-                searchresults = Guest.objects.filter(fullName=fullName)
-                if searchresults == none():
+                searchresults = Guest.objects.filter(name__icontains=name)
+                if len(searchresults) < 1 :
                     django_message = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
                     messages.add_message(request, messages.ERROR, django_message)
             except:
-                django_message = "We couldn't find your name, please check your invitation or contact Fola & Lade if you think there is an error"
-                messages.add_message(request, messages.ERROR, django_message)
+                pass
 
 
     return render(request, 'findguest.html',{

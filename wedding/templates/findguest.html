@@ -91,17 +91,19 @@
         {% for result in searchresults %}
         <a class="no-underline black grow" href="{% url 'rsvp' pk=result.pk %}"> 
            <h2 class=" tc f3 errorcontainer "> 
-               {{ result.fullName }} - {{ result.email }}<br />  
+               {{ result.name }} - {{ result.email }}<br />  
             </h2> 
         </a> 
         {% endfor %}
 
         {%else%}
 
-        {% if messages %}                
+        {% if messages %}   
+            {% for message in messages %}             
                 <h5 class="tc f3 errorcontainer">
-                    Sorry, we couldn't find your name. Please make sure you're using the full name on your invitation or contact Fola & Lade if you think there is an error
+                    {{ message }}
                 </h5>
+            {% endfor %}
         {% endif %}
 
     {% endif %}

@@ -59,7 +59,7 @@ class InterestForm(forms.Form):
     Zipcode = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Zipcode'}))
 
 class SearchForm(forms.Form):
-    fullName = forms.CharField(label='',widget=forms.TextInput(attrs={'placeholder':'Search'}))
+    name = forms.CharField(label='',widget=forms.TextInput(attrs={'placeholder':'Search'}))
 
 class GuestForm(ModelForm):
     class Meta:
