@@ -64,13 +64,13 @@ class SearchForm(forms.Form):
 class GuestForm(ModelForm):
     class Meta:
         model = Guest
-        fields = ('dietary',)
+        fields = ('food_allergies',)
 
 class InviteForm(ModelForm):
     class Meta:
         model = Invitation
-        yes_no = forms.RadioSelect(choices=[(True,'Attending'),(False,'Not Attending')])
+        yes_no = forms.RadioSelect(choices=[(True,'I will attend'),(False,'I will not attend')])
         fields = ('attending',)
         widgets = {'attending':yes_no}
-        
+
 

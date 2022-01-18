@@ -86,6 +86,7 @@ def registry(request):
 def rsvp(request,pk):
     guest = Guest.objects.get(pk=pk)
     invites = Invitation.objects.filter(guest=guest)
+    invites = invites.order_by('event')
     invite_form = InviteForm
     guest_form = GuestForm
 
@@ -99,12 +100,13 @@ def rsvp(request,pk):
             return redirect('rsvp', pk=guest.pk)
     else:   
         guest_form = guest_form(instance=guest)
-        return render(request, 'rsvp.html', {
-            'invite_form': invite_form,
-            'guest_form': guest_form,
-            'guest':guest,
-            'invites':invites,
-        })
+
+    return render(request, 'rsvp.html', {
+        'invite_form': invite_form,
+        'guest_form': guest_form,
+        'guest':guest,
+        'invites':invites,
+    })
 
 @lockdown()
 def invite(request,pk):
@@ -120,11 +122,33 @@ def invite(request,pk):
             return redirect('rsvp', pk=guest.pk)
     else:   
         invite_form = invite_form(instance=invite)
-        return render(request, 'rsvp.html', {
+    
+    return render(request, 'rsvp.html', {
             'invite_form': invite_form,
             'guest':guest,
             'invite':invite,
-        })
+    })
+
+@lockdown()
+def change_rsvp(request, pk):
+    invite = Invitation.objects.get(pk=pk)
+    guest = invite.guest
+    if request.method == "POST":
+        if invite.attending==True:
+            invite.attending=False
+            invite.save()
+            return redirect('rsvp', pk=guest.pk)
+
+        else: 
+            invite.attending=True
+            invite.save()
+            return redirect('rsvp', pk=guest.pk)
+
+            
+    return render(request, 'rsvp.html', {
+            'guest':guest,
+            'invite':invite,
+    })
 
 @lockdown()
 def guest_list(request):

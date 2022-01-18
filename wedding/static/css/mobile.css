@@ -11,7 +11,10 @@ a:hover {
 
 }
 
-
+.opaq {
+  opacity: 0;
+  z-index: 2; 
+}
 
 .forumfont {
   font-family: 'Forum', cursive;
