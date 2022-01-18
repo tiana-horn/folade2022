@@ -27,7 +27,7 @@ class Event(models.Model):
 class Invitation(models.Model):
     guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    attending = models.BooleanField(default=False)
+    attending = models.BooleanField()
 
 
 

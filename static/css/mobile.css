@@ -10,6 +10,34 @@
     background: linear-gradient(to bottom, white, white,#ffffe2, #98ff98 );
   
   }
+
+.radioB {
+    background-color: gray;
+    color:white;
+    padding:10px;
+    text-align: center;
+    border: none;
+  }
+  
+  .radioB:checked+label,
+  .radioB:focus{
+    background-color:#523010;
+    color:white;
+  }
+
+  input[type="radio"] {
+    background-color: gray;
+    color:white;
+    padding:10px;
+    text-align: center;
+    border: none;
+  }
+  
+  input[type="radio"]:checked+label,
+  input[type="radio"]:focus{
+    background-color:#523010;
+    color:white;
+  }
   
   .forumfont {
     font-family: 'Forum', cursive;

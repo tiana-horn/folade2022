@@ -69,5 +69,8 @@ class GuestForm(ModelForm):
 class InviteForm(ModelForm):
     class Meta:
         model = Invitation
+        yes_no = forms.RadioSelect(choices=[(True,'Attending'),(False,'Not Attending')])
         fields = ('attending',)
+        widgets = {'attending':yes_no}
+        
 

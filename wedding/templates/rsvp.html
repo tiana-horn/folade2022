@@ -66,25 +66,54 @@
       </div>
       <h1 class="f1 mw6 center mt5 imperial tc">rsvp</h1>
             <div class="f5 mt1 errorcontainer mv1 pt1 pb3 tc container">
-              <h5 class="f3 mt3 mv2 ph3 tc container">{{ guest.name }}</h5> 
-              <h5 class="f5 mt3 mv2 ph3 pb1 tc container">{{ guest.email }}</h5> 
-              <form class="mv1" role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
-                {% csrf_token %}
-                {{ guest_form.as_p }}
-                <input type="submit" value="Submit" />
-              </form>
-              {% for invite in invites %}
-                <h5 class="f4 mt3 mv2 pv1 ph3 tc container">
-                  {{ invite.event }} <br>
-                  RSVP: {{ invite.attending }}
+
+              <h5 class="f3 mt0 ph3 tc container">Hi {{ guest.name }}, please save your rsvp for {{ invites.count }} event{% if invites.count > 1 %}s {% endif %} </h5>
+
+
+                {% for invite in invites %}
+                  <h5 class="f3  pb1 mv0 pt0  tc ">
+                    <b>{{ invite.event }} </b><br>
+                      {% if invite.attending%} 
+                        response: attending! &#127881;
+                      {% else%}
+                        response: not attending &#129344;
+                      {% endif %}
+                  </h5> 
+                  <div class="b   white bg-green ba b--black bg-transparent ">
+                      <h5 class="f5  mv0 pv0  tc ">
+                        {{ invite.event.date }} <br>
+                      </h5> 
+                      <h5 class="f5  mv0 pv0  tc ">
+                        {{ invite.event.time }} <br>
+                      </h5> 
+                      <h5 class="f5  mv0 pv0 pb3 tc ">
+                        {{ invite.event.location }} <br>
+                      </h5> 
+                  </div>
+
+ 
+                  <form class="mt2 " role="form" action="{% url 'invite' pk=invite.pk %}" method="post">
+                    <h3 class="f3 mv0 pv0  tc ">
+                      Update response:
+                    </h3> 
+                    {% csrf_token %}
+                      <h5 class="f4 mv1 pv1 tc ">
+                          {{ invite_form.attending }}
+                      </h5>
+                    <input type="submit" value="Save" />
+                  </form>
+                  <div class="pt2 pb3 bb b--black-30">
+                  </div>
+
+                {% endfor %}
+                <h5 class="f3 mv2 pv1 ph3 tc ">
+                  One last thing! Do you have any dietary restrictions? <br>
                 </h5> 
-                <form class="mv1" role="form" action="{% url 'invite' pk=invite.pk %}" method="post">
+                <form class="mv1" role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
                   {% csrf_token %}
-                  {{ invite_form.as_p }}
+                  {{ guest_form.as_p }}
                   <input type="submit" value="Submit" />
                 </form>
-              {% endfor %}
-
             </div>
           
   </body>
