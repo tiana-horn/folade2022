@@ -61,7 +61,7 @@ class InterestForm(forms.Form):
 class SearchForm(forms.Form):
     name = forms.CharField(label='',widget=forms.TextInput(attrs={'placeholder':'Search'}))
 
-class DietForm(ModelForm):
+class GuestForm(ModelForm):
     class Meta:
         model = Guest
         fields = ('dietary',)

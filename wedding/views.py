@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
-from wedding.forms import InterestForm, AccessForm, SearchForm, InviteForm, DietForm
+from wedding.forms import InterestForm, AccessForm, SearchForm, InviteForm, GuestForm
 from lockdown.decorators import lockdown
 import boto3
 import json
@@ -86,20 +86,22 @@ def registry(request):
 def rsvp(request,pk):
     guest = Guest.objects.get(pk=pk)
     invites = Invitation.objects.filter(guest=guest)
-    form_class = InviteForm
+    invite_form = InviteForm
+    guest_form = GuestForm
 
     if request.method == 'POST':
-        form = form_class(data=request.POST, instance=guest)
-        if form.is_valid():
-            Attending = form.cleaned_data['attending']
-            form.save()
+        guest_form = guest_form(data=request.POST, instance=guest)
+        if guest_form.is_valid():
+            dietary = guest_form.cleaned_data['dietary']
+            guest_form.save()
             django_message = "Thank you for your response!"
             messages.add_message(request, messages.SUCCESS, django_message)
             return redirect('rsvp', pk=guest.pk)
     else:   
-        form = form_class(instance=guest)
+        guest_form = guest_form(instance=guest)
         return render(request, 'rsvp.html', {
-            'form': form,
+            'invite_form': invite_form,
+            'guest_form': guest_form,
             'guest':guest,
             'invites':invites,
         })
@@ -108,42 +110,20 @@ def rsvp(request,pk):
 def invite(request,pk):
     invite = Invitation.objects.get(pk=pk)
     guest = invite.guest
-    form_class = InviteForm
+    invite_form = InviteForm
 
     if request.method == 'POST':
-        form = form_class(data=request.POST, instance=invite)
-        if form.is_valid():
-            attending = form.cleaned_data['attending']
-            form.save()
-            django_message = "Thank you for your response!"
-            messages.add_message(request, messages.SUCCESS, django_message)
+        invite_form = invite_form(data=request.POST, instance=invite)
+        if invite_form.is_valid():
+            attending = invite_form.cleaned_data['attending']
+            invite_form.save()
             return redirect('rsvp', pk=guest.pk)
     else:   
-        form = form_class(instance=invite)
+        invite_form = invite_form(instance=invite)
         return render(request, 'rsvp.html', {
-            'form': form,
+            'invite_form': invite_form,
             'guest':guest,
             'invite':invite,
-        })
-
-@lockdown()
-def diet(request,pk):
-    guest = Guest.objects.get(pk=pk)
-    form_class = DietForm
-
-    if request.method == 'POST':
-        form = form_class(data=request.POST, instance=guest)
-        if form.is_valid():
-            Dietary = form.cleaned_data['dietary']
-            form.save()
-            django_message = "Thank you for your response!"
-            messages.add_message(request, messages.SUCCESS, django_message)
-            return redirect('rsvp', pk=guest.pk)
-    else:   
-        form = form_class(instance=guest)
-        return render(request, 'rsvp.html', {
-            'form': form,
-            'guest':guest,
         })
 
 @lockdown()

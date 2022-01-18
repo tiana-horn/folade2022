@@ -68,6 +68,11 @@
             <div class="f5 mt1 errorcontainer mv1 pt1 pb3 tc container">
               <h5 class="f3 mt3 mv2 ph3 tc container">{{ guest.name }}</h5> 
               <h5 class="f5 mt3 mv2 ph3 pb1 tc container">{{ guest.email }}</h5> 
+              <form class="mv1" role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
+                {% csrf_token %}
+                {{ guest_form.as_p }}
+                <input type="submit" value="Submit" />
+              </form>
               {% for invite in invites %}
                 <h5 class="f4 mt3 mv2 pv1 ph3 tc container">
                   {{ invite.event }} <br>
@@ -75,7 +80,7 @@
                 </h5> 
                 <form class="mv1" role="form" action="{% url 'invite' pk=invite.pk %}" method="post">
                   {% csrf_token %}
-                  {{ form.as_p }}
+                  {{ invite_form.as_p }}
                   <input type="submit" value="Submit" />
                 </form>
               {% endfor %}
