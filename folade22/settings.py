@@ -55,8 +55,6 @@ INSTALLED_APPS = [
 
     #third party apps
     'lockdown',
-    'django_filters',
-
 
 ]
 

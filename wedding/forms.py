@@ -1,7 +1,7 @@
 from django import forms
 from django.conf import settings
 from django.forms import ModelForm
-from wedding.models import Guest
+from wedding.models import Guest, Invitation
 from django.contrib import auth
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -61,7 +61,13 @@ class InterestForm(forms.Form):
 class SearchForm(forms.Form):
     name = forms.CharField(label='',widget=forms.TextInput(attrs={'placeholder':'Search'}))
 
-class GuestForm(ModelForm):
+class DietForm(ModelForm):
     class Meta:
         model = Guest
-        fields = '__all__'
+        fields = ('dietary',)
+
+class InviteForm(ModelForm):
+    class Meta:
+        model = Invitation
+        fields = ('attending',)
+

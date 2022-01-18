@@ -9,87 +9,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
   {% block content %}
-  <body class='forumfont'>
-    <div class="cover bg-left bg-center-l" style="background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/grad.png)">
-        <div class="bg-black-40  ">
-          <nav class="dt w-100 mw8 regmenu center"> 
-            <div class="dtc w2 v-mid pa3">
-            </div>
-            <div class="dtc v-mid tr pa3">
-              <a class="f4 fw4 hover-green no-underline white dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
-              <a class="f4 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
-              <a class="f4 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
-              <a class="f4 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
-              <a class="f4 fw4 hover-green no-underline white dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
-              <a class="f4 fw4 hover-green no-underline white dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
-              <a class="f4 fw4 hover-green no-underline white dib ml2 pv2 ph3 ba" href="{% url 'findguest' %}" >RSVP</a> 
-            </div>
-          </nav> 
-          <div class="mobilemenu white">
-            <nav role="navigation">
-              <div id="menuToggle">
-                <!--
-                A fake / hidden checkbox is used as click reciever,
-                so you can use the :checked selector on it.
-                -->
-                <input type="checkbox" />
-                
-                <!--
-                Some spans to act as a hamburger.
-                
-                They are acting like a real hamburger,
-                not that McDonalds stuff.
-                -->
-                <span></span>
-                <span></span>
-                <span></span>
-                
-                <!--
-                Too bad the menu has to be inside of the button
-                but hey, it's pure CSS magic.
-                -->
-                <ul id="menu" class="mobilemenu">
-                  <a class="f2  hover-green no-underline black   mv6 " href="{% url 'story' %}" >Our Story</a> 
-                  <br>
-                  <a class="f2  hover-green no-underline black   mv6 " href="{% url 'schedule' %}" >Schedule</a> 
-                  <br>
-                  <a class="f2  hover-green no-underline black   mv6 " href="{% url 'accomodations' %}" >Accomodations</a> 
-                  <br>
-                  <a class="f2  hover-green no-underline black   mv6 " href="{% url 'party' %}" >Wedding Party</a> 
-                  <br>
-                  <a class="f2  hover-green no-underline black   mv6 " href="{% url 'gallery' %}" >Gallery</a> 
-                  <br>
-                  <a class="f2  hover-green no-underline black   mb7  mv6 " href="{% url 'registry' %}" >Registry</a>
-                  <br> 
-                  <a class="f2  hover-green no-underline black  mv4  ba" href="{% url 'findguest' %}" >RSVP</a> 
-                </ul>
-              </div>
-            </nav>
+  <body class='forumfont '>
+    <nav class="dt w-100 mw8 regmenu enter"> 
+        <div class="dtc w2 v-mid pa3">
+        </div>
+        <div class="dtc v-mid tr pa3">
+          <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
+          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
+          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
+          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
+          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
+          <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
+          <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'findguest' %}" >RSVP</a> 
+        </div>
+      </nav> 
+      <div class="mobilemenu black">
+        <nav role="navigation">
+          <div id="menuToggle">
+            <!--
+            A fake / hidden checkbox is used as click reciever,
+            so you can use the :checked selector on it.
+            -->
+            <input type="checkbox" />
+            
+            <!--
+            Some spans to act as a hamburger.
+            
+            They are acting like a real hamburger,
+            not that McDonalds stuff.
+            -->
+            <span></span>
+            <span></span>
+            <span></span>
+            
+            <!--
+            Too bad the menu has to be inside of the button
+            but hey, it's pure CSS magic.
+            -->
+            <ul id="menu" class="mobilemenu">
+              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'story' %}" >Our Story</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'schedule' %}" >Schedule</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'accomodations' %}" >Accomodations</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'party' %}" >Wedding Party</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'gallery' %}" >Gallery</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mb7  mv6 " href="{% url 'registry' %}" >Registry</a>
+              <br> 
+              <a class="f2  hover-green no-underline black  mv4  ba" href="{% url 'findguest' %}" >RSVP</a> 
+            </ul>
           </div>
-          <div class="pb3 tc pb5-ns">
-            <h1 class="f1 white-90 mb3 ph2 imperial lh-title">rsvp</h1>
-            </div>
-          </div>
-          </div>
-          <article class="pa4 tc black-80">
-            <iframe src="https://open.spotify.com/embed/playlist/67AGqXsWRWilaKak11PO8w" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" class="mt5 pb0 mb1"></iframe>
+        </nav>
+      </div>
+      <h1 class="f1 mw6 center mt5 imperial tc">rsvp</h1>
+            <div class="f5 mt1 errorcontainer mv1 pt1 pb3 tc container">
+              <h5 class="f3 mt3 mv2 ph3 tc container">{{ guest.name }}</h5> 
+              <h5 class="f5 mt3 mv2 ph3 pb1 tc container">{{ guest.email }}</h5> 
+              {% for invite in invites %}
+                <h5 class="f4 mt3 mv2 pv1 ph3 tc container">
+                  {{ invite.event }} <br>
+                  RSVP: {{ invite.attending }}
+                </h5> 
+                <form class="mv1" role="form" action="{% url 'invite' pk=invite.pk %}" method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <input type="submit" value="Submit" />
+                </form>
+              {% endfor %}
 
-            <form action="sign-up_submit" method="get" accept-charset="utf-8">
-              <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
-                <legend class="ph0 mh0 fw6 clip">RSVP</legend>
-                <div class="mt3">
-
-                  <label class="db fw4 lh-copy f6" for="email-address">Email address</label>
-                  <input class="pa2 input-reset ba bg-transparent w-100 measure" type="email" name="email-address"  id="email-address">
-                </div>
-                <div class="mt3">
-                  <label class="db fw4 lh-copy f6" for="password">Password</label>
-                  <input class="b pa2 input-reset ba bg-transparent" type="password" name="password"  id="password">
-                </div>
-              </fieldset>
-              <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="RSVP"></div>
-            </form>
-          </article>
+            </div>
           
   </body>
   {% endblock content %}

@@ -2,12 +2,12 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User
+from wedding.models import User, Guest, Event, Invitation
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
-from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
+from wedding.forms import InterestForm, AccessForm, SearchForm, InviteForm, DietForm
 from lockdown.decorators import lockdown
 import boto3
 import json
@@ -85,11 +85,34 @@ def registry(request):
 @lockdown()
 def rsvp(request,pk):
     guest = Guest.objects.get(pk=pk)
-    form_class = GuestForm
+    invites = Invitation.objects.filter(guest=guest)
+    form_class = InviteForm
 
     if request.method == 'POST':
         form = form_class(data=request.POST, instance=guest)
         if form.is_valid():
+            Attending = form.cleaned_data['attending']
+            form.save()
+            django_message = "Thank you for your response!"
+            messages.add_message(request, messages.SUCCESS, django_message)
+            return redirect('rsvp', pk=guest.pk)
+    else:   
+        form = form_class(instance=guest)
+        return render(request, 'rsvp.html', {
+            'form': form,
+            'guest':guest,
+            'invites':invites,
+        })
+
+@lockdown()
+def diet(request,pk):
+    guest = Guest.objects.get(pk=pk)
+    form_class = DietForm
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST, instance=guest)
+        if form.is_valid():
+            Dietary = form.cleaned_data['dietary']
             form.save()
             django_message = "Thank you for your response!"
             messages.add_message(request, messages.SUCCESS, django_message)
@@ -112,13 +135,13 @@ def guest_list(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             try: 
-                searchresults = Guest.objects.filter(name__icontains=name)
+                searchresults = Guest.objects.filter(name=name)
+                print(searchresults)
                 if len(searchresults) < 1 :
                     django_message = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
                     messages.add_message(request, messages.ERROR, django_message)
             except:
                 pass
-
 
     return render(request, 'findguest.html',{
         'form':form,    
