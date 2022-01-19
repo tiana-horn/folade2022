@@ -77,46 +77,20 @@
           </div>
 
       <ul class="list pl0 schedcontainer">
+        {% for event in events %}
         <li class="pa3 pa4-ns bb b--black-10">
-          <b class="db f3 mb1">traditional</b>
+          <b class="db f3 mb1">{{ event.name }}</b>
           <span class="f5 db lh-copy measure">
-            Saturday, April 22, 2022 
+            {{ event.date }}  
           </span>
           <span class="f5 db lh-copy measure">
-            7 o'clock in the evening
-          </span>
+            {{ event.time }}        
+           </span>
           <span class="f5 db lh-copy measure">
-            123 Love Lane, Houston TX
+            {{ event.location }}          
           </span>
         </li>
-        <li class="pa3 pa4-ns bb b--black-10">
-          <b class="db f3 mb1">
-            white wedding
-          </b>
-          <span class="f5 db lh-copy measure">
-            Sunday, April 23, 2022 
-          </span>
-          <span class="f5 db lh-copy measure">
-            4 o'clock in the evening
-          </span>
-          <span class="f5 db lh-copy measure">
-            123 Love Lane, Houston TX
-          </span>
-        </li>
-        <li class="pa3 pa4-ns bb b--black-10">
-          <b class="db f3 mb1">
-            reception
-          </b>
-          <span class="f5 db lh-copy measure">
-            Sunday, April 23, 2022 
-          </span>
-          <span class="f5 db lh-copy measure">
-            7 o'clock in the evening
-          </span>
-          <span class="f5 db lh-copy measure">
-            123 Love Lane, Houston TX
-          </span>
-        </li>
+        {% endfor %}
         </ul>
   </body>
   {% endblock content %}

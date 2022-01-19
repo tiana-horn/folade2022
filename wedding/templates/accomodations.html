@@ -76,49 +76,26 @@
     </div>
       <section class="mw7 center  forumfont ">
         <h1 class="imperial f1 tc pt4 fw1 ph3 ph0-l">Accomodations</h1>
+        {% for accomodation in accomodations %}
         <article class="bt bb b--black-10">
-          <a class="db pv4 ph3 ph0-l no-underline black dim" href="#0">
+          <a class="db pv4 ph3 ph0-l no-underline black dim" href="{{ accomodation.link }}">
             <div class="flex flex-column flex-row-ns">
               <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-                <img src="https://www.gannett-cdn.com/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg?width=660&height=373&fit=crop&format=pjpg&auto=webp" 
-                class="db" alt="Photo of a hotel room.">
+                <img src="{{ accomodation.image.url }}" alt="{{ accomodation.image_alt_text }}" class="db">
               </div>
               <div class="w-100 w-60-ns pl3-ns">
-                <h1 class="f3 fw1  mt0 lh-title">Hotel Block</h1>
-                <p class="f6 f5-l lh-copy">
-                    For your convenience, a block of rooms has been reserved at 
-                    [name of hotel] in [city]. When calling to make your reservation, 
-                    please mention the [your last names] wedding in order to receive a 
-                    discounted rate. Please call [hotel’s phone number] to make your reservation.
-                </p>
+                <h1 class="f3 fw1  mt0 lh-title">{{ accomodation.title}}</h1>
                 <p class="f6 lh-copy mv0">
-                    Be sure to book your hotel room by [date] in order to receive the discount.
-                </p>
-              </div>
-            </div>
-          </a>
-        </article>
-        <article class="bb b--black-10">
-          <a class="db pv4 ph3 ph0-l no-underline black dim" href="#0">
-            <div class="flex flex-column flex-row-ns">
-              <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-                <img src="https://images.ctfassets.net/77l22z9el0aa/3SEra8x52mSJ9aixWrTJCS/3d396a57c007a07deb873e8e88a64064/Hero_RomanticFallWeddingatSummerourStudio_SummerourStudio.jpg" 
-                class="db" alt="Photo of a bride and groom in front of a wedding shuttle.">
-              </div>
-              <div class="w-100 w-60-ns pl3-ns">
-                <h1 class="f3 fw1  mt0 lh-title">Event Shuttles</h1>
+                  {{ accomodation.location}}
+              </p>
                 <p class="f6 f5-l lh-copy">
-                    Transportation will be provided from the ceremony to the reception so you can 
-                    safely and leisurely enjoy out wedding ceremony and reception. 
-
-                    Shuttle will depart from [Venue Name] at [3:15pm] to the Wedding Ceremony 
-                    at [Ceremony Venue Name]. Shuttle will return following the reception at 10:00 pm. 
+                    {{accomodation.detail}}
                 </p>
               </div>
             </div>
           </a>
         </article>
-       
+       {% endfor %}
       </section>
       
   </body>

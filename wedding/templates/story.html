@@ -75,21 +75,17 @@
 
     <article class="pa3 tc pa5-ns">
         <h1 class="f1 imperial">Our  Story</h1>
-        <img src="https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/IMG_4149.jpg" class="w-100 f5 measure" alt="Photo of Lade and Fola">
-        <p class="measure center lh-copy">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-          tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos <b class="f3"> At
-          et accusam et justo </b>  duo dolores et ea rebum. Stet clita kasd gubergren,
-          no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </p>
-        <p class="measure center lh-copy">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-          tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-          vero eos et accusam et justo <b class="f3"> Lorem ipsum dolor </b> 
-          duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem 
-          ipsum dolor sit amet.
-        </p>
-        <img src="https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/133605145_10224901462468582_1554730838349773702_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=730e14&_nc_ohc=sTTMawMqbBQAX_U9PHd&_nc_ht=scontent-iad3-2.xx&oh=00_AT_Tc15ATbwRuZ7EKC0oVYXGORd5ASYLe-RzP_mdRIuNhw&oe=61FE70F5" class="w-100 f5 measure" alt="Photo of Lade and Fola">
+        {% for part in story %}
+          <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}">
+            <p class="measure center lh-copy">
+              {{part.p1_part1}} <b class="f3"> {{ part.p1_bold }} </b>  {{ part.p1_part2 }}
+            </p>
+            <p class="measure center lh-copy">
+              {{part.p2_part1}} <b class="f3"> {{ part.p2_bold }} </b>  {{ part.p2_part2 }}
+            </p>
+            <img src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}">
+          {% endfor %}
+
       </article>
       
   {% endblock content %}
