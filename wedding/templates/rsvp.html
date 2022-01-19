@@ -74,41 +74,7 @@
                   <h1 class="f2  pb1 mv0 pt0  tc ">
                     <b>{{ invite.event }} </b><br>
                   </h1> 
-                  <h2 class="f3 pb1 mv0 pt0  tc ">
-                      {% if invite.attending%} 
-                        rsvp: attending! &#127881;
-                      {% else%}
-                        rsvp: not attending &#129344;
-                      {% endif %}
-                    </h2>
-   
-              
- 
-                  <form class="mv2 " role="form" action="{% url 'change_rsvp' pk=invite.pk %}" method="post">
-        
-                    {% csrf_token %}
-                      {% if invite.attending%} 
-                          <button class="pa3 mv1 bg-green bn" attending="True" type="submit">
-                            I will attend
-                          </button>
-                          <br>
-                          <button class="pa3 mv1  bg-grey bn" attending="False" type="submit">
-                          I will not attend
-                          </button>
-
-                     {% else%}
-                          <button class="pa3 mv1   bg-grey bn" attending="True" type="submit">
-                           I will attend
-                          </button>
-                          <br>
-                          <button class="pa3 mv1 bg-green bn" attending="False" type="submit">
-                          I will not attend
-                          </button>
-                    {% endif %}
-               
-                  </form>
-
-                  <div class="b   white bg-black ba b--black  ">
+                  <div class="b  ">
                     <h5 class="f5  mv0 pv0  tc ">
                       {{ invite.event.date }} <br>
                     </h5> 
@@ -119,6 +85,33 @@
                       {{ invite.event.location }} <br>
                     </h5> 
                 </div>
+   
+              
+ 
+                  <form class="mv2 " role="form" action="{% url 'change_rsvp' pk=invite.pk %}" method="post">
+        
+                    {% csrf_token %}
+                      {% if invite.attending%} 
+                          <button class="pv3 ph4 mv1 bg-green b--solid bw1 bn" attending="True" type="submit">
+                            I will attend &#127881;
+                          </button>
+                          <br>
+                          <button class="pa2 mv1  bg-silver  bn" attending="False" type="submit">
+                          I will not attend
+                          </button>
+
+                     {% else%}
+                          <button class="pa3 mv1   bg-silver bn" attending="True" type="submit">
+                           I will attend
+                          </button>
+                          <br>
+                          <button class="pa3 mv1 bg-green b--solid bw1 bn" attending="False" type="submit">
+                          I will not attend &#129344;
+                          </button>
+                    {% endif %}
+               
+                  </form>
+
                   <div class="pt2 pb3 bb b--black-40">
                   </div>
 

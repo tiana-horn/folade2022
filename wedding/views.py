@@ -93,11 +93,11 @@ def rsvp(request,pk):
     if request.method == 'POST':
         guest_form = guest_form(data=request.POST, instance=guest)
         if guest_form.is_valid():
-            dietary = guest_form.cleaned_data['dietary']
+            food_allergies = guest_form.cleaned_data['food_allergies']
             guest_form.save()
             django_message = "Thank you for your response!"
             messages.add_message(request, messages.SUCCESS, django_message)
-            return redirect('rsvp', pk=guest.pk)
+            return redirect('success')
     else:   
         guest_form = guest_form(instance=guest)
 
@@ -107,27 +107,7 @@ def rsvp(request,pk):
         'guest':guest,
         'invites':invites,
     })
-
-@lockdown()
-def invite(request,pk):
-    invite = Invitation.objects.get(pk=pk)
-    guest = invite.guest
-    invite_form = InviteForm
-
-    if request.method == 'POST':
-        invite_form = invite_form(data=request.POST, instance=invite)
-        if invite_form.is_valid():
-            attending = invite_form.cleaned_data['attending']
-            invite_form.save()
-            return redirect('rsvp', pk=guest.pk)
-    else:   
-        invite_form = invite_form(instance=invite)
-    
-    return render(request, 'rsvp.html', {
-            'invite_form': invite_form,
-            'guest':guest,
-            'invite':invite,
-    })
+  
 
 @lockdown()
 def change_rsvp(request, pk):
@@ -154,6 +134,7 @@ def change_rsvp(request, pk):
 def guest_list(request):
     form = SearchForm
     searchresults = False
+    notFound = False
 
     if request.method == 'POST':
         form = form(data=request.POST)
@@ -164,15 +145,19 @@ def guest_list(request):
                 searchresults = Guest.objects.filter(name=name)
                 print(searchresults)
                 if len(searchresults) < 1 :
-                    django_message = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
-                    messages.add_message(request, messages.ERROR, django_message)
+                    notFound = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
             except:
                 pass
 
     return render(request, 'findguest.html',{
         'form':form,    
         'searchresults':searchresults,
+        'notFound':notFound,
         })
+
+@lockdown()
+def success(request):
+    return render(request, 'success.html')
 
 @lockdown()
 def schedule(request):
