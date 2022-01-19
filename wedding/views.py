@@ -2,7 +2,7 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
@@ -72,7 +72,10 @@ def interest(request):
 
 @lockdown()
 def gallery(request):
-    return render(request, 'gallery.html')
+    pictures = GalleryImage.objects.all()
+    return render(request, 'gallery.html', {
+        'pictures':pictures,
+    })
 
 @lockdown()
 def party(request):

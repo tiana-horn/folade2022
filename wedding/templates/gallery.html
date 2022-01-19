@@ -74,6 +74,14 @@
       <article class="pt5 tc pb1 ph5-ns">
         <h1 class="f1 imperial">Gallery</h1>
       </article>
+      {% for img in pictures %}
+        <div class="{% cycle 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50' 'fl w-50 w-25-ns' 'fl w-100 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-100 w-50-m w-25-ns' 'fl w-100 w-50-m w-25-l' 'fl w-50' 'fl w-50' 'fl w-50' 'fl w-50' 'fl w-100 w-50-l' %}">
+          <div class="db aspect-ratio aspect-ratio--1x1 dim">
+            <span role="img" aria-label="{{ img.image_alt_text }}" alt="{{ img.image_alt_text}}" style="background-image:url{{ img.image.url }};" class="bg-center cover aspect-ratio--object"></span>
+          </div>
+        </div>  
+      {% endfor %}
+
       <div class="fl w-50 w-25-ns">
         <div class="db aspect-ratio aspect-ratio--1x1 dim">
           <span role="img" aria-label="Pointing up" style="background-image:url(https://scontent-iad3-2.xx.fbcdn.net/v/t1.6435-9/134067664_10224901462228576_535091589612460598_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_ohc=7uqRoPHa6YoAX9ZCVSF&_nc_ht=scontent-iad3-2.xx&oh=00_AT8jknL5bcq0Xyrruwyyi4Ju4zyLTlhXgn0NGx2eGCnSMQ&oe=61FD085E);" class="bg-center cover aspect-ratio--object"></span>

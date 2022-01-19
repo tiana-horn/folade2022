@@ -68,10 +68,10 @@ class WeddingPartyMember(models.Model):
     first_name = models.CharField(max_length=222)
     last_name = models.CharField(max_length=222)
     role = models.CharField(max_length=222)
-    description = models.TextField(max_length=222,blank=True)
+    description = models.TextField(max_length=777,blank=True)
 
     def __str__(self):
-        return f'{self.first_name}  {self.last_name}'
+        return f'{self.first_name} {self.last_name}'
 
 class RegistryLink(models.Model):
     zolaLink = models.URLField(unique=False, blank=True)
@@ -80,3 +80,10 @@ class RegistryLink(models.Model):
     def clean(self):
         if RegistryLink.objects.exists() and not self.pk:
             raise ValidationError('The Registry page can only have one zola connected. Please edit the existing link to make changes')
+
+class GalleryImage(models.Model):
+    image = models.ImageField(upload_to='img', null=True)
+    image_alt_text = models.CharField(max_length=111) 
+    
+    def __str__(self):
+        return self.image_alt_text
