@@ -15,6 +15,7 @@ django-lockdown = "*"
 gunicorn = "*"
 django-heroku = "*"
 django-filter = "*"
+pillow = "*"
 
 [dev-packages]
 
