@@ -2,12 +2,12 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User
+from wedding.models import User, Guest, Event, Invitation, Accomodations, Story, WeddingParty
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
-from wedding.forms import InterestForm, AccessForm
+from wedding.forms import InterestForm, AccessForm, SearchForm, InviteForm, GuestForm
 from lockdown.decorators import lockdown
 import boto3
 import json
@@ -76,44 +76,116 @@ def gallery(request):
 
 @lockdown()
 def party(request):
-    return render(request, 'party.html')
+    party = WeddingParty.objects.all()
+    
+    return render(request, 'party.html', {
+        'party':party,
+    })
 
 @lockdown()
 def registry(request):
     return render(request, 'registry.html')
 
 @lockdown()
-def rsvp(request):
-    # guest_found = Guest.objects.filter(name_unaccent_icontains=name)
-    # guest = Guest.objects.get(pk=pk)
-    # form_class = GuestForm
+def rsvp(request,pk):
+    guest = Guest.objects.get(pk=pk)
+    invites = Invitation.objects.filter(guest=guest)
+    invites = invites.order_by('event')
+    invite_form = InviteForm
+    guest_form = GuestForm
 
-    # if request.method == 'POST':
-    #     form = form_class(data=request.POST, instance=guest)
-    #     if form.is_valid():
-    #         form.save()
-    #         django_message = "Thank you for your response!"
-    #         messages.add_message(request, messages.SUCCESS, django_message)
-    #         return redirect('rsvp')
-    # else:   
-
-
+    if request.method == 'POST':
+        guest_form = guest_form(data=request.POST, instance=guest)
+        if guest_form.is_valid():
+            food_allergies = guest_form.cleaned_data['food_allergies']
+            guest_form.save()
+            django_message = "Thank you for your response!"
+            messages.add_message(request, messages.SUCCESS, django_message)
+            return redirect('success')
+    else:   
+        guest_form = guest_form(instance=guest)
 
     return render(request, 'rsvp.html', {
-        # 'form': form,
+        'invite_form': invite_form,
+        'guest_form': guest_form,
+        'guest':guest,
+        'invites':invites,
+    })
+  
+
+@lockdown()
+def change_rsvp(request, pk):
+    invite = Invitation.objects.get(pk=pk)
+    guest = invite.guest
+    if request.method == "POST":
+        if invite.attending==True:
+            invite.attending=False
+            invite.save()
+            return redirect('rsvp', pk=guest.pk)
+
+        else: 
+            invite.attending=True
+            invite.save()
+            return redirect('rsvp', pk=guest.pk)
+
+            
+    return render(request, 'rsvp.html', {
+            'guest':guest,
+            'invite':invite,
     })
 
 @lockdown()
+def guest_list(request):
+    form = SearchForm
+    searchresults = False
+    notFound = False
+
+    if request.method == 'POST':
+        form = form(data=request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            try: 
+                searchresults = Guest.objects.filter(name=name)
+                print(searchresults)
+                if len(searchresults) < 1 :
+                    notFound = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
+            except:
+                pass
+
+    return render(request, 'findguest.html',{
+        'form':form,    
+        'searchresults':searchresults,
+        'notFound':notFound,
+        })
+
+@lockdown()
+def success(request):
+    return render(request, 'success.html')
+
+@lockdown()
 def schedule(request):
-    return render(request, 'schedule.html')
+    events = Event.objects.all()
+    
+    return render(request, 'schedule.html', {
+        'events':events,
+    })
 
 @lockdown()
 def story(request):
-    return render(request, 'story.html')
+    story = Story.objects.all()
+
+    return render(request, 'story.html', {
+        'story':story,
+    })
 
 @lockdown()
 def accomodations(request):
-    return render(request, 'accomodations.html')
+    accomodations = Accomodations.objects.all()
+
+    return render(request, 'accomodations.html', {
+        'accomodations':accomodations,
+    })
 
 def bad_request_view(request, exception):
     return render(request, '400.html', status=400)

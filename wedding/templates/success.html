@@ -67,65 +67,9 @@
       <h1 class="f1 mw6 center mt5 imperial tc">rsvp</h1>
             <div class="f5 mt1 errorcontainer mv1 pt1 pb3 tc container">
 
-              <h5 class="f3 mt0 ph3 tc container">Hi {{ guest.name }}, please rsvp for {{ invites.count }} event{% if invites.count > 1 %}s {% endif %} </h5>
+              <h5 class="f2 mt0 ph3 tc container">Thank you for your response!</h5>
 
 
-                {% for invite in invites %}
-                  <h1 class="f2  pb1 mv0 pt0  tc ">
-                    <b>{{ invite.event }} </b><br>
-                  </h1> 
-                  <div class="b  ">
-                    <h5 class="f5  mv0 pv0  tc ">
-                      {{ invite.event.date }} <br>
-                    </h5> 
-                    <h5 class="f5  mv0 pv0  tc ">
-                      {{ invite.event.time }} <br>
-                    </h5> 
-                    <h5 class="f5  mv0 pv0 pb3 tc ">
-                      {{ invite.event.location }} <br>
-                    </h5> 
-                </div>
-   
-              
- 
-                  <form class="mv2 " role="form" action="{% url 'change_rsvp' pk=invite.pk %}" method="post">
-        
-                    {% csrf_token %}
-                      {% if invite.attending%} 
-                          <button class="pv3 ph4 mv1 bg-green b--solid bw1 bn" attending="True" type="submit">
-                            I will attend &#127881;
-                          </button>
-                          <br>
-                          <button class="pa2 mv1  bg-silver  bn" attending="False" type="submit">
-                          I will not attend
-                          </button>
-
-                     {% else%}
-                          <button class="pa3 mv1   bg-silver bn" attending="True" type="submit">
-                           I will attend
-                          </button>
-                          <br>
-                          <button class="pa3 mv1 bg-green b--solid bw1 bn" attending="False" type="submit">
-                          I will not attend &#129344;
-                          </button>
-                    {% endif %}
-               
-                  </form>
-
-                  <div class="pt2 pb3 bb b--black-40">
-                  </div>
-
-                {% endfor %}
-                <h5 class="f3 mv2 pv1 ph3 tc ">
-                  One last thing! Do you have any dietary restrictions? <br>
-                </h5> 
-                <form class="mv1" role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
-                  {% csrf_token %}
-                  {{ guest_form.as_p }}
-                  <input type="submit" value="Submit" />
-                </form>
-            </div>
-          
   </body>
   {% endblock content %}
 </html>

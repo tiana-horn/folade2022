@@ -1,7 +1,7 @@
 from django import forms
 from django.conf import settings
 from django.forms import ModelForm
-# from wedding.models import Guest
+from wedding.models import Guest, Invitation
 from django.contrib import auth
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -58,9 +58,19 @@ class InterestForm(forms.Form):
     Country = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Country'}))
     Zipcode = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Zipcode'}))
 
+class SearchForm(forms.Form):
+    name = forms.CharField(label='',widget=forms.TextInput(attrs={'placeholder':'Search'}))
+
+class GuestForm(ModelForm):
+    class Meta:
+        model = Guest
+        fields = ('food_allergies',)
+
+class InviteForm(ModelForm):
+    class Meta:
+        model = Invitation
+        yes_no = forms.RadioSelect(choices=[(True,'I will attend'),(False,'I will not attend')])
+        fields = ('attending',)
+        widgets = {'attending':yes_no}
 
 
-# class GuestForm(ModelForm):
-#     class Meta:
-#         model = Guest
-#         fields = ('rsvp','full_name','email','phone','street_address','street_address_line_2','city','state','country','zipcode')

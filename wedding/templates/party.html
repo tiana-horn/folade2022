@@ -26,7 +26,7 @@
           <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
           <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
           <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
-          <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'rsvp' %}" >RSVP</a> 
+          <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'findguest' %}" >RSVP</a> 
         </div>
       </nav> 
       <div class="mobilemenu black">
@@ -65,7 +65,7 @@
               <br>
               <a class="f2  hover-green no-underline black   mb7  mv6 " href="{% url 'registry' %}" >Registry</a>
               <br> 
-              <a class="f2  hover-green no-underline black  mv4  ba" href="{% url 'rsvp' %}" >RSVP</a> 
+              <a class="f2  hover-green no-underline black  mv4  ba" href="{% url 'findguest' %}" >RSVP</a> 
             </ul>
           </div>
         </nav>
@@ -74,89 +74,18 @@
 
       <main class="mw6 pt2 partycontainer  center">
 
-
+    {% for person in party %}
         <article class="dt w-100 bb b--black-05 pb2 mt2" href="#0">
             <div class="dtc w2 w3-ns v-mid">
-              <img src="http://mrmrs.github.io/photos/p/5.jpg" class="ba b--black-10 db br-100 w2 w3-ns h2 h3-ns"/>
+              <img src="{{ person.image.url }}" alt="{{ person.image_alt_text }}">
             </div>
             <div class="dtc v-mid pl3">
-              <h1 class="f6 f5-ns fw6 lh-title black mv0">First Name Last Name</h1>
-              <h2 class="f6 fw4 mt0 mb0 black-60">Maid of Honor</h2>
+              <h1 class="f6 f5-ns fw6 lh-title black mv0">{{person.first_name}} {{person.last_name}}</h1>
+              <h2 class="f6 fw4 mt0 mb0 black-60">{{person.role}}</h2>
+              <h2 class="f7 fw4 mt0 mb0 black-60">{{person.description}}</h2>
             </div>
           </article>
-
-        <article class="dt w-100 bb b--black-05 pb2 mt2" href="#0">
-          <div class="dtc w2 w3-ns v-mid">
-            <img src="http://mrmrs.github.io/photos/p/7.jpg" class="ba b--black-10 db br-100 w2 w3-ns h2 h3-ns"/>
-          </div>
-          <div class="dtc v-mid pl3">
-            <h1 class="f6 f5-ns fw6 lh-title black mv0">First Name Last Name</h1>
-            <h2 class="f6 fw4 mt0 mb0 black-60">Bridesmaid</h2>
-          </div>
-        </article>
-
-        <article class="dt w-100 bb b--black-05 pb2 mt2" href="#0">
-          <div class="dtc w2 w3-ns v-mid">
-            <img src="http://mrmrs.github.io/photos/p/10.jpg" class="ba b--black-10 db br-100 w2 w3-ns h2 h3-ns"/>
-          </div>
-          <div class="dtc v-mid pl3">
-            <h1 class="f6 f5-ns fw6 lh-title black mv0">First Name Last Name</h1>
-            <h2 class="f6 fw4 mt0 mb0 black-60">Bridesmaid</h2>
-          </div>
-        </article>
-
-        <article class="dt w-100 bb b--black-05 pb2 mt2" href="#0">
-          <div class="dtc w2 w3-ns v-mid">
-            <img src="http://mrmrs.github.io/photos/p/11.jpg" class="ba b--black-10 db br-100 w2 w3-ns h2 h3-ns"/>
-          </div>
-          <div class="dtc v-mid pl3">
-            <h1 class="f6 f5-ns fw6 lh-title black mv0">First Name Last Name</h1>
-            <h2 class="f6 fw4 mt0 mb0 black-60">Bridesmaid</h2>
-          </div>
-        </article>
-
-        <article class="dt w-100 bb b--black-05 pb2 mt2" href="#0">
-          <div class="dtc w2 w3-ns v-mid">
-            <img src="http://mrmrs.github.io/photos/p/2.jpg" class="ba b--black-10 db br-100 w2 w3-ns h2 h3-ns"/>
-          </div>
-          <div class="dtc v-mid pl3">
-            <h1 class="f6 f5-ns fw6 lh-title black mv0">First Name Last Name</h1>
-            <h2 class="f6 fw4 mt0 mb0 black-60">Best Man</h2>
-          </div>
-        </article>
-
-        <article class="dt w-100 bb b--black-05 pb2 mt2" href="#0">
-          <div class="dtc w2 w3-ns v-mid">
-            <img src="http://mrmrs.github.io/photos/p/3.jpg" class="ba b--black-10 db br-100 w2 w3-ns h2 h3-ns"/>
-          </div>
-          <div class="dtc v-mid pl3">
-            <h1 class="f6 f5-ns fw6 lh-title black mv0">First Name Last Name</h1>
-            <h2 class="f6 fw4 mt0 mb0 black-60">Groomsmen</h2>
-          </div>
-        </article>
-
-        <article class="dt w-100 bb b--black-05 pb2 mt2" href="#0">
-          <div class="dtc w2 w3-ns v-mid">
-            <img src="http://mrmrs.github.io/photos/p/4.jpg" class="ba b--black-10 db br-100 w2 w3-ns h2 h3-ns"/>
-          </div>
-          <div class="dtc v-mid pl3">
-            <h1 class="f6 f5-ns fw6 lh-title black mv0">First Name Last Name</h1>
-            <h2 class="f6 fw4 mt0 mb0 black-60">Groomsmen</h2>
-          </div>
-        </article>
-
-        <article class="dt w-100 bb b--black-05 pb2 mt2" href="#0">
-          <div class="dtc w2 w3-ns v-mid">
-            <img src="http://mrmrs.github.io/photos/p/6.jpg" class="ba b--black-10 db br-100 w2 w3-ns h2 h3-ns"/>
-          </div>
-          <div class="dtc v-mid pl3">
-            <h1 class="f6 f5-ns fw6 lh-title black mv0">First Name Last Name</h1>
-            <h2 class="f6 fw4 mt0 mb0 black-60">Groomsmen</h2>
-          </div>
-        </article>
-
-       
-
+      {% endfor %}
       </main>
   </body>
   {% endblock content %}
