@@ -72,8 +72,11 @@
         </div>
       </div>
       </div>
-      <a class="zola-registry-embed" href="https://www.zola.com/wedding/baileyandjessica2021/registry" data-registry-key="baileyandjessica2021">Our Zola Wedding Registry</a><script>!function(e,t,n){var s,a=e.getElementsByTagName(t)[0];e.getElementById(n)||(s=e.createElement(t),s.id=n,s.async=!0,s.src="https://widget.zola.com/js/widget.js",a.parentNode.insertBefore(s,a))}(document,"script","zola-wjs");</script>
-
+      {% for link in registry_links %}
+          {% if link.zolaLink and link.zola_data_registry_key %}
+             <a class="zola-registry-embed" href="{{ link.zolaLink }}" data-registry-key="{{ link.zola_data_registry_key }}">Our Zola Wedding Registry</a><script>!function(e,t,n){var s,a=e.getElementsByTagName(t)[0];e.getElementById(n)||(s=e.createElement(t),s.id=n,s.async=!0,s.src="https://widget.zola.com/js/widget.js",a.parentNode.insertBefore(s,a))}(document,"script","zola-wjs");</script>
+          {% endif %}
+      {% endfor %}
       
   </body>
   {% endblock content %}

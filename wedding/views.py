@@ -2,12 +2,12 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodations, Story, WeddingParty
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
-from wedding.forms import InterestForm, AccessForm, SearchForm, InviteForm, GuestForm
+from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
 from lockdown.decorators import lockdown
 import boto3
 import json
@@ -76,7 +76,7 @@ def gallery(request):
 
 @lockdown()
 def party(request):
-    party = WeddingParty.objects.all()
+    party = WeddingPartyMember.objects.all()
     
     return render(request, 'party.html', {
         'party':party,
@@ -84,7 +84,10 @@ def party(request):
 
 @lockdown()
 def registry(request):
-    return render(request, 'registry.html')
+    registry_links = RegistryLink.objects.all()
+    return render(request, 'registry.html', {
+        'registry_links':registry_links,
+    })
 
 @lockdown()
 def rsvp(request,pk):
@@ -173,7 +176,7 @@ def schedule(request):
 
 @lockdown()
 def story(request):
-    story = Story.objects.all()
+    story = StoryText.objects.all()
 
     return render(request, 'story.html', {
         'story':story,
@@ -181,7 +184,7 @@ def story(request):
 
 @lockdown()
 def accomodations(request):
-    accomodations = Accomodations.objects.all()
+    accomodations = Accomodation.objects.all()
 
     return render(request, 'accomodations.html', {
         'accomodations':accomodations,

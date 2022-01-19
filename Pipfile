@@ -16,6 +16,7 @@ gunicorn = "*"
 django-heroku = "*"
 django-filter = "*"
 pillow = "*"
+django-storages = "*"
 
 [dev-packages]
 

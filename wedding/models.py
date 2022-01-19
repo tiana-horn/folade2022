@@ -34,9 +34,9 @@ class Invitation(models.Model):
     def __str__(self):
         return f'{self.guest} - {self.event}'
 
-class Accomodations(models.Model):
+class Accomodation(models.Model):
     title = models.CharField(max_length=222)
-    image = models.ImageField(upload_to='Media', null=True)
+    image = models.ImageField(upload_to='img', null=True)
     image_alt_text = models.CharField(max_length=111)
     location = models.CharField(max_length=777)
     detail = models.TextField(max_length=777)
@@ -45,8 +45,8 @@ class Accomodations(models.Model):
     def __str__(self):
         return self.title
 
-class Story(models.Model):
-    image1 = models.ImageField(upload_to='Media', null=True)
+class StoryText(models.Model):
+    image1 = models.ImageField(upload_to='img', null=True)
     image1_alt_text = models.CharField(max_length=111)
     p1_part1 = models.TextField(max_length=1111)
     p1_bold = models.CharField(max_length=222)
@@ -54,16 +54,16 @@ class Story(models.Model):
     p2_part1 = models.TextField(max_length=1111)
     p2_bold = models.CharField(max_length=222)
     p2_part2 = models.TextField(max_length=1111)
-    image2 = models.ImageField(upload_to='Media', null=True)
+    image2 = models.ImageField(upload_to='img', null=True)
     image2_alt_text = models.CharField(max_length=111)
 
 
     def clean(self):
-        if Story.objects.exists() and not self.pk:
+        if StoryText.objects.exists() and not self.pk:
             raise ValidationError('The Story page can only have one story. Please edit the existing story object to make changes')
 
-class WeddingParty(models.Model):
-    image = models.ImageField(upload_to='Media', null=True)
+class WeddingPartyMember(models.Model):
+    image = models.ImageField(upload_to='img', null=True)
     image_alt_text = models.CharField(max_length=111)
     first_name = models.CharField(max_length=222)
     last_name = models.CharField(max_length=222)
@@ -72,3 +72,11 @@ class WeddingParty(models.Model):
 
     def __str__(self):
         return f'{self.first_name}  {self.last_name}'
+
+class RegistryLink(models.Model):
+    zolaLink = models.URLField(unique=False, blank=True)
+    zola_data_registry_key = models.CharField(max_length=222,blank=True)
+    
+    def clean(self):
+        if RegistryLink.objects.exists() and not self.pk:
+            raise ValidationError('The Registry page can only have one zola connected. Please edit the existing link to make changes')
