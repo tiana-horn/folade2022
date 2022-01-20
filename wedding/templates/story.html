@@ -85,28 +85,29 @@
     <article class="pa3 tc pa5-ns">
         <h1 class="f1 imperial">Our  Story</h1>
         {% for part in story %}
-          <div class="partycontainer">
-            <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}" >
-          </div>
+            <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}" class="w-100 f5 measure" >
           {% if part.p1_story_owner %}
-          <div class="tl">{{ part.p1_story_owner }}</div>
+          <div class="tc f2">{{ part.p1_story_owner }}</div>
           {% endif %}
             <p class="measure center lh-copy">
               {{part.p1_part1}} <b class="f3"> {{ part.p1_bold }} </b>  {{ part.p1_part2 }}
             </p>
             {% if part.p2_story_owner %}
-              <div class="tl">{{ part.p2_story_owner }}</div>
+              <div class="tc f2">{{ part.p2_story_owner }}</div>
             {% endif %}
               <p class="measure center lh-copy">
               {{part.p2_part1}} <b class="f3"> {{ part.p2_bold }} </b>  {{ part.p2_part2 }}
             </p>
-            <img src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" class="db aspect-ratio aspect-ratio--1x1 dim">
+            <img src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" class="w-100 f5 measure">
           {% endfor %}
 
       </article>
 
-    </article>
-
+    {% if song.link %}
+    <iframe class="middle pb1" width="0%" height="0" src="{{song.link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe> 
+    {% else %}
+    <div></div>
+    {% endif %}
   </body>
 
   {% endblock content %}

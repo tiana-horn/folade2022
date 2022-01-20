@@ -57,7 +57,7 @@ LOCKDOWN_PASSWORDS = ('test123',)
 
 
 # SECURITY WARNING: don't run with debug set to True in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
