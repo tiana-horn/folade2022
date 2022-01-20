@@ -32,6 +32,8 @@
 <footer class="pv5 pt7 mt7 footer ph3 ph5-m ph6-l mid-gray">
   {% if song.link %}
   <iframe class="middle pb1" width="20%" height="80" src="{{song.link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe> 
+  {% else %}
+  <div></div>
   {% endif %}
   <small class="f4 db pb1 tc"><b>#ForeverFolade2022</b></small>
   <small class="f6 db tc">© 2022 <b class="ttu">Fola & Lade</b>, All Rights Reserved</small>
