@@ -28,7 +28,16 @@
 
 
 {% endblock content %}
-
+<footer class="pv5 pt7 mt7 footer ph3 ph5-m ph6-l mid-gray">
+  <small class="f4 db pb1 tc"><b>#ForeverFolade2022</b></small>
+  <small class="f6 db tc">© 2022 <b class="ttu">Fola & Lade</b>, All Rights Reserved</small>
+  <div class="tc mt3">
+    <a href="{% url 'schedule' %}" class="f6 dib ph2 link mid-gray dim">Schedule</a>
+    <a href="{% url 'accomodations' %}" class="f6 dib ph2 link mid-gray dim">Accomodations</a>
+    <a href="{% url 'faq' %}" class="f6 dib ph2 link mid-gray dim">FAQ</a>
+    <a class="f6 dib ph2 link mid-gray dim" href="{% url 'findguest' %}"><span>RSVP</span></a>
+  </div>
+</footer>
 {% block footer %}
 
 

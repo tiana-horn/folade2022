@@ -13,7 +13,7 @@
   </head>
   
   {% block content %}
-  <body class='forumfont fadeColor'>
+  <body class='forumfont '>
     <div class="cover bg-left bg-center-l" style="background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/grad.png)">
         <div class="bg-black-40  ">
           <nav class="dt w-100 mw8 center"> 
@@ -111,19 +111,7 @@
         </li>
         {% endfor %}
         </ul>
-        <footer class="pb0 mt7 footer mb0 ph3 ph5-m ph6-l mid-gray">
-          <small class="f4 db pb1 tc"><b>#ForeverFolade2022</b></small>
-          <small class="f6 db tc">© 2022 <b class="ttu">Fola & Lade</b>, All Rights Reserved</small>
-          <div class="tc mt3">
-            <a href="{% url 'schedule' %}" class="f6 dib ph2 link mid-gray dim">Schedule</a>
-            <a href="{% url 'accomodations' %}" class="f6 dib ph2 link mid-gray dim">Accomodations</a>
-            <a href="{% url 'faq' %}" class="f6 dib ph2 link mid-gray dim">FAQ</a>
-            <a class="f6 dib ph2 link mid-gray dim" href="{% url 'findguest' %}"><span>RSVP</span></a>
-        
-        
-        
-          </div>
-        </footer>
+
   </body>
   {% endblock content %}
 </html>

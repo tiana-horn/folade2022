@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
   {% block content %}
-  <body class='forumfont fadeColor' >
+  <body class='forumfont ' >
 
 
     <nav class="dt w-100 mw8 center"> 
@@ -132,13 +132,12 @@
                 <h5 class="f3 mt2 pt1 ph3 tc ">
                   One last thing! Do you have any dietary restrictions? <br>
                 </h5> 
-                <form class="mt2  mint" role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
+                <form class="mt2  " role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
                   {% csrf_token %}
                   {{ guest_form.as_p }}
                   <input type="submit" class="b ph3 mt3 white bg-green ba b--black bg-transparent grow  f3" value="Submit" />
                 </form>
-                <div class="pt4 ph1 mint ">
-                </div>
+        
             </div>
   </body>
   {% endblock content %}
