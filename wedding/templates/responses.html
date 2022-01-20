@@ -1,25 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
-
 <!DOCTYPE html>
 <html lang="en">
   {% block title %}
-  <title> Accomodations </title>
+  <title> Responses </title>
   {% endblock title %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
- 
-  {% block header %}
-
-
-  {% endblock header %}
-  
-  
   {% block content %}
- 
-  <body class="forumfont">
+
+  <body class='forumfont' >
+
+
     <nav class="dt w-100 mw8 center"> 
       <div class="dtc w2 v-mid pa3">
       </div>
@@ -85,36 +80,35 @@
         </div>
       </nav>
     </div>
-      <section class="mw7 center  forumfont ">
-        <h1 class="imperial f1 tc pt4 fw1 ph3 ph0-l">Accomodations</h1>
-        {% for accomodation in accomodations %}
-        <article class="bt bb b--black-10">
-          <a class="db pv4 ph3 ph0-l no-underline black dim" href="{{ accomodation.link }}">
-            <div class="flex flex-column flex-row-ns">
-              <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-                <img src="{{ accomodation.image.url }}" alt="{{ accomodation.image_alt_text }}" class="db">
-              </div>
-              <div class="w-100 w-60-ns pl3-ns">
-                <h1 class="f3 fw1  mt0 lh-title">{{ accomodation.title}}</h1>
-                <p class="f6 lh-copy mv0">
-                  {{ accomodation.location}}
-              </p>
-                <p class="f6 f5-l lh-copy">
-                    {{accomodation.detail}}
-                </p>
-              </div>
-            </div>
-          </a>
-        </article>
-       {% endfor %}
-      </section>
+
+
+    <article class="pa3 tc pa5-ns">
+        <h1 class="f1 imperial">Responses</h1>
+        {% for part in story %}
+          <div class="partycontainer">
+            <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}" >
+          </div>
+          {% if part.p1_story_owner %}
+          <div class="tl">{{ part.p1_story_owner }}</div>
+          {% endif %}
+            <p class="measure center lh-copy">
+              {{part.p1_part1}} <b class="f3"> {{ part.p1_bold }} </b>  {{ part.p1_part2 }}
+            </p>
+            {% if part.p2_story_owner %}
+              <div class="tl">{{ part.p2_story_owner }}</div>
+            {% endif %}
+              <p class="measure center lh-copy">
+              {{part.p2_part1}} <b class="f3"> {{ part.p2_bold }} </b>  {{ part.p2_part2 }}
+            </p>
+            <img src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" class="db aspect-ratio aspect-ratio--1x1 dim">
+          {% endfor %}
+
+      </article>
       
-  </body>
   {% endblock content %}
-  
   {% block footer %}
-  
-  
-  
   {% endblock footer %}
+
+</body>
+
 </html>

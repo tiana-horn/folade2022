@@ -4,26 +4,22 @@
 <!DOCTYPE html>
 <html lang="en">
   {% block title %}
-  <title> Gallery </title>
+  <title> Hosts & Hostesses </title>
   {% endblock title %}
+<head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-
-  {% block header %}
-
+</head>
+{% block header %}
 
 {% endblock header %}
 
 
 {% block content %}
 
+<body class='forumfont' >
 
 
-  <body class= 'forumfont'>
-    
-    <article class="cf w-100 ma0">
-      <nav class="dt w-100 mw8 center"> 
+    <nav class="dt w-100 mw8 center"> 
         <div class="dtc w2 v-mid pa3">
         </div>
         
@@ -67,33 +63,52 @@
             but hey, it's pure CSS magic.
             -->
             <ul id="menu" class="mobilemenu">
-              <a class="f3 mh2  hover-green no-underline black  dib  " href="{% url 'story' %}" >Our Story</a> 
-              <a class="f3 mh2  hover-green no-underline black  dib  " href="{% url 'schedule' %}" >Schedule</a> 
-              <a class="f3 mh2  hover-green no-underline black   dib " href="{% url 'accomodations' %}" >Accomodations</a> 
-              <a class="f3 mh2  hover-green no-underline black  dib   " href="{% url 'faq' %}" >FAQ</a>
-              <a class="f3 mh2  hover-green no-underline black  dib  " href="{% url 'hosts' %}" >Hosts</a> 
-              <a class="f3 mh2  hover-green no-underline black  dib  " href="{% url 'party' %}" >Wedding Party</a> 
-              <a class="f3 mh2  hover-green no-underline black  dib  " href="{% url 'gallery' %}" >Gallery</a> 
-              <a class="f3 mh2  hover-green no-underline black  dib   " href="{% url 'registry' %}" >Registry</a>
-              <a class="f3 hover-green no-underline black  dib mt1 ba" href="{% url 'findguest' %}" >RSVP</a> 
+              <a class="f2  hover-green no-underline black   mv7 " href="{% url 'story' %}" >Our Story</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Accomodations</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv7 " href="{% url 'hosts' %}" >Hosts</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv7 " href="{% url 'party' %}" >Wedding Party</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mv7 " href="{% url 'gallery' %}" >Gallery</a> 
+              <br>
+              <a class="f2  hover-green no-underline black   mb7  mv7 " href="{% url 'registry' %}" >Registry</a>
+              <br> 
+              <a class="f2  hover-green no-underline black   mv7 " href="{% url 'faq' %}" >FAQ</a> 
+              <br>
+              <a class="f2  hover-green no-underline black  mv7  ba" href="{% url 'findguest' %}" >RSVP</a> 
             </ul>
           </div>
         </nav>
-      </div>
-      <article class="pt5 tc pb1 ph5-ns">
-        <h1 class="f1 imperial">Gallery</h1>
-      </article>
-      {% for img in pictures %}
-        <div class="{% cycle 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50' 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50 w-25-ns'  'fl w-100 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50 w-25-ns' 'fl w-50' 'fl w-50' 'fl w-50' 'fl w-50' 'fl w-100 w-50-l' 'fl w-100' %}">
-          <div class="db aspect-ratio aspect-ratio--1x1 dim">
-            <span role="img" aria-label="{{ img.image_alt_text }}" alt="{{ img.image_alt_text}}" style="background-image:url({{ img.image.url }});" class="bg-center cover aspect-ratio--object"></span>
-          </div>
-        </div>  
+  </div>
+      <h1 class="f1 mw6 center pt4 mt5 imperial tc">Hosts & Hostesses</h1>
+
+      <main class=" pt2 partycontainer  mb5 flex flex-column flex-row-ns center">
+
+    {% for person in hosts %}
+
+          <article class="center  tc bg-white br3 pa3 pa4-ns mv3  ba b--black-10">
+            <div class="tc">
+              <img src="{{ person.image.url }}" class="br-100 h3 w3 dib" alt="{{ person.image_alt_text }}">
+              <h1 class="f4">{{person.first_name}} {{person.last_name}}</h1>
+              <hr class="mw3 bb bw1 b--black-10">
+            </div>
+            <p class="lh-copy measure center f5 ">
+                {{person.role}}
+            </p>
+            <p class="lh-copy measure center f6 black-70">
+                {{person.description}}
+            </p>
+          </article>
+
       {% endfor %}
-    </article>
+      </main>
   </body>
   {% endblock content %}
+  {% block footer %}
 
-{% block footer %}
 {% endblock footer %}
 </html>

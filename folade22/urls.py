@@ -32,6 +32,8 @@ urlpatterns = [
     path('change_rsvp/<pk>', wedding_views.change_rsvp, name='change_rsvp'),
     path('schedule/', wedding_views.schedule, name='schedule'),
     path('story/', wedding_views.story, name='story'),
+    path('faq/', wedding_views.faq, name='faq'),
+    path('hosts/', wedding_views.hosts, name='hosts'),
     path('success/', wedding_views.success, name='success'),
     path('accomodations/', wedding_views.accomodations, name='accomodations'),
 ] 

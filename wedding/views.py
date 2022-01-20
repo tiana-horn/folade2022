@@ -2,7 +2,7 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
@@ -186,9 +186,27 @@ def story(request):
 @lockdown()
 def accomodations(request):
     accomodations = Accomodation.objects.all()
+    travels = Travel.objects.all()
 
     return render(request, 'accomodations.html', {
         'accomodations':accomodations,
+        'travels':travels,
+    })
+
+@lockdown()
+def faq(request):
+    faqs = FAQ.objects.all()
+
+    return render(request, 'faq.html', {
+        'faqs':faqs,
+    })
+
+@lockdown()
+def hosts(request):
+    hosts = Host.objects.all()
+    
+    return render(request, 'hosts.html', {
+        'hosts':hosts,
     })
 
 def bad_request_view(request, exception):

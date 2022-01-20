@@ -20,14 +20,19 @@
       </div>
       
       
-      <div class="dtc v-mid regmenu tr pa3">
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
-        <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'findguest' %}" >RSVP</a> 
+      <div class="dtc v-mid regmenu tr pt3 ph0">
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'story' %}" >Our Story</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'schedule' %}" >Schedule</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'accomodations' %}" > Accomodations</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'hosts' %}" >Hosts</a> 
+
+        <div class="f2 fw4  black dn dib-l pv2 ph2 imperial"  >Fola & Lade </div> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'gallery' %}" >Gallery</a> 
+
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'registry' %}" >Registry</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'faq' %}" >FAQ</a> 
+        <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph2 ba" href="{% url 'findguest' %}" >RSVP</a> 
       </div>
     </nav> 
     <div class="mobilemenu black">
@@ -54,19 +59,23 @@
           but hey, it's pure CSS magic.
           -->
           <ul id="menu" class="mobilemenu">
-            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'story' %}" >Our Story</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'story' %}" >Our Story</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'schedule' %}" >Schedule</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'accomodations' %}" >Accomodations</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Accomodations</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'party' %}" >Wedding Party</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'hosts' %}" >Hosts</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'gallery' %}" >Gallery</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'party' %}" >Wedding Party</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mb7  mv6 " href="{% url 'registry' %}" >Registry</a>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'gallery' %}" >Gallery</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mb7  mv7 " href="{% url 'registry' %}" >Registry</a>
             <br> 
-            <a class="f2  hover-green no-underline black  mv4  ba" href="{% url 'findguest' %}" >RSVP</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'faq' %}" >FAQ</a> 
+            <br>
+            <a class="f2  hover-green no-underline black  mv7  ba" href="{% url 'findguest' %}" >RSVP</a> 
           </ul>
         </div>
       </nav>
@@ -76,14 +85,22 @@
     <article class="pa3 tc pa5-ns">
         <h1 class="f1 imperial">Our  Story</h1>
         {% for part in story %}
-          <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}">
+          <div class="partycontainer">
+            <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}" >
+          </div>
+          {% if part.p1_story_owner %}
+          <div class="tl">{{ part.p1_story_owner }}</div>
+          {% endif %}
             <p class="measure center lh-copy">
               {{part.p1_part1}} <b class="f3"> {{ part.p1_bold }} </b>  {{ part.p1_part2 }}
             </p>
-            <p class="measure center lh-copy">
+            {% if part.p2_story_owner %}
+              <div class="tl">{{ part.p2_story_owner }}</div>
+            {% endif %}
+              <p class="measure center lh-copy">
               {{part.p2_part1}} <b class="f3"> {{ part.p2_bold }} </b>  {{ part.p2_part2 }}
             </p>
-            <img src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}">
+            <img src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" class="db aspect-ratio aspect-ratio--1x1 dim">
           {% endfor %}
 
       </article>
