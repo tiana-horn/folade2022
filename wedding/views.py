@@ -75,17 +75,21 @@ def interest(request):
 
 @lockdown()
 def gallery(request):
+    song = Song.objects.get(page="gallery")
     pictures = GalleryImage.objects.all()
     return render(request, 'gallery.html', {
         'pictures':pictures,
+        'song':song,
     })
 
 @lockdown()
 def party(request):
     party = WeddingPartyMember.objects.all()
-    
+    song = Song.objects.get(page="party")
+
     return render(request, 'party.html', {
         'party':party,
+        'song':song,
     })
 
 @lockdown()
@@ -173,43 +177,53 @@ def success(request):
 @lockdown()
 def schedule(request):
     events = Event.objects.all()
-    
+    song = Song.objects.get(page="schedule")
+
     return render(request, 'schedule.html', {
         'events':events,
+        'song':song,
     })
 
 @lockdown()
 def story(request):
     story = StoryText.objects.all()
+    song = Song.objects.get(page="story")
 
     return render(request, 'story.html', {
         'story':story,
+        'song':song,
     })
 
 @lockdown()
 def accomodations(request):
     accomodations = Accomodation.objects.all()
     travels = Travel.objects.all()
+    song = Song.objects.get(page="accomodations")
 
     return render(request, 'accomodations.html', {
         'accomodations':accomodations,
         'travels':travels,
+        'song':song,
     })
 
 @lockdown()
 def faq(request):
     faqs = FAQ.objects.all()
+    song = Song.objects.get(page="faq")
 
     return render(request, 'faq.html', {
         'faqs':faqs,
+        'song':song,
     })
 
 @lockdown()
 def hosts(request):
     hosts = Host.objects.all()
-    
+    song = Song.objects.get(page="hosts")
+
     return render(request, 'hosts.html', {
         'hosts':hosts,
+        'song':song,
     })
 
 def bad_request_view(request, exception):
