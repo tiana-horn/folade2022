@@ -85,9 +85,7 @@
     <article class="pa3 tc pa5-ns">
         <h1 class="f1 imperial">Our  Story</h1>
         {% for part in story %}
-          <div class="partycontainer">
             <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}" class="w-100 f5 measure" >
-          </div>
           {% if part.p1_story_owner %}
           <div class="tc f2">{{ part.p1_story_owner }}</div>
           {% endif %}
@@ -105,7 +103,6 @@
 
       </article>
 
-    </article>
     {% if song.link %}
     <iframe class="middle pb1" width="0%" height="0" src="{{song.link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe> 
     {% else %}
