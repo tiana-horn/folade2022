@@ -97,7 +97,6 @@ def rsvp(request,pk):
     guest = Guest.objects.get(pk=pk)
     invites = Invitation.objects.filter(guest=guest)
     invites = invites.order_by('event')
-    invite_form = InviteForm
     guest_form = GuestForm
 
     if request.method == 'POST':
@@ -112,7 +111,6 @@ def rsvp(request,pk):
         guest_form = guest_form(instance=guest)
 
     return render(request, 'rsvp.html', {
-        'invite_form': invite_form,
         'guest_form': guest_form,
         'guest':guest,
         'invites':invites,
