@@ -7,13 +7,33 @@ a:hover {
 }
 
 .fadeColor{
-  background: linear-gradient(to bottom, white, white,#ffffe2, #98ff98 );
+  background: linear-gradient(to bottom, white, #ffffe2, #98ff98 );
+  height:100vh;
+  margin-bottom: 100%;
 
+}
+
+.middle {
+  width:30%;
+  margin-right:35%;
+  margin-left:35%;
+}
+
+.footer {
+  margin-bottom: 10%;
+}
+
+.mint{
+  background-color: #98ff98;
 }
 
 .opaq {
   opacity: 0;
   z-index: 2; 
+}
+
+.left {
+  text-align: left;
 }
 
 .forumfont {

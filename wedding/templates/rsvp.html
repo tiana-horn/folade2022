@@ -9,65 +9,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
   {% block content %}
-  <body class='forumfont '>
-    <nav class="dt w-100 mw8 regmenu enter"> 
-        <div class="dtc w2 v-mid pa3">
-        </div>
-        <div class="dtc v-mid tr pa3">
-          <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
-          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
-          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
-          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
-          <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
-          <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
-          <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'findguest' %}" >RSVP</a> 
-        </div>
-      </nav> 
-      <div class="mobilemenu black">
-        <nav role="navigation">
-          <div id="menuToggle">
-            <!--
-            A fake / hidden checkbox is used as click reciever,
-            so you can use the :checked selector on it.
-            -->
-            <input type="checkbox" />
-            
-            <!--
-            Some spans to act as a hamburger.
-            
-            They are acting like a real hamburger,
-            not that McDonalds stuff.
-            -->
-            <span></span>
-            <span></span>
-            <span></span>
-            
-            <!--
-            Too bad the menu has to be inside of the button
-            but hey, it's pure CSS magic.
-            -->
-            <ul id="menu" class="mobilemenu">
-              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'story' %}" >Our Story</a> 
-              <br>
-              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'schedule' %}" >Schedule</a> 
-              <br>
-              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'accomodations' %}" >Accomodations</a> 
-              <br>
-              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'party' %}" >Wedding Party</a> 
-              <br>
-              <a class="f2  hover-green no-underline black   mv6 " href="{% url 'gallery' %}" >Gallery</a> 
-              <br>
-              <a class="f2  hover-green no-underline black   mb7  mv6 " href="{% url 'registry' %}" >Registry</a>
-              <br> 
-              <a class="f2  hover-green no-underline black  mv4  ba" href="{% url 'findguest' %}" >RSVP</a> 
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <h1 class="f1 mw6 center mt5 imperial tc">rsvp</h1>
-            <div class="f5 mt1 errorcontainer mv1 pt1 pb3 tc container">
+  <body class='forumfont ' >
 
-              <h5 class="f3 mt0 ph3 tc container">Hi {{ guest.name }}, please rsvp for {{ invites.count }} event{% if invites.count > 1 %}s {% endif %} </h5>
+
+    <nav class="dt w-100 mw8 center"> 
+      <div class="dtc w2 v-mid pa3">
+      </div>
+      
+      
+      <div class="dtc v-mid regmenu tr pt3 ph0">
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'story' %}" >Our Story</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'schedule' %}" >Schedule</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'accomodations' %}" > Accomodations</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'hosts' %}" >Hosts</a> 
+
+        <div class="f2 fw4  black dn dib-l pv2 ph2 imperial"  >Fola & Lade </div> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'gallery' %}" >Gallery</a> 
+
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'registry' %}" >Registry</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'faq' %}" >FAQ</a> 
+        <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph2 ba" href="{% url 'findguest' %}" >RSVP</a> 
+      </div>
+    </nav> 
+    <div class="mobilemenu black">
+      <nav role="navigation">
+        <div id="menuToggle">
+          <!--
+          A fake / hidden checkbox is used as click reciever,
+          so you can use the :checked selector on it.
+          -->
+          <input type="checkbox" />
+          
+          <!--
+          Some spans to act as a hamburger.
+          
+          They are acting like a real hamburger,
+          not that McDonalds stuff.
+          -->
+          <span></span>
+          <span></span>
+          <span></span>
+          
+          <!--
+          Too bad the menu has to be inside of the button
+          but hey, it's pure CSS magic.
+          -->
+          <ul id="menu" class="mobilemenu">
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'story' %}" >Our Story</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Accomodations</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'hosts' %}" >Hosts</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'party' %}" >Wedding Party</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'gallery' %}" >Gallery</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mb7  mv7 " href="{% url 'registry' %}" >Registry</a>
+            <br> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'faq' %}" >FAQ</a> 
+            <br>
+            <a class="f2  hover-green no-underline black  mv7  ba" href="{% url 'findguest' %}" >RSVP</a> 
+          </ul>
+        </div>
+      </nav>
+    </div>
+      <h1 class="f1 mw6 center mt5 imperial tc">rsvp</h1>
+            <div class="f5 mt1 ph4 pt1  tc ">
+
+              <h5 class="f3 mt0 ph3 tc ">Hi {{ guest.name }}, please rsvp for {{ invites.count }} event{% if invites.count > 1 %}s {% endif %} </h5>
 
 
                 {% for invite in invites %}
@@ -112,20 +125,20 @@
                
                   </form>
 
-                  <div class="pt2 pb3 bb b--black-40">
+                  <div class="pt2 pt3 bb b--black-40">
                   </div>
 
                 {% endfor %}
-                <h5 class="f3 mv2 pv1 ph3 tc ">
+                <h5 class="f3 mt2 pt1 ph3 tc ">
                   One last thing! Do you have any dietary restrictions? <br>
                 </h5> 
-                <form class="mv1" role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
+                <form class="mt2  " role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
                   {% csrf_token %}
                   {{ guest_form.as_p }}
-                  <input type="submit" value="Submit" />
+                  <input type="submit" class="b ph3 mt3 white bg-green ba b--black bg-transparent grow  f3" value="Submit" />
                 </form>
+        
             </div>
-          
   </body>
   {% endblock content %}
 </html>

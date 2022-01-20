@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
   {% block title %}
-  <title> Our Story </title>
+  <title> Responses </title>
   {% endblock title %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -83,7 +83,7 @@
 
 
     <article class="pa3 tc pa5-ns">
-        <h1 class="f1 imperial">Our  Story</h1>
+        <h1 class="f1 imperial">Responses</h1>
         {% for part in story %}
           <div class="partycontainer">
             <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}" >
@@ -104,15 +104,11 @@
           {% endfor %}
 
       </article>
-
-    </article>
-
-  </body>
-
+      
   {% endblock content %}
   {% block footer %}
-
   {% endblock footer %}
 
+</body>
 
-  </html>
+</html>

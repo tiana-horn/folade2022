@@ -19,18 +19,25 @@
   
   {% block content %}
  
-  <body>
-    <nav class="dt w-100 mw8 regmenu center"> 
+  <body class="forumfont ">
+    <nav class="dt w-100 mw8 center"> 
       <div class="dtc w2 v-mid pa3">
       </div>
-      <div class="dtc v-mid tr pa3">
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'story' %}" >Our Story</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'schedule' %}" >Schedule</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'accomodations' %}" >Accomodations</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'party' %}" >Wedding Party</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph3" href="{% url 'gallery' %}" >Gallery</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph3" href="{% url 'registry' %}" >Registry</a> 
-        <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph3 ba" href="{% url 'findguest' %}" >RSVP</a> 
+      
+      
+      <div class="dtc v-mid regmenu tr pt3 ph0">
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'story' %}" >Our Story</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'schedule' %}" >Schedule</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'accomodations' %}" > Accomodations</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'hosts' %}" >Hosts</a> 
+
+        <div class="f2 fw4  black dn dib-l pv2 ph2 imperial"  >Fola & Lade </div> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'gallery' %}" >Gallery</a> 
+
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'registry' %}" >Registry</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'faq' %}" >FAQ</a> 
+        <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph2 ba" href="{% url 'findguest' %}" >RSVP</a> 
       </div>
     </nav> 
     <div class="mobilemenu black">
@@ -57,48 +64,128 @@
           but hey, it's pure CSS magic.
           -->
           <ul id="menu" class="mobilemenu">
-            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'story' %}" >Our Story</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'story' %}" >Our Story</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'schedule' %}" >Schedule</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'accomodations' %}" >Accomodations</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Accomodations</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'party' %}" >Wedding Party</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'hosts' %}" >Hosts</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv6 " href="{% url 'gallery' %}" >Gallery</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'party' %}" >Wedding Party</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mb7  mv6 " href="{% url 'registry' %}" >Registry</a>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'gallery' %}" >Gallery</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mb7  mv7 " href="{% url 'registry' %}" >Registry</a>
             <br> 
-            <a class="f2  hover-green no-underline black  mv4  ba" href="{% url 'findguest' %}" >RSVP</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'faq' %}" >FAQ</a> 
+            <br>
+            <a class="f2  hover-green no-underline black  mv7  ba" href="{% url 'findguest' %}" >RSVP</a> 
           </ul>
         </div>
       </nav>
     </div>
-      <section class="mw7 center  forumfont ">
-        <h1 class="imperial f1 tc pt4 fw1 ph3 ph0-l">Accomodations</h1>
-        {% for accomodation in accomodations %}
-        <article class="bt bb b--black-10">
-          <a class="db pv4 ph3 ph0-l no-underline black dim" href="{{ accomodation.link }}">
+      <section class="mw7 center ph4 tc forumfont ">
+        <h1 class="imperial f1 tc pt5 fw1 ph3 ph0-l">Travel & Accomodations</h1>
+        <h1 class="f3 fw1  tc mt0 lh-title">Travel Information</h1>
+
+        {% for travel in travels %}
+          <div class="db pv4 ph3  no-underline black ">
             <div class="flex flex-column flex-row-ns">
-              <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-                <img src="{{ accomodation.image.url }}" alt="{{ accomodation.image_alt_text }}" class="db">
-              </div>
-              <div class="w-100 w-60-ns pl3-ns">
-                <h1 class="f3 fw1  mt0 lh-title">{{ accomodation.title}}</h1>
+
+              <div class="w-100 tc  pl3-ns">
+                {% if travel.location %}
+                  <h1 class="f4 fw1  mt0 lh-title">{{ travel.location}}</h1>
+                {% endif %}
+                {% if travel.detail %}
+                    <p class="f6 f5-l lh-copy">
+                      {{travel.detail}}
+                    </p>
+                {% endif %}
+                {% if travel.departure_time %}
+                    <p class="f6 lh-copy mv0">
+                      {{travel.departure_time}}
+                    </p>
+                {% endif %}
+                {% if travel.venue_distance %}
                 <p class="f6 lh-copy mv0">
-                  {{ accomodation.location}}
-              </p>
-                <p class="f6 f5-l lh-copy">
-                    {{accomodation.detail}}
+                  - {{travel.venue_distance }}
                 </p>
+                {% endif %}
+                {% if travel.downtown_distance %}
+                <p class="f6 lh-copy mv0">
+                  - {{travel.downtown_distance }}
+                </p>
+                {% endif %}
+                
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="bt bb b--black-10"></div>
+
+        {% for accomodation in accomodations %}
+          <a class="db pv4 ph3  no-underline black " href="{{ accomodation.link }}">
+            <div class=" tc flex flex-column flex-row-ns">
+              {% if accomodation.image and accomation.image_alt_text %}
+
+                <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+                  <img src="{{ accomodation.image.url }}" alt="{{ accomodation.image_alt_text }}" class="db">
+                </div>
+              {% endif %}
+
+              <div class="w-100 pl3-ns">
+                {% if accomodation.title %}
+
+                <h1 class="f3 fw1  mt0 lh-title">{{ accomodation.title}}</h1>
+                {% endif %}
+
+                {% if accomodation.detail %}
+                <p class="f6 f5-l lh-copy">
+                  {{accomodation.detail}}
+              </p>
+              {% endif %}
+
+              {% if accomodation.location %}
+                <p class="f6 lh-copy mv0">
+                 {{ accomodation.location}}
+              </p>
+              {% endif %}
+
+              {% if accomodation.phone %}
+              <p class="f6 lh-copy mv0">
+                {{ accomodation.phone}}
+              </p>
+              {% endif %}
+
+              {% if accomodation.block_name %}
+              <p class="f6 lh-copy mv0">
+                <b>Block Name: </b> {{ accomodation.block_name }}
+              </p>    
+              {% endif %}
+
+              {% if accomodation.block_rate %}
+              <p class="f6 lh-copy mv0">
+                <b>Block Rate: </b>{{ accomodation.block_rate }}
+              </p>
+              {% endif %}
+
+              {% if accomodation.deadline %}
+              <p class="f6 mv0">
+                <b>Deadline: </b>{{ accomodation.deadline }}
+              </p>
+              {% endif %}
+
               </div>
             </div>
           </a>
-        </article>
        {% endfor %}
+  
       </section>
-      
-  </body>
+
+  
+    </body>
+
   {% endblock content %}
   
   {% block footer %}
@@ -106,4 +193,5 @@
   
   
   {% endblock footer %}
+
 </html>

@@ -2,12 +2,12 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodations, Story, WeddingParty
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
-from wedding.forms import InterestForm, AccessForm, SearchForm, InviteForm, GuestForm
+from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
 from lockdown.decorators import lockdown
 import boto3
 import json
@@ -15,7 +15,10 @@ import os
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    song = Song.objects.get(page="home")
+    return render(request, 'home.html',{
+        'song':song,
+    })
 
 def interest(request):
     form = InterestForm
@@ -60,7 +63,7 @@ def interest(request):
 
     # Show success message, if other messages are added update conditional on index
                 django_message = "Thank you for expressing interest in attending our wedding! Someone will be in contact with you shortly"
-                messages.add_message(request, messages.SUCCESS, django_message)
+                messages.add_message(request, messages.INFO, django_message)
             except:
                 Http404
 
@@ -72,26 +75,35 @@ def interest(request):
 
 @lockdown()
 def gallery(request):
-    return render(request, 'gallery.html')
+    song = Song.objects.get(page="gallery")
+    pictures = GalleryImage.objects.all()
+    return render(request, 'gallery.html', {
+        'pictures':pictures,
+        'song':song,
+    })
 
 @lockdown()
 def party(request):
-    party = WeddingParty.objects.all()
-    
+    party = WeddingPartyMember.objects.all()
+    song = Song.objects.get(page="party")
+
     return render(request, 'party.html', {
         'party':party,
+        'song':song,
     })
 
 @lockdown()
 def registry(request):
-    return render(request, 'registry.html')
+    registry_links = RegistryLink.objects.all()
+    return render(request, 'registry.html', {
+        'registry_links':registry_links,
+    })
 
 @lockdown()
 def rsvp(request,pk):
     guest = Guest.objects.get(pk=pk)
     invites = Invitation.objects.filter(guest=guest)
     invites = invites.order_by('event')
-    invite_form = InviteForm
     guest_form = GuestForm
 
     if request.method == 'POST':
@@ -106,7 +118,6 @@ def rsvp(request,pk):
         guest_form = guest_form(instance=guest)
 
     return render(request, 'rsvp.html', {
-        'invite_form': invite_form,
         'guest_form': guest_form,
         'guest':guest,
         'invites':invites,
@@ -166,25 +177,53 @@ def success(request):
 @lockdown()
 def schedule(request):
     events = Event.objects.all()
-    
+    song = Song.objects.get(page="schedule")
+
     return render(request, 'schedule.html', {
         'events':events,
+        'song':song,
     })
 
 @lockdown()
 def story(request):
-    story = Story.objects.all()
+    story = StoryText.objects.all()
+    song = Song.objects.get(page="story")
 
     return render(request, 'story.html', {
         'story':story,
+        'song':song,
     })
 
 @lockdown()
 def accomodations(request):
-    accomodations = Accomodations.objects.all()
+    accomodations = Accomodation.objects.all()
+    travels = Travel.objects.all()
+    song = Song.objects.get(page="accomodations")
 
     return render(request, 'accomodations.html', {
         'accomodations':accomodations,
+        'travels':travels,
+        'song':song,
+    })
+
+@lockdown()
+def faq(request):
+    faqs = FAQ.objects.all()
+    song = Song.objects.get(page="faq")
+
+    return render(request, 'faq.html', {
+        'faqs':faqs,
+        'song':song,
+    })
+
+@lockdown()
+def hosts(request):
+    hosts = Host.objects.all()
+    song = Song.objects.get(page="hosts")
+
+    return render(request, 'hosts.html', {
+        'hosts':hosts,
+        'song':song,
     })
 
 def bad_request_view(request, exception):

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
   {% block title %}
-  <title> Our Story </title>
+  <title> FAQ </title>
   {% endblock title %}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -82,37 +82,27 @@
     </div>
 
 
-    <article class="pa3 tc pa5-ns">
-        <h1 class="f1 imperial">Our  Story</h1>
-        {% for part in story %}
-          <div class="partycontainer">
-            <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}" >
+    <article class="pa3 pt5 tc pa5-ns">
+        <h1 class="f1 imperial">Frequently Asked Questions</h1>
+        {% for faq in faqs %}
+        <article class="cf ph5 ph5-ns pv4">
+          <header class="fn fl-ns w-50-ns pr4-ns">
+            <h1 class="mb3 f3 mt0 lh-title">{{ faq.question }}</h1>
+          </header>
+          <div class="fn fl-ns w-50-ns">
+            <p class="lh-copy measure mt4 mt0-ns"> {{ faq.answer }}</p>
           </div>
-          {% if part.p1_story_owner %}
-          <div class="tl">{{ part.p1_story_owner }}</div>
-          {% endif %}
-            <p class="measure center lh-copy">
-              {{part.p1_part1}} <b class="f3"> {{ part.p1_bold }} </b>  {{ part.p1_part2 }}
-            </p>
-            {% if part.p2_story_owner %}
-              <div class="tl">{{ part.p2_story_owner }}</div>
-            {% endif %}
-              <p class="measure center lh-copy">
-              {{part.p2_part1}} <b class="f3"> {{ part.p2_bold }} </b>  {{ part.p2_part2 }}
-            </p>
-            <img src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" class="db aspect-ratio aspect-ratio--1x1 dim">
-          {% endfor %}
+        </article>
+        <div class="bt bb b--black-10"></div>
 
+        {% endfor %}
       </article>
-
-    </article>
-
-  </body>
+  
 
   {% endblock content %}
   {% block footer %}
-
   {% endblock footer %}
 
+</body>
 
-  </html>
+</html>

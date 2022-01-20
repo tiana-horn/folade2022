@@ -3,14 +3,32 @@
 }
 
 .fadeColor{
-  background: linear-gradient(to bottom, white, white,#ffffe2, #98ff98 );
-  height:100vh;
+  background: linear-gradient(to bottom, white, #ffffe2, #98ff98 );
+  margin-bottom: 100%;
+}
 
+.middle {
+  width:30%;
+  margin-right:35%;
+  margin-left:35%;
+}
+
+.footer {
+  margin-bottom: 0%;
+}
+
+.hide {
+  display:none;
+  width:0%;
 }
 
 .opaq {
   opacity: 0;
   z-index: 2; 
+}
+
+.left {
+  text-align: left;
 }
 
 .forumfont {

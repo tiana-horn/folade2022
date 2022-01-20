@@ -66,11 +66,4 @@ class GuestForm(ModelForm):
         model = Guest
         fields = ('food_allergies',)
 
-class InviteForm(ModelForm):
-    class Meta:
-        model = Invitation
-        yes_no = forms.RadioSelect(choices=[(True,'I will attend'),(False,'I will not attend')])
-        fields = ('attending',)
-        widgets = {'attending':yes_no}
-
 

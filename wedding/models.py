@@ -8,6 +8,14 @@ from django.core.exceptions import ValidationError
 class User(AbstractUser):
     rsvped = models.BooleanField(default=False)
 
+class Song(models.Model):
+    page = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    link = models.URLField(unique=False, blank=True)
+
+    def __str__(self):
+         return f'{self.page} - {self.title}'
+
 class Guest(models.Model):
     name = models.CharField(max_length=111)
     email = models.EmailField(max_length=111,blank=True)
@@ -18,9 +26,11 @@ class Guest(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=222)
+    description = models.CharField(max_length=222,blank=True)
     date = models.DateField()
     time = models.CharField(max_length=222)
     location = models.CharField(max_length=777)
+    address = models.CharField(null=True,max_length=777)
     guests = models.ManyToManyField(Guest, through='Invitation')
 
     def __str__(self):
@@ -34,41 +44,90 @@ class Invitation(models.Model):
     def __str__(self):
         return f'{self.guest} - {self.event}'
 
-class Accomodations(models.Model):
+class Accomodation(models.Model):
     title = models.CharField(max_length=222)
-    image = models.ImageField(upload_to='Media', null=True)
-    image_alt_text = models.CharField(max_length=111)
-    location = models.CharField(max_length=777)
-    detail = models.TextField(max_length=777)
+    image = models.ImageField(upload_to='img', null=True, blank=True)
+    image_alt_text = models.CharField(max_length=111,blank=True)
+    location = models.CharField(max_length=777,blank=True)
+    phone = models.CharField(max_length=77,blank=True)
+    block_name = models.CharField(max_length=77,blank=True)
+    block_rate = models.CharField(max_length=77,blank=True)
+    detail = models.TextField(max_length=777,blank=True)
     link = models.URLField(unique=False, blank=True)
+    deadline = models.DateField(null=True,blank=True)
 
     def __str__(self):
         return self.title
 
-class Story(models.Model):
-    image1 = models.ImageField(upload_to='Media', null=True)
+class Travel(models.Model):
+    location = models.CharField(max_length=222)
+    detail = models.TextField(max_length=1111,blank=True)
+    departure_time = models.TextField(max_length=1111,blank=True)
+    venue_distance = models.CharField(max_length=222,blank=True)
+    downtown_distance = models.CharField(max_length=222,blank=True)
+
+
+    def __str__(self):
+        return self.location
+
+class StoryText(models.Model):
+    image1 = models.ImageField(upload_to='img', null=True)
     image1_alt_text = models.CharField(max_length=111)
+    p1_story_owner = models.CharField(null=True,max_length=222)
+    p2_story_owner = models.CharField(null=True,max_length=222)
     p1_part1 = models.TextField(max_length=1111)
     p1_bold = models.CharField(max_length=222)
     p1_part2 = models.TextField(max_length=1111)
     p2_part1 = models.TextField(max_length=1111)
     p2_bold = models.CharField(max_length=222)
     p2_part2 = models.TextField(max_length=1111)
-    image2 = models.ImageField(upload_to='Media', null=True)
+    image2 = models.ImageField(upload_to='img', null=True)
     image2_alt_text = models.CharField(max_length=111)
 
-
     def clean(self):
-        if Story.objects.exists() and not self.pk:
+        if StoryText.objects.exists() and not self.pk:
             raise ValidationError('The Story page can only have one story. Please edit the existing story object to make changes')
 
-class WeddingParty(models.Model):
-    image = models.ImageField(upload_to='Media', null=True)
+class WeddingPartyMember(models.Model):
+    image = models.ImageField(upload_to='img', null=True)
     image_alt_text = models.CharField(max_length=111)
     first_name = models.CharField(max_length=222)
     last_name = models.CharField(max_length=222)
     role = models.CharField(max_length=222)
-    description = models.TextField(max_length=222,blank=True)
+    description = models.TextField(max_length=777,blank=True)
 
     def __str__(self):
-        return f'{self.first_name}  {self.last_name}'
+        return f'{self.first_name} {self.last_name}'
+
+class RegistryLink(models.Model):
+    zolaLink = models.URLField(unique=False, blank=True)
+    zola_data_registry_key = models.CharField(max_length=222,blank=True)
+    
+    def clean(self):
+        if RegistryLink.objects.exists() and not self.pk:
+            raise ValidationError('The Registry page can only have one zola connected. Please edit the existing link to make changes')
+
+class GalleryImage(models.Model):
+    image = models.ImageField(upload_to='img', null=True)
+    image_alt_text = models.CharField(max_length=111) 
+    
+    def __str__(self):
+        return self.image_alt_text
+
+class Host(models.Model):
+    image = models.ImageField(upload_to='img', null=True)
+    image_alt_text = models.CharField(max_length=111)
+    first_name = models.CharField(max_length=222)
+    last_name = models.CharField(max_length=222)
+    role = models.CharField(max_length=222)
+    description = models.TextField(max_length=777,blank=True)
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+
+class FAQ(models.Model):
+    question = models.TextField(max_length=1111)
+    answer = models.TextField(max_length=1111)
+    
+    def __str__(self):
+        return self.question
