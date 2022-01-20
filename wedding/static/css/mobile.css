@@ -7,8 +7,14 @@ a:hover {
 }
 
 .fadeColor{
-  background: linear-gradient(to bottom, white, white,#ffffe2, #98ff98 );
+  background: linear-gradient(to bottom, white, #ffffe2, #98ff98 );
+  height:100vh;
+  margin-bottom: 100%;
 
+}
+
+.mint{
+  background-color: #98ff98;
 }
 
 .opaq {

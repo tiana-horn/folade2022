@@ -16,7 +16,7 @@
 
 {% block content %}
 
-<body class='forumfont' >
+<body class='forumfont fadeColor' >
 
 
     <nav class="dt w-100 mw8 center"> 
@@ -86,11 +86,11 @@
   </div>
       <h1 class="f1 mw6 center pt4 mt5 imperial tc">Hosts & Hostesses</h1>
 
-      <main class=" pt2 partycontainer  mb5 flex flex-column flex-row-ns center">
+      <main class=" pt2 ph4  flex flex-column flex-row-ns center">
 
     {% for person in hosts %}
 
-          <article class="center  tc bg-white br3 pa3 pa4-ns mv3  ba b--black-10">
+          <article class="center  tc bg-white br3 ph3 pt3 ph4-ns mt3  ba b--black-10">
             <div class="tc">
               <img src="{{ person.image.url }}" class="br-100 h3 w3 dib" alt="{{ person.image_alt_text }}">
               <h1 class="f4">{{person.first_name}} {{person.last_name}}</h1>
@@ -106,9 +106,10 @@
 
       {% endfor %}
       </main>
-  </body>
+  
   {% endblock content %}
   {% block footer %}
 
 {% endblock footer %}
+</body>
 </html>

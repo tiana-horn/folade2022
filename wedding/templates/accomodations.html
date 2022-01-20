@@ -19,7 +19,7 @@
   
   {% block content %}
  
-  <body class="forumfont">
+  <body class="forumfont fadeColor">
     <nav class="dt w-100 mw8 center"> 
       <div class="dtc w2 v-mid pa3">
       </div>
@@ -85,31 +85,103 @@
         </div>
       </nav>
     </div>
-      <section class="mw7 center  forumfont ">
-        <h1 class="imperial f1 tc pt4 fw1 ph3 ph0-l">Accomodations</h1>
-        {% for accomodation in accomodations %}
-        <article class="bt bb b--black-10">
-          <a class="db pv4 ph3 ph0-l no-underline black dim" href="{{ accomodation.link }}">
+      <section class="mw7 center ph4 tc forumfont ">
+        <h1 class="imperial f1 tc pt5 fw1 ph3 ph0-l">Travel & Accomodations</h1>
+        <h1 class="f3 fw1  tc mt0 lh-title">Travel Information</h1>
+
+        {% for travel in travels %}
+          <div class="db pv4 ph3  no-underline black ">
             <div class="flex flex-column flex-row-ns">
-              <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
-                <img src="{{ accomodation.image.url }}" alt="{{ accomodation.image_alt_text }}" class="db">
-              </div>
-              <div class="w-100 w-60-ns pl3-ns">
-                <h1 class="f3 fw1  mt0 lh-title">{{ accomodation.title}}</h1>
+
+              <div class="w-100 tc  pl3-ns">
+                {% if travel.location %}
+                  <h1 class="f4 fw1  mt0 lh-title">{{ travel.location}}</h1>
+                {% endif %}
+                {% if travel.detail %}
+                    <p class="f6 f5-l lh-copy">
+                      {{travel.detail}}
+                    </p>
+                {% endif %}
+                {% if travel.departure_time %}
+                    <p class="f6 lh-copy mv0">
+                      {{travel.departure_time}}
+                    </p>
+                {% endif %}
+                {% if travel.venue_distance %}
                 <p class="f6 lh-copy mv0">
-                  {{ accomodation.location}}
-              </p>
-                <p class="f6 f5-l lh-copy">
-                    {{accomodation.detail}}
+                  - {{travel.venue_distance }}
                 </p>
+                {% endif %}
+                {% if travel.downtown_distance %}
+                <p class="f6 lh-copy mv0">
+                  - {{travel.downtown_distance }}
+                </p>
+                {% endif %}
+                
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="bt bb b--black-10"></div>
+
+        {% for accomodation in accomodations %}
+          <a class="db pv4 ph3  no-underline black " href="{{ accomodation.link }}">
+            <div class=" tc flex flex-column flex-row-ns">
+              {% if accomodation.image and accomation.image_alt_text %}
+
+                <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+                  <img src="{{ accomodation.image.url }}" alt="{{ accomodation.image_alt_text }}" class="db">
+                </div>
+              {% endif %}
+
+              <div class="w-100 pl3-ns">
+                {% if accomodation.title %}
+
+                <h1 class="f3 fw1  mt0 lh-title">{{ accomodation.title}}</h1>
+                {% endif %}
+
+                {% if accomodation.detail %}
+                <p class="f6 f5-l lh-copy">
+                  {{accomodation.detail}}
+              </p>
+              {% endif %}
+
+              {% if accomodation.location %}
+                <p class="f6 lh-copy mv0">
+                 {{ accomodation.location}}
+              </p>
+              {% endif %}
+
+              {% if accomodation.phone %}
+              <p class="f6 lh-copy mv0">
+                {{ accomodation.phone}}
+              </p>
+              {% endif %}
+
+              {% if accomodation.block_name %}
+              <p class="f6 lh-copy mv0">
+                <b>Block Name: </b> {{ accomodation.block_name }}
+              </p>    
+              {% endif %}
+
+              {% if accomodation.block_rate %}
+              <p class="f6 lh-copy mv0">
+                <b>Block Rate: </b>{{ accomodation.block_rate }}
+              </p>
+              {% endif %}
+
+              {% if accomodation.deadline %}
+              <p class="f6 mv0">
+                <b>Deadline: </b>{{ accomodation.deadline }}
+              </p>
+              {% endif %}
+
               </div>
             </div>
           </a>
-        </article>
        {% endfor %}
       </section>
       
-  </body>
   {% endblock content %}
   
   {% block footer %}
@@ -117,4 +189,6 @@
   
   
   {% endblock footer %}
+</body>
+
 </html>

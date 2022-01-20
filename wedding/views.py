@@ -60,7 +60,7 @@ def interest(request):
 
     # Show success message, if other messages are added update conditional on index
                 django_message = "Thank you for expressing interest in attending our wedding! Someone will be in contact with you shortly"
-                messages.add_message(request, messages.SUCCESS, django_message)
+                messages.add_message(request, messages.INFO, django_message)
             except:
                 Http404
 
