@@ -2,7 +2,7 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
@@ -15,7 +15,10 @@ import os
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    song = Song.objects.get(page="home")
+    return render(request, 'home.html',{
+        'song':song,
+    })
 
 def interest(request):
     form = InterestForm

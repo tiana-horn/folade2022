@@ -8,6 +8,14 @@ from django.core.exceptions import ValidationError
 class User(AbstractUser):
     rsvped = models.BooleanField(default=False)
 
+class Song(models.Model):
+    page = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    link = models.URLField(unique=False, blank=True)
+
+    def __str__(self):
+         return f'{self.page} - {self.title}'
+
 class Guest(models.Model):
     name = models.CharField(max_length=111)
     email = models.EmailField(max_length=111,blank=True)

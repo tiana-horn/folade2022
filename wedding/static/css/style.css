@@ -7,10 +7,20 @@
   margin-bottom: 100%;
 }
 
+.middle {
+  width:30%;
+  margin-right:35%;
+  margin-left:35%;
+}
+
 .footer {
   margin-bottom: 0%;
 }
 
+.hide {
+  display:none;
+  width:0%;
+}
 
 .opaq {
   opacity: 0;
