@@ -6,8 +6,6 @@
   padding-top: 0px;;
   margin-bottom:0%;
   width: 100%;
-  z-index: 100;
-  position: fixed;
 }
 
 a:hover {
@@ -123,7 +121,7 @@ body
 #menuToggle a
 {
   text-decoration: none;
-  color: #232323;
+  color: maroon;
   
   transition: color 0.3s ease;
 }
