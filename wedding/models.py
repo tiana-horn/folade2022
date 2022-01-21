@@ -138,3 +138,14 @@ class Scripture(models.Model):
     
     def __str__(self):
         return self.source 
+        
+class ComingSoon(models.Model):
+    host_page = models.BooleanField(default=False)
+    story_page = models.BooleanField(default=False)
+    party_page = models.BooleanField(default=False)
+    registry_page = models.BooleanField(default=False)
+    rsvp_page = models.BooleanField(default=False)
+    
+    def clean(self):
+        if ComingSoon.objects.exists() and not self.pk:
+            raise ValidationError('There can only be one coming soon flag in the database')

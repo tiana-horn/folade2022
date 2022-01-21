@@ -84,23 +84,30 @@
 
     <article class="pa3 tc pa5-ns">
         <h1 class="f1 imperial">Our  Story</h1>
-        {% for part in story %}
-            <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}" class="w-100 f5 measure" >
-          {% if part.p1_story_owner %}
-          <div class="tc f2">{{ part.p1_story_owner }}</div>
-          {% endif %}
-            <p class="measure center lh-copy">
-              {{part.p1_part1}} <b class="f3"> {{ part.p1_bold }} </b>  {{ part.p1_part2 }}
-            </p>
-            {% if part.p2_story_owner %}
-              <div class="tc f2">{{ part.p2_story_owner }}</div>
-            {% endif %}
-              <p class="measure center lh-copy">
-              {{part.p2_part1}} <b class="f3"> {{ part.p2_bold }} </b>  {{ part.p2_part2 }}
-            </p>
-            <img src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" class="w-100 f5 measure">
-          {% endfor %}
-
+        {% for flag in dev_flag %}
+        {% if flag.story_page %}
+            <div class="f5 mt1 errorcontainer mv1 pt1 pb3 tc container">
+              <h5 class="f2 mt0 ph3 tc container">Coming Soon!</h5>
+            </div>
+        {% else %}
+                {% for part in story %}
+                    <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}" class="w-100 f5 measure" >
+                  {% if part.p1_story_owner %}
+                  <div class="tc f2">{{ part.p1_story_owner }}</div>
+                  {% endif %}
+                    <p class="measure center lh-copy">
+                      {{part.p1_part1}} <b class="f3"> {{ part.p1_bold }} </b>  {{ part.p1_part2 }}
+                    </p>
+                    {% if part.p2_story_owner %}
+                      <div class="tc f2">{{ part.p2_story_owner }}</div>
+                    {% endif %}
+                      <p class="measure center lh-copy">
+                      {{part.p2_part1}} <b class="f3"> {{ part.p2_bold }} </b>  {{ part.p2_part2 }}
+                    </p>
+                    <img src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" class="w-100 f5 measure">
+                  {% endfor %}
+        {% endif %}
+        {% endfor %}
       </article>
 
     {% if song.link %}

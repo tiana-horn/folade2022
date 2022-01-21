@@ -83,11 +83,19 @@
         </div>
       </div>
       </div>
-      {% for link in registry_links %}
-          {% if link.zolaLink and link.zola_data_registry_key %}
-             <a class="zola-registry-embed" href="{{ link.zolaLink }}" data-registry-key="{{ link.zola_data_registry_key }}">Our Zola Wedding Registry</a><script>!function(e,t,n){var s,a=e.getElementsByTagName(t)[0];e.getElementById(n)||(s=e.createElement(t),s.id=n,s.async=!0,s.src="https://widget.zola.com/js/widget.js",a.parentNode.insertBefore(s,a))}(document,"script","zola-wjs");</script>
-          {% endif %}
-      {% endfor %}
+      {% for flag in dev_flag %}
+      {% if flag.registry_page %}
+          <div class="f5 mt1 errorcontainer mv1 pt5 pb3 tc container">
+            <h5 class="f2 mt0 ph3 tc container">Coming Soon!</h5>
+          </div>
+      {% else %}
+            {% for link in registry_links %}
+                {% if link.zolaLink and link.zola_data_registry_key %}
+                  <a class="zola-registry-embed" href="{{ link.zolaLink }}" data-registry-key="{{ link.zola_data_registry_key }}">Our Zola Wedding Registry</a><script>!function(e,t,n){var s,a=e.getElementsByTagName(t)[0];e.getElementById(n)||(s=e.createElement(t),s.id=n,s.async=!0,s.src="https://widget.zola.com/js/widget.js",a.parentNode.insertBefore(s,a))}(document,"script","zola-wjs");</script>
+                {% endif %}
+            {% endfor %}
+    {% endif %}
+    {% endfor %}
       
   </body>
   {% endblock content %}
