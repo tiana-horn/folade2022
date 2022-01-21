@@ -80,38 +80,47 @@
       </div>
     </nav>
   </div>
+  <img class=" center topimg flex fl-w-100 pt0" src="https://folade.s3.us-east-2.amazonaws.com/static/img/PngItem_789758.png">
+
       <h1 class="f1 mw6 center mt5 imperial tc">rsvp</h1>
-      <h5 class="f3 mt3 mv2 ph3 tc container">Please enter your first and last name below</h5> 
-      <div class="f5 mt1 mv1 pt1 pb3 tc container">
+      {% for flag in dev_flag %}
+      {% if flag.rsvp_page %}
+          <div class="f5 mt1 errorcontainer mv1 pt1 pb3 tc container">
+            <h5 class="f2 mt0 ph3 black tc container">Coming Soon!</h5>
+          </div>
+      {% else %}
+              <h5 class="f3 mt3 mv2 ph3 tc container">Please enter your first and last name below</h5> 
+              <div class="f5 mt1 mv1 pt1 pb3 tc container">
 
-            <form class="mv5" role="form" action="" method="post">
-                {% csrf_token %}
-                {{ form.as_table }}
-                <input type="submit" value="Find" />
-            </form>
-            {% if searchresults %}
-            <h5 class="tc f5 ">
-                Click your name to continue
-            </h5>
-                {% for result in searchresults %}
-                <a class="no-underline black grow" href="{% url 'rsvp' pk=result.pk %}"> 
-                <h2 class=" tc f3 errorcontainer "> 
-                    {{ result.name }} - {{ result.email }}<br />  
-                    </h2> 
-                </a> 
-                {% endfor %}
+                    <form class="mv5" role="form" action="" method="post">
+                        {% csrf_token %}
+                        {{ form.as_table }}
+                        <input type="submit" value="Find" />
+                    </form>
+                    {% if searchresults %}
+                    <h5 class="tc f5 ">
+                        Click your name to continue
+                    </h5>
+                        {% for result in searchresults %}
+                        <a class="no-underline black grow" href="{% url 'rsvp' pk=result.pk %}"> 
+                        <h2 class=" tc f3 errorcontainer "> 
+                            {{ result.name }} - {{ result.email }}<br />  
+                            </h2> 
+                        </a> 
+                        {% endfor %}
 
-            {%else%}
+                    {%else%}
 
-                {% if notFound %}   
-                        <h5 class="tc f3 errorcontainer">
-                        {{ notFound }}
-                        </h5>
-                {% endif %}
+                        {% if notFound %}   
+                                <h5 class="tc f3 errorcontainer">
+                                {{ notFound }}
+                                </h5>
+                        {% endif %}
 
+                    {% endif %}
+                </div>
             {% endif %}
-        </div>
-
+            {% endfor %}
 {% endblock content %}
 {% block footer %}
 {% endblock footer %}

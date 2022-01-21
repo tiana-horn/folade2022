@@ -2,13 +2,14 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
 from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
 from lockdown.decorators import lockdown
+from django.contrib.auth.views import login_required
 import boto3
 import json
 import os
@@ -86,17 +87,22 @@ def gallery(request):
 def party(request):
     party = WeddingPartyMember.objects.all()
     song = Song.objects.get(page="party")
+    dev_flag = ComingSoon.objects.all()
 
     return render(request, 'party.html', {
         'party':party,
         'song':song,
+        'dev_flag':dev_flag,
     })
 
 @lockdown()
 def registry(request):
     registry_links = RegistryLink.objects.all()
+    dev_flag = ComingSoon.objects.all()
+
     return render(request, 'registry.html', {
         'registry_links':registry_links,
+        'dev_flag':dev_flag,
     })
 
 @lockdown()
@@ -150,6 +156,7 @@ def guest_list(request):
     form = SearchForm
     searchresults = False
     notFound = False
+    dev_flag = ComingSoon.objects.all()
 
     if request.method == 'POST':
         form = form(data=request.POST)
@@ -168,6 +175,8 @@ def guest_list(request):
         'form':form,    
         'searchresults':searchresults,
         'notFound':notFound,
+        'dev_flag':dev_flag,
+
         })
 
 @lockdown()
@@ -188,10 +197,12 @@ def schedule(request):
 def story(request):
     story = StoryText.objects.all()
     song = Song.objects.get(page="story")
+    dev_flag = ComingSoon.objects.all()
 
     return render(request, 'story.html', {
         'story':story,
         'song':song,
+        'dev_flag':dev_flag,
     })
 
 @lockdown()
@@ -230,6 +241,7 @@ def faq(request):
 def hosts(request):
     hosts = Host.objects.all()
     song = Song.objects.get(page="hosts")
+    dev_flag = ComingSoon.objects.all()
     scripture_list = Scripture.objects.all()
     scriptures = []
     for i in range(3):
@@ -240,6 +252,19 @@ def hosts(request):
         'hosts':hosts,
         'song':song,
         'scriptures':scriptures,
+        'dev_flag':dev_flag,
+    })
+
+@login_required
+def responses(request):
+    invitations = Invitation.objects.all()
+    events = Event.objects.all()
+    guests = Guest.objects.all()
+    yes_rsvps = Event.objects.guests.all()
+    return render(request, 'responses.html',{
+        'invitations':invitations,
+        'events':events,
+        'guests':guests,
     })
 
 def bad_request_view(request, exception):
