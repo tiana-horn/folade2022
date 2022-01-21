@@ -64,6 +64,6 @@ class SearchForm(forms.Form):
 class GuestForm(ModelForm):
     class Meta:
         model = Guest
-        fields = ('food_allergies',)
+        fields = ('diet','food_allergies',)
 
 

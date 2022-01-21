@@ -115,6 +115,7 @@ def rsvp(request,pk):
     if request.method == 'POST':
         guest_form = guest_form(data=request.POST, instance=guest)
         if guest_form.is_valid():
+            diet = guest_form.cleaned_data['diet']
             food_allergies = guest_form.cleaned_data['food_allergies']
             guest_form.save()
             django_message = "Thank you for your response!"
@@ -165,7 +166,6 @@ def guest_list(request):
             name = form.cleaned_data['name']
             try: 
                 searchresults = Guest.objects.filter(name=name)
-                print(searchresults)
                 if len(searchresults) < 1 :
                     notFound = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
             except:

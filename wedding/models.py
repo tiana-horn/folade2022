@@ -2,7 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 from django.core.exceptions import ValidationError
 
-
+DIET_CHOICES = (
+    ('none','none'),
+    ('vegan','vegan'),
+    ('vegetarian','vegetarian'),
+)
 
 # Create your models here.
 class User(AbstractUser):
@@ -19,6 +23,8 @@ class Song(models.Model):
 class Guest(models.Model):
     name = models.CharField(max_length=111)
     email = models.EmailField(max_length=111,blank=True)
+    diet = models.CharField(
+        max_length=10, null=True, blank=True, choices=DIET_CHOICES,default='none')
     food_allergies= models.CharField(max_length=777,blank=True)
    
     def __str__(self):
@@ -138,7 +144,7 @@ class Scripture(models.Model):
     
     def __str__(self):
         return self.source 
-        
+
 class ComingSoon(models.Model):
     host_page = models.BooleanField(default=False)
     story_page = models.BooleanField(default=False)
