@@ -286,7 +286,7 @@ body
 .slide3 {
     background-size: cover;
   animation:fade3 infinite;
-  animation-duration: 34s;
+  animation-duration: 33s;
 
 -webkit-animation:fade3 34s infinite;
 }

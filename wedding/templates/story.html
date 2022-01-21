@@ -10,6 +10,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+   <style>
+    .mySlides {display:none;}
+  </style>
+  <style>
+    .mySlips {display:none;}
+  </style>
+     
   {% block content %}
 
   <body class='forumfont ' >
@@ -92,8 +99,13 @@
               <h5 class="f2 mt0 ph3 tc container">Coming Soon!</h5>
             </div>
         {% else %}
+
+
                 {% for part in story %}
-                    <img src="{{ part.image1.url }}" alt="{{ part.image1_alt_text }}" class="w-100 f5 measure" >
+                <div class=" w-100 center tc f5 measure">
+                  <img class="mySlides" src="{{ part.image1.url }}" alt="{{ part.image2_alt_text }}" >
+                  <img class="mySlides" src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" >
+                </div>
                   {% if part.p1_story_owner %}
                   <div class="tc f2">{{ part.p1_story_owner }}</div>
                   {% endif %}
@@ -106,7 +118,13 @@
                       <p class="measure center lh-copy">
                       {{part.p2_part1}} <b class="f3"> {{ part.p2_bold }} </b>  {{ part.p2_part2 }}
                     </p>
-                    <img src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" class="w-100 f5 measure">
+                <div class=" w-100 center tc f5 measure">
+                  <img class="mySlips" src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" >
+                  <img class="mySlips" src="{{ part.image1.url }}" alt="{{ part.image2_alt_text }}" >
+                </div>
+
+
+
                   {% endfor %}
         {% endif %}
         {% endfor %}
@@ -117,6 +135,47 @@
     {% else %}
     <div></div>
     {% endif %}
+
+
+
+      
+      
+      
+ 
+      
+      <script>
+      var myIndex = 0;
+      var myInd = 0;
+        
+      carousel();
+      carousel2();
+
+      function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}    
+        x[myIndex-1].style.display = "block";  
+        setTimeout(carousel, 3000); // Change image every 4 seconds
+      }
+
+      function carousel2() {
+        var u;
+        var l = document.getElementsByClassName("mySlips");
+        for (u = 0; u < l.length; u++) {
+          l[u].style.display = "none";  
+        }
+        myInd++;
+        if (myInd > l.length) {myInd = 1}    
+        l[myInd-1].style.display = "block";  
+        setTimeout(carousel2, 3000); // Change image every 4 seconds
+      }
+      </script>
+
+        
   </body>
 
   {% endblock content %}
