@@ -72,3 +72,83 @@ a:hover {
   }
 }
   
+/* Scripture carousel */
+.Row {
+  display: table;
+  width: 100%; 
+  table-layout: fixed; 
+  border-spacing: 5px; 
+}
+.slider {
+width: 100%;
+
+position:relative;
+
+}
+.slide1,.slide2,.slide3 {
+width: 50%;
+margin-right:25%;
+margin-left:25%;
+position: absolute;
+
+}
+.slide1 {
+  background-size: cover;
+animation:fade infinite;
+animation-duration: 33s;
+-webkit-animation:fade 33s infinite;
+
+} 
+.slide2 {
+  background-size: cover;
+animation:fade2 infinite;
+animation-duration: 33s;
+
+-webkit-animation:fade2 33s infinite;
+}
+.slide3 {
+  background-size: cover;
+animation:fade3 infinite;
+animation-duration: 34s;
+
+-webkit-animation:fade3 34s infinite;
+}
+
+@keyframes fade
+{
+0%   {opacity:1}
+5% {opacity:0}
+15%   {opacity:0}
+33%   {opacity:0}
+45%   {opacity: 0}
+66%   {opacity: 0}
+75%   {opacity: 0}
+90%   {opacity: 0}
+100% {opacity: 1}
+}
+@keyframes fade2
+{
+0%   {opacity:0}
+5% {opacity:0}
+15%   {opacity:0}
+33%   {opacity:1}
+45%   {opacity: 0}
+66%   {opacity: 0}
+75%   {opacity: 0}
+90%   {opacity: 0}
+100% {opacity: 0}
+}
+@keyframes fade3
+{
+0%   {opacity:0}
+5% {opacity:0}
+15%   {opacity:0}
+33%   {opacity:0}
+45%   {opacity: 0}
+66%   {opacity:1}
+75%   {opacity: 0}
+90%   {opacity: 0}
+100% {opacity: 0}
+}
+
+

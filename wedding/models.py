@@ -131,3 +131,10 @@ class FAQ(models.Model):
     
     def __str__(self):
         return self.question
+
+class Scripture(models.Model):
+    scripture = models.TextField(max_length=1111)
+    source = models.TextField(max_length=1111)
+    
+    def __str__(self):
+        return self.source 

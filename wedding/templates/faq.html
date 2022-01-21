@@ -80,7 +80,14 @@
         </div>
       </nav>
     </div>
-
+    <div class="green flex grow center tc slider pb5 mb5 fl-100">
+      {% for scripture in scriptures %}
+          <div class="{% cycle 'slide1' 'slide2' 'slide3' %} "> 
+              <h5 class="f4 mb0 pb0 tc">  "{{ scripture.scripture }}" </h5> 
+              <h5  class="f6  tc">  - {{ scripture.source  }} </h5>
+          </div>
+          {% endfor %}
+    </div>
 
     <article class="pa3 pt5 tc pa5-ns">
         <h1 class="f1 imperial">Frequently Asked Questions</h1>

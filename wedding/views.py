@@ -2,7 +2,7 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
@@ -199,31 +199,47 @@ def accomodations(request):
     accomodations = Accomodation.objects.all()
     travels = Travel.objects.all()
     song = Song.objects.get(page="accomodations")
+    scripture_list = Scripture.objects.all()
+    scriptures = []
+    for i in range(6,9):
+        scriptures.append(scripture_list[i])
 
     return render(request, 'accomodations.html', {
         'accomodations':accomodations,
         'travels':travels,
         'song':song,
+        'scriptures':scriptures,
     })
 
 @lockdown()
 def faq(request):
     faqs = FAQ.objects.all()
     song = Song.objects.get(page="faq")
+    scripture_list = Scripture.objects.all()
+    scriptures = []
+    for i in range(3,6):
+        scriptures.append(scripture_list[i])
 
     return render(request, 'faq.html', {
         'faqs':faqs,
         'song':song,
+        'scriptures':scriptures,
     })
 
 @lockdown()
 def hosts(request):
     hosts = Host.objects.all()
     song = Song.objects.get(page="hosts")
+    scripture_list = Scripture.objects.all()
+    scriptures = []
+    for i in range(3):
+        scriptures.append(scripture_list[i])
+
 
     return render(request, 'hosts.html', {
         'hosts':hosts,
         'song':song,
+        'scriptures':scriptures,
     })
 
 def bad_request_view(request, exception):
