@@ -30,6 +30,7 @@ urlpatterns = [
     path('findguest/', wedding_views.guest_list, name='findguest'),
     path('rsvp/<pk>', wedding_views.rsvp, name='rsvp'),
     path('change_rsvp/<pk>', wedding_views.change_rsvp, name='change_rsvp'),
+    path('responses/', wedding_views.responses, name='responses'),
     path('schedule/', wedding_views.schedule, name='schedule'),
     path('story/', wedding_views.story, name='story'),
     path('faq/', wedding_views.faq, name='faq'),

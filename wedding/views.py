@@ -9,6 +9,7 @@ from django.http import Http404, HttpResponse
 from django.template.loader import get_template
 from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
 from lockdown.decorators import lockdown
+from django.contrib.auth.views import login_required
 import boto3
 import json
 import os
@@ -252,6 +253,18 @@ def hosts(request):
         'song':song,
         'scriptures':scriptures,
         'dev_flag':dev_flag,
+    })
+
+@login_required
+def responses(request):
+    invitations = Invitation.objects.all()
+    events = Event.objects.all()
+    guests = Guest.objects.all()
+    yes_rsvps = Event.objects.guests.all()
+    return render(request, 'responses.html',{
+        'invitations':invitations,
+        'events':events,
+        'guests':guests,
     })
 
 def bad_request_view(request, exception):

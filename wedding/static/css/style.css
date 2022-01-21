@@ -2,6 +2,13 @@
   font-family: 'Imperial Script', cursive;
 }
 
+.flip {
+  transform: rotate(90deg);
+  width: 100%;
+  z-index: 100;
+  display:flex;
+}
+
 .fadeColor{
   background: linear-gradient(to bottom, white, #ffffe2, #98ff98 );
   margin-bottom: 100%;
