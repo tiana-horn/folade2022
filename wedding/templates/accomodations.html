@@ -85,8 +85,17 @@
         </div>
       </nav>
     </div>
-      <section class="mw7 center ph4 tc forumfont ">
-        <h1 class="imperial f1 tc pt5 fw1 ph3 ph0-l">Travel & Accomodations</h1>
+    <div class="green flex grow center tc slider pb5 mb5 fl-100">
+      {% for scripture in scriptures %}
+          <div class="{% cycle 'slide1' 'slide2' 'slide3' %} "> 
+              <h5 class="f4 mb0 pb0 tc">  "{{ scripture.scripture }}" </h5> 
+              <h5  class="f6  tc">  - {{ scripture.source  }} </h5>
+          </div>
+          {% endfor %}
+        </div>
+
+      <section class="mw7 center  ph4 tc forumfont ">
+        <h1 class="imperial f1 tc pt5 mt5 fw1 ph3 ph0-l">Travel & Accomodations</h1>
         <h1 class="f3 fw1  tc mt0 lh-title">Travel Information</h1>
 
         {% for travel in travels %}
