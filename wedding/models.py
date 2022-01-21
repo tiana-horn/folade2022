@@ -155,3 +155,11 @@ class ComingSoon(models.Model):
     def clean(self):
         if ComingSoon.objects.exists() and not self.pk:
             raise ValidationError('There can only be one coming soon flag in the database')
+
+class WeddingPartyCarouselImage(models.Model):
+    image = models.ImageField(upload_to='img', null=True)
+    image_alt_text = models.CharField(max_length=111) 
+    caption = models.CharField(max_length=111) 
+
+    def __str__(self):
+        return self.image_alt_text

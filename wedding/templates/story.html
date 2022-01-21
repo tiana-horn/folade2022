@@ -91,8 +91,8 @@
 
 
     <article class="ph3 pb tc  ph5-ns pb5-ns">
+      <h1 class="f1 imperial">Our Story</h1>
 
-        <h1 class="f1 imperial">Our  Story</h1>
         {% for flag in dev_flag %}
         {% if flag.story_page %}
             <div class="f5 mt1 errorcontainer mv1 pt1 pb3 tc container">
@@ -138,45 +138,8 @@
 
 
 
-      
-      
-      
- 
-      
-      <script>
-      var myIndex = 0;
-      var myInd = 0;
-        
-      carousel();
-      carousel2();
-
-      function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";  
-        }
-        myIndex++;
-        if (myIndex > x.length) {myIndex = 1}    
-        x[myIndex-1].style.display = "block";  
-        setTimeout(carousel, 3000); // Change image every 4 seconds
-      }
-
-      function carousel2() {
-        var u;
-        var l = document.getElementsByClassName("mySlips");
-        for (u = 0; u < l.length; u++) {
-          l[u].style.display = "none";  
-        }
-        myInd++;
-        if (myInd > l.length) {myInd = 1}    
-        l[myInd-1].style.display = "block";  
-        setTimeout(carousel2, 3000); // Change image every 4 seconds
-      }
-      </script>
-
-        
-  </body>
+      <script src="{% static '/js/main.js' %}" type="text/javascript"></script>    
+    </body>
 
   {% endblock content %}
   {% block footer %}

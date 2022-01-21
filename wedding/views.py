@@ -2,7 +2,7 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon, WeddingPartyCarouselImage
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
@@ -88,11 +88,12 @@ def party(request):
     party = WeddingPartyMember.objects.all()
     song = Song.objects.get(page="party")
     dev_flag = ComingSoon.objects.all()
-
+    carouselpics = WeddingPartyCarouselImage.objects.all()
     return render(request, 'party.html', {
         'party':party,
         'song':song,
         'dev_flag':dev_flag,
+        'carouselpics':carouselpics,
     })
 
 @lockdown()
@@ -118,8 +119,6 @@ def rsvp(request,pk):
             diet = guest_form.cleaned_data['diet']
             food_allergies = guest_form.cleaned_data['food_allergies']
             guest_form.save()
-            django_message = "Thank you for your response!"
-            messages.add_message(request, messages.SUCCESS, django_message)
             return redirect('success')
     else:   
         guest_form = guest_form(instance=guest)

@@ -8,6 +8,9 @@
   {% endblock title %}
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.myPics {display:none;}
+</style>
 </head>
 {% block header %}
 
@@ -108,13 +111,62 @@
                 {% endfor %}
 
         {% endif %}
-        {% endfor %}        
+        {% endfor %}  
+
+
+
+        <div class="f5 measure pt5 mt5">
+          <div class="fl-100 ">
+            <div class="tc">
+              <button class="b ph3 mt3 mh3 white bg-green ba b--black bg-transparent grow  f3" onclick="plusDivs(-1)">&#10094;</button>
+              <button class="b ph3 mt3 mh3  white bg-green ba b--black bg-transparent grow  f3" onclick="plusDivs(1)">&#10095;</button>
+
+              
+            {% for pic in carouselpics %}
+                  <div class=" myPics">
+                    <div class=" f5 pv3 tc">
+                      {{ pic.caption }}
+                  </div>
+                    <img src="{{ pic.image.url }}"  alt="{{ pic.image_alt_text }}">
+                    
+                  </div>
+
+            {% endfor %}
+
+          </div>
+
+          </div>
+        </div>
+
+
+
       </main>
       {% if song.link %}
       <iframe class="middle pb1" width="0%" height="0" src="{{song.link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe> 
       {% else %}
       <div></div>
       {% endif %}
+
+
+      <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+        
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+        
+        function showDivs(n) {
+          var i;
+          var x = document.getElementsByClassName("myPics");
+          if (n > x.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = x.length}
+          for (i = 0; i < x.length; i++) {
+             x[i].style.display = "none";  
+          }
+          x[slideIndex-1].style.display = "block";  
+        }
+        </script>      
   </body>
   {% endblock content %}
   {% block footer %}
