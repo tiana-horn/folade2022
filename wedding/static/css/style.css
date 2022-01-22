@@ -38,7 +38,8 @@
   cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/ring.png), auto ;
 }
 
-a:hover {
+a:hover,
+button:hover {
   cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/pointer.png), auto ;
 }
 
@@ -153,4 +154,5 @@ animation-duration: 34s;
 100% {opacity: 0}
 }
 
+/*Picture Animation*/
 

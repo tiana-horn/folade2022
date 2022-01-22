@@ -2,14 +2,13 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon, WeddingPartyCarouselImage
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
 from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
 from lockdown.decorators import lockdown
-from django.contrib.auth.views import login_required
 import boto3
 import json
 import os
@@ -88,11 +87,12 @@ def party(request):
     party = WeddingPartyMember.objects.all()
     song = Song.objects.get(page="party")
     dev_flag = ComingSoon.objects.all()
-
+    carouselpics = WeddingPartyCarouselImage.objects.all()
     return render(request, 'party.html', {
         'party':party,
         'song':song,
         'dev_flag':dev_flag,
+        'carouselpics':carouselpics,
     })
 
 @lockdown()
@@ -115,10 +115,9 @@ def rsvp(request,pk):
     if request.method == 'POST':
         guest_form = guest_form(data=request.POST, instance=guest)
         if guest_form.is_valid():
+            diet = guest_form.cleaned_data['diet']
             food_allergies = guest_form.cleaned_data['food_allergies']
             guest_form.save()
-            django_message = "Thank you for your response!"
-            messages.add_message(request, messages.SUCCESS, django_message)
             return redirect('success')
     else:   
         guest_form = guest_form(instance=guest)
@@ -165,7 +164,6 @@ def guest_list(request):
             name = form.cleaned_data['name']
             try: 
                 searchresults = Guest.objects.filter(name=name)
-                print(searchresults)
                 if len(searchresults) < 1 :
                     notFound = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
             except:
@@ -255,12 +253,12 @@ def hosts(request):
         'dev_flag':dev_flag,
     })
 
-@login_required
+@lockdown()
 def responses(request):
     invitations = Invitation.objects.all()
     events = Event.objects.all()
     guests = Guest.objects.all()
-    yes_rsvps = Event.objects.guests.all()
+
     return render(request, 'responses.html',{
         'invitations':invitations,
         'events':events,
