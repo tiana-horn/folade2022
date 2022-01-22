@@ -259,7 +259,7 @@ def responses(request):
     invitations = Invitation.objects.all()
     events = Event.objects.all()
     guests = Guest.objects.all()
-    yes_rsvps = Event.objects.guests.all()
+
     return render(request, 'responses.html',{
         'invitations':invitations,
         'events':events,
