@@ -91,7 +91,7 @@
 
       <h1 class="f1 mw6 center mt5 imperial tc">Wedding Party</h1>
 
-      <main class="mw6 pt2   center">
+      <main class="mw7 pt2   center">
         {% for flag in dev_flag %}
         {% if flag.party_page  %}
             <div class="f5 mt1 errorcontainer mv1 pt1 pb3 tc container">
@@ -99,32 +99,63 @@
             </div>
         {% else %}
 
-            <main class=" pt2 ph4  flex flex-column flex-row-ns center">
-    
-              {% for person in party %}
+         <main class=" w-100 center tc flex-wrap flex even justify-between dib db">
 
-                    <article class="center  tc bg-white br3 ph3 pt3 ph4-ns mt3  ba b--black-10">
-                      <div class="tc">
-                        <img src="{{ person.image.url }}" class="br-100 h3 w3 dib" alt="{{ person.image_alt_text }}">
-                        <h1 class="f4">{{person.first_name}} {{person.last_name}}</h1>
+            <article class=" fl w-50-m w-50-l ">
+
+              {% for person in party %}
+                {% if person.bridal_side %}
+                  <div class="tc dib tc bg-white br3 ph5 pt3 ph4-ns mt3  ba b--black-10">
+                        <img src="{{ person.image.url }}" class="br-100 h4 w4 dib" alt="{{ person.image_alt_text }}">
+                        <h1 class="f3">{{person.first_name}} {{person.last_name}}</h1>
                         <hr class="mw3 bb bw1 b--black-10">
-                      </div>
-                      <p class="lh-copy measure center f5 ">
+                      <p class="lh-copy  center f4 ">
                           {{person.role}}
                       </p>
-                      <p class="lh-copy measure center f6 black-70">
+                      <p class="lh-copy  center f5 black-70">
                           {{person.description}}
                       </p>
-                    </article>
+                    <br>
+                  </div>
 
-                {% endfor %}
+                {% endif %}
+              
+
+              {% endfor %}
+            </article>
+
+
+            <article class=" fr w-50-m w-50-l">
+
+
+              {% for person in party %}
+
+                {% if person.groom_side %}
+                <div class="tc dib tc bg-white br3 ph5 pt3 ph4-ns mt3  ba b--black-10">
+                  <img src="{{ person.image.url }}" class="br-100 h4 w4 dib" alt="{{ person.image_alt_text }}">
+                    <h1 class="f3">{{person.first_name}} {{person.last_name}}</h1>
+                    <hr class="mw3 bb bw1 b--black-10">
+                  <p class="lh-copy  center f4 ">
+                      {{person.role}}
+                  </p>
+                  <p class="lh-copy  center f5 black-70">
+                      {{person.description}}
+                  </p>
+                <br>
+              </div>
+
+                {% endif %}
+              {% endfor %}
+          </article>
+
+
           {% endif %}
           {% endfor %}
       </main>
 
 
 
-        <div class="f5 measure pt5 mt5">
+        <div class="f5 pt5 mt5">
           <div class="fl-100 ">
             <div class="tc">
               <button class="b ph3 mt3 mh3 white bg-green ba b--black bg-transparent grow  f3" onclick="plusDivs(-1)">&#10094;</button>

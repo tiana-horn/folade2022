@@ -81,12 +81,12 @@ class StoryText(models.Model):
     image1_alt_text = models.CharField(max_length=111)
     p1_story_owner = models.CharField(null=True,max_length=222)
     p2_story_owner = models.CharField(null=True,max_length=222)
-    p1_part1 = models.TextField(max_length=7777)
-    p1_bold = models.CharField(max_length=222)
-    p1_part2 = models.TextField(max_length=7777)
-    p2_part1 = models.TextField(max_length=7777)
-    p2_bold = models.CharField(max_length=222)
-    p2_part2 = models.TextField(max_length=7777)
+    p1_part1 = models.TextField(max_length=77777)
+    p1_bold = models.CharField(max_length=777)
+    p1_part2 = models.TextField(max_length=77777)
+    p2_part1 = models.TextField(max_length=77777)
+    p2_bold = models.CharField(max_length=777)
+    p2_part2 = models.TextField(max_length=77777)
     image2 = models.ImageField(upload_to='img', null=True)
     image2_alt_text = models.CharField(max_length=111)
 
@@ -100,6 +100,8 @@ class WeddingPartyMember(models.Model):
     first_name = models.CharField(max_length=222)
     last_name = models.CharField(max_length=222)
     role = models.CharField(max_length=222)
+    bridal_side = models.BooleanField(default=False,null=True)
+    groom_side = models.BooleanField(default=False,null=True)
     description = models.TextField(max_length=777,blank=True)
 
     def __str__(self):
