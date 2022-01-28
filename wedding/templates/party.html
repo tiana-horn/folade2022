@@ -90,28 +90,36 @@
 
       <h1 class="f1 mw6 center mt5 imperial tc">Wedding Party</h1>
 
-      <main class="mw6 pt2 partycontainer  center">
+      <main class="mw6 pt2   center">
         {% for flag in dev_flag %}
         {% if flag.party_page  %}
             <div class="f5 mt1 errorcontainer mv1 pt1 pb3 tc container">
               <h5 class="f2 mt0 ph3 tc container">Coming Soon!</h5>
             </div>
         {% else %}
-              {% for person in party %}
-                  <article class="dt w-100 bb b--black-05 pb3 mt3" >
-                      <div class="dtc w3 w3-ns v-mid">
-                        <img src="{{ person.image.url }}" class="br-100 h3 w3 dib" alt="{{ person.image_alt_text }}">
-                      </div>
-                      <div class="dtc v-mid pl3">
-                        <h1 class="f3  fw6 lh-title black mv0">{{person.first_name}} {{person.last_name}}</h1>
-                        <h2 class="f4 fw4 mt0 mb0 black-60">{{person.role}}</h2>
-                        <h2 class="f5 fw4 mt0 mb0 black-60">{{person.description}}</h2>
-                      </div>
-                    </article>
-                {% endfor %}
 
-        {% endif %}
-        {% endfor %}  
+            <main class=" pt2 ph4  flex flex-column flex-row-ns center">
+    
+              {% for person in party %}
+
+                    <article class="center  tc bg-white br3 ph3 pt3 ph4-ns mt3  ba b--black-10">
+                      <div class="tc">
+                        <img src="{{ person.image.url }}" class="br-100 h3 w3 dib" alt="{{ person.image_alt_text }}">
+                        <h1 class="f4">{{person.first_name}} {{person.last_name}}</h1>
+                        <hr class="mw3 bb bw1 b--black-10">
+                      </div>
+                      <p class="lh-copy measure center f5 ">
+                          {{person.role}}
+                      </p>
+                      <p class="lh-copy measure center f6 black-70">
+                          {{person.description}}
+                      </p>
+                    </article>
+
+                {% endfor %}
+          {% endif %}
+          {% endfor %}
+      </main>
 
 
 

@@ -9,6 +9,7 @@ from django.http import Http404, HttpResponse
 from django.template.loader import get_template
 from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
 from lockdown.decorators import lockdown
+from collections import defaultdict
 import boto3
 import json
 import os
@@ -258,11 +259,19 @@ def responses(request):
     invitations = Invitation.objects.all()
     events = Event.objects.all()
     guests = Guest.objects.all()
+    yesses = defaultdict(int)
+    for invite in invitations:
+        if invite.attending==True:
+            yesses[invite.event.name]+= 1
+            print(str(dict(yesses)))
+
+
 
     return render(request, 'responses.html',{
         'invitations':invitations,
         'events':events,
         'guests':guests,
+        'yesses':yesses,
     })
 
 def bad_request_view(request, exception):

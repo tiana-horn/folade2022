@@ -24,11 +24,10 @@
         <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'story' %}" >Our Story</a> 
         <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'schedule' %}" >Schedule</a> 
         <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'accomodations' %}" > Accomodations</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'hosts' %}" >Hosts</a> 
-
-        <div class="f2 fw4  black dn dib-l pv2 ph2 imperial"  >Fola & Lade </div> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
         <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'gallery' %}" >Gallery</a> 
+
+        <div class="f1 fw4  black dn dib-l pv2 ph2 imperial"  >Fola & Lade </div> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
 
         <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'registry' %}" >Registry</a> 
         <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'faq' %}" >FAQ</a> 
@@ -97,7 +96,9 @@
               <p class="f6 lh-copy measure">
                 <h2 class="lh-title f3 b mt0">{{ event.name }}</h2>
                 <br>
-   
+                  {% if event.name in yesses %}
+                      {{ yesses }}
+                  {% endif %}
                 {% for invited in invitations %}
                     {% if invited.event == event %}
                       {% if invited.attending %} 
