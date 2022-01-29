@@ -21,7 +21,14 @@
 
 
   <body class= 'forumfont'>
-    
+    <div class="floating-menu flex-wrap flex justify-between fl-100">
+
+      
+      <h1 class="tc  f1 fl w-100 f2 pt1  imperial ma0"> Fola & Lade </h1>
+      <h5 class="tc  f5 fl w-100 pt0 forumfont ma0"> Friday, April 29 - Saturday, April 30 </h5>
+
+      
+  </div>
     <article class="cf w-100 ma0">
       <nav class="dt tc w-100 mw8 center"> 
         <div class="dtc w2 v-mid pa3">
@@ -44,44 +51,53 @@
           <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph2 ba" href="{% url 'findguest' %}" >RSVP</a> 
         </div>
       </nav> 
-      <div class="mobilemenu black">
-        <nav role="navigation">
-          <div id="menuToggle">
-            <!--
-            A fake / hidden checkbox is used as click reciever,
-            so you can use the :checked selector on it.
-            -->
-            <input type="checkbox" />
-            
-            <!--
-            Some spans to act as a hamburger.
-            
-            They are acting like a real hamburger,
-            not that McDonalds stuff.
-            -->
-            <span></span>
-            <span></span>
-            <span></span>
-            
-            <!--
-            Too bad the menu has to be inside of the button
-            but hey, it's pure CSS magic.
-            -->
-            <ul id="menu" class="mobilemenu">
-              <a class="f3 mh2  hover-green no-underline black  dib  " href="{% url 'story' %}" >Our Story</a> 
-              <a class="f3 mh2  hover-green no-underline black  dib  " href="{% url 'schedule' %}" >Schedule</a> 
-              <a class="f3 mh2  hover-green no-underline black   dib " href="{% url 'accomodations' %}" >Accomodations</a> 
-              <a class="f3 mh2  hover-green no-underline black  dib   " href="{% url 'faq' %}" >FAQ</a>
-              <a class="f3 mh2  hover-green no-underline black  dib  " href="{% url 'hosts' %}" >Hosts</a> 
-              <a class="f3 mh2  hover-green no-underline black  dib  " href="{% url 'party' %}" >Wedding Party</a> 
-              <a class="f3 mh2  hover-green no-underline black  dib  " href="{% url 'gallery' %}" >Gallery</a> 
-              <a class="f3 mh2  hover-green no-underline black  dib   " href="{% url 'registry' %}" >Registry</a>
-              <a class="f3 hover-green no-underline black  dib mt1 ba" href="{% url 'findguest' %}" >RSVP</a> 
-            </ul>
-          </div>
-        </nav>
-      </div>
-      <div class="green flex grow center tc slider pb6 mb6 fl-100">
+     <div class="mobilemenu  black">
+      <nav role="navigation">
+        <div id="menuToggle">
+          <!--
+          A fake / hidden checkbox is used as click reciever,
+          so you can use the :checked selector on it.
+          -->
+          <input type="checkbox" />
+          
+          <!--
+          Some spans to act as a hamburger.
+          
+          They are acting like a real hamburger,
+          not that McDonalds stuff.
+          -->
+          <span></span>
+          <span></span>
+          <span></span>
+          
+          <!--
+          Too bad the menu has to be inside of the button
+          but hey, it's pure CSS magic.
+          -->
+          <ul id="menu" class="mobilemenu ">
+            <a class="f2  hover-green no-underline black mv7 " href="{% url 'story' %}" >Our Story</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Accommodations</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'hosts' %}" >Hosts</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'party' %}" >Wedding Party</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'gallery' %}" >Gallery</a> 
+            <br>
+            <a class="f2  hover-green no-underline black   mb7  mv7 " href="{% url 'registry' %}" >Registry</a>
+            <br> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'faq' %}" >FAQ</a> 
+            <br>
+            <a class="f2  hover-green no-underline black  mv7  ba" href="{% url 'findguest' %}" >RSVP</a> 
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+      <div class="green flex grow center tc slider pb5 mb6 fl-100">
         {% for scripture in scriptures %}
             <div class="{% cycle 'slide1' 'slide2' 'slide3' %} "> 
                 <h5 class="f4 mb0 pb0 tc">  "{{ scripture.scripture }}" </h5> 
@@ -90,7 +106,7 @@
             {% endfor %}
       </div>
 
-      <article class="pt2 tc pb1 ph5-ns">
+      <article class="pt0 tc pb1 ph5-ns">
         <h1 class="f1 imperial">Gallery</h1>
       </article>
       {% for img in pictures %}

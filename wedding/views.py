@@ -238,6 +238,8 @@ def accomodations(request):
 def faq(request):
     faqs = FAQ.objects.all()
     song = Song.objects.get(page="faq")
+    banner = BannerImage.objects.all()
+
     scripture_list = Scripture.objects.all()
     scriptures = []
     for i in range(3,6):
@@ -247,6 +249,7 @@ def faq(request):
         'faqs':faqs,
         'song':song,
         'scriptures':scriptures,
+        'banner':banner,
     })
 
 @lockdown()

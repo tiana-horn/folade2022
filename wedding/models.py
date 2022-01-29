@@ -52,7 +52,7 @@ class Invitation(models.Model):
 
 class Accomodation(models.Model):
     title = models.CharField(max_length=222)
-    image = models.ImageField(upload_to='img', null=True, blank=True)
+    image = models.ImageField(upload_to='img', null=True)
     image_alt_text = models.CharField(max_length=111,blank=True)
     location = models.CharField(max_length=777,blank=True)
     phone = models.CharField(max_length=77,blank=True)
@@ -71,6 +71,8 @@ class Travel(models.Model):
     departure_time = models.TextField(max_length=1111,blank=True)
     venue_distance = models.CharField(max_length=222,blank=True)
     downtown_distance = models.CharField(max_length=222,blank=True)
+    image = models.ImageField(upload_to='img', null=True)
+    image_alt_text = models.CharField(max_length=111,blank=True)
 
 
     def __str__(self):
@@ -171,3 +173,4 @@ class BannerImage(models.Model):
     image_alt_text = models.CharField(max_length=111) 
     schedule_page = models.BooleanField(default=False)
     registry_page = models.BooleanField(default=False)
+    faq_page = models.BooleanField(default=False)

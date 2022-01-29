@@ -14,6 +14,14 @@
   
   {% block content %}
   <body class='forumfont '>
+    <div class="floating-menu flex-wrap flex justify-between fl-100">
+
+      
+      <h1 class="tc  f1 fl w-100 f2 pt1  imperial ma0"> Fola & Lade </h1>
+      <h5 class="tc  f5 fl w-100 pt0 forumfont ma0"> Friday, April 29 - Saturday, April 30 </h5>
+
+      
+  </div>
     {% for pic in banner %}
       {% if pic.registry_page %}
         <div class="cover bg-left bg-center-l" style="background-image: url({{ pic.image.url }})" aria-label="{{ pic.image_alt_text }}" alt="{{ pic.image_alt_text}}">
