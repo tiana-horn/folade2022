@@ -85,14 +85,8 @@
           </div>
         </nav>
   </div>
-  <div class="green flex grow center tc slider pb6 mb6 fl-100">
-    {% for scripture in scriptures %}
-        <div class="{% cycle 'slide1' 'slide2' 'slide3' %} "> 
-            <h5 class="f4 mb0 pb0 tc">  "{{ scripture.scripture }}" </h5> 
-            <h5  class="f6  tc">  - {{ scripture.source  }} </h5>
-        </div>
-        {% endfor %}
-  </div>
+  <img class=" center topimg flex fl-w-100 pt0" src="https://folade.s3.us-east-2.amazonaws.com/static/img/euca.png">
+
   {% for flag in dev_flag %}
   {% if flag.host_page  %}
   <h1 class="f1 mw6 center pt2 mt3 imperial tc">Hosts & Hostesses</h1>

@@ -165,3 +165,9 @@ class WeddingPartyCarouselImage(models.Model):
 
     def __str__(self):
         return self.image_alt_text
+
+class BannerImage(models.Model):
+    image = models.ImageField(upload_to='img', null=True)
+    image_alt_text = models.CharField(max_length=111) 
+    schedule_page = models.BooleanField(default=False)
+    registry_page = models.BooleanField(default=False)

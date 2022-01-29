@@ -2,7 +2,7 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon, WeddingPartyCarouselImage
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon, WeddingPartyCarouselImage, BannerImage
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
@@ -78,9 +78,16 @@ def interest(request):
 def gallery(request):
     song = Song.objects.get(page="gallery")
     pictures = GalleryImage.objects.all()
+    scripture_list = Scripture.objects.all()
+    scriptures = []
+    for i in range(3):
+        scriptures.append(scripture_list[i])
+
     return render(request, 'gallery.html', {
         'pictures':pictures,
         'song':song,
+        'scriptures':scriptures,
+
     })
 
 @lockdown()
@@ -100,10 +107,12 @@ def party(request):
 def registry(request):
     registry_links = RegistryLink.objects.all()
     dev_flag = ComingSoon.objects.all()
+    banner = BannerImage.objects.all()
 
     return render(request, 'registry.html', {
         'registry_links':registry_links,
         'dev_flag':dev_flag,
+        'banner':banner,
     })
 
 @lockdown()
@@ -186,11 +195,15 @@ def success(request):
 def schedule(request):
     events = Event.objects.all()
     song = Song.objects.get(page="schedule")
+    banner = BannerImage.objects.all()
 
     return render(request, 'schedule.html', {
         'events':events,
         'song':song,
+        'banner':banner,
     })
+
+
 
 @lockdown()
 def story(request):

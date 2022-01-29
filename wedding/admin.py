@@ -1,5 +1,5 @@
 from django.contrib import admin
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Travel, FAQ, Host, Song, Scripture, ComingSoon, WeddingPartyCarouselImage
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Travel, FAQ, Host, Song, Scripture, ComingSoon, WeddingPartyCarouselImage,BannerImage
 
 # Register your models here.
 admin.site.register(User)
@@ -18,3 +18,4 @@ admin.site.register(Song)
 admin.site.register(Scripture)
 admin.site.register(ComingSoon)
 admin.site.register(WeddingPartyCarouselImage)
+admin.site.register(BannerImage)
