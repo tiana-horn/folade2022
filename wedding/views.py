@@ -173,7 +173,7 @@ def guest_list(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             try: 
-                searchresults = Guest.objects.filter(name=name)
+                searchresults = Guest.objects.filter(name__iexact=name)
                 if len(searchresults) < 1 :
                     notFound = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
             except:
