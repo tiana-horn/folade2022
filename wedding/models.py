@@ -23,6 +23,9 @@ class Song(models.Model):
 class Guest(models.Model):
     name = models.CharField(max_length=111)
     email = models.EmailField(max_length=111,blank=True)
+    aso_ebi = models.BooleanField(default=False,blank=True)
+    aso_ebi_paid = models.BooleanField(default=False,blank=True)
+    hotel_accomodations = models.BooleanField(default=False,blank=True)
     diet = models.CharField(
         max_length=10, null=True, blank=True, choices=DIET_CHOICES,default='none')
     food_allergies= models.CharField(max_length=777,blank=True)
@@ -46,9 +49,14 @@ class Invitation(models.Model):
     guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     attending = models.BooleanField()
-
     def __str__(self):
         return f'{self.guest} - {self.event}'
+
+class Plus_One(models.Model):
+    name = models.CharField(max_length=111)
+    accompanying = models.ForeignKey(Invitation, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
 
 class Accomodation(models.Model):
     title = models.CharField(max_length=222)
@@ -174,3 +182,7 @@ class BannerImage(models.Model):
     schedule_page = models.BooleanField(default=False)
     registry_page = models.BooleanField(default=False)
     faq_page = models.BooleanField(default=False)
+    
+    def clean(self):
+        if BannerImage.objects.get(faq_page=True).count() > 1:
+            raise ValidationError('Can only have one banner per page')

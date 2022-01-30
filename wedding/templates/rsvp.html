@@ -122,6 +122,7 @@
                           <button class="pa2 mv1  bg-silver  bn" attending="False" type="submit">
                           I will not attend
                           </button>
+      
 
                      {% else%}
                           <button class="pa3 mv1   bg-silver bn" attending="True" type="submit">
@@ -135,16 +136,33 @@
                
                   </form>
 
+                  <h5 class="mv0 pv0 dib">                     
+                    <form class="mt2  " role="form" action="{% url 'plus_one' pk=invite.pk %}" method="post">
+                      <label for="Name" class="f5 b db mb2">Are you bringing a plus one or extra guests?</label>
+                      {% csrf_token %}
+                      {{ plus_one_form.as_p }}
+                    <input type="submit" class="b white bg-green tc ba b--black bg-transparent grow f5" value="Add Plus One" />
+                    </form>
+                  </h5>
+
+                  {% for person in extra_guests %}
+                    {% if person.accompanying == invite %}
+                      <h4>Additional Guest: {{ person.name }}</h4>
+                    {% endif %}
+                  {% endfor %}
+
                   <div class="pt2 pt3 bb b--black-40">
                   </div>
 
                 {% endfor %}
-                <h5 class="f3 mt2 pt1 ph3 tc ">
-                  One last thing! Do you have any dietary restrictions? <br>
-                </h5> 
                 <form class="mt2  " role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
                   {% csrf_token %}
-                  {{ guest_form.as_p }}
+                 <h2>Dietary Restrictions:{{ guest_form.diet }}</h2>
+                 <h2>Food Allergies: {{ guest_form.food_allergies }}</h2>
+                 <h2>Are you interested in Aso Ebi?:</h2><h2>{{ guest_form.aso_ebi }}</h2>
+                 <h2>Have you already paid for your Aso Ebi?</h2><h2>{{ guest_form.aso_ebi_paid }}</h2>
+                 <h2>Do you plan on staying in the hotel block?</h2><h2>{{ guest_form.hotel_accomodations }}</h2>
+
                   <input type="submit" class="b ph3 mt3 white bg-green ba b--black bg-transparent grow  f3" value="Submit" />
                 </form>
         

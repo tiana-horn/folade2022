@@ -2,12 +2,12 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon, WeddingPartyCarouselImage, BannerImage
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon, WeddingPartyCarouselImage, BannerImage,Plus_One
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
-from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
+from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm, PlusOneForm
 from lockdown.decorators import lockdown
 from collections import defaultdict
 import boto3
@@ -116,12 +116,37 @@ def registry(request):
     })
 
 @lockdown()
+def plus_one(request, pk):
+    invite = Invitation.objects.get(pk=pk)
+    guest = invite.guest
+
+    if request.method == "POST":
+        plus_one_form = PlusOneForm(request.POST)
+        if plus_one_form.is_valid():
+            plus_one = plus_one_form.save(commit=False)
+            plus_one.name = plus_one_form.cleaned_data['name']
+            plus_one.accompanying = invite
+            plus_one.save()
+            return redirect('rsvp', pk=guest.pk)
+
+        else: 
+            plus_one_form = plus_one_form(instance=invite)
+            extra_guests = Plus_One.objects.all()
+    return render(request, 'rsvp.html', {
+            'invite':invite,
+            'plus_one_form':PlusOneForm(),
+            'extra_guest':extra_guests,
+    })
+
+@lockdown()
 def rsvp(request,pk):
     guest = Guest.objects.get(pk=pk)
     invites = Invitation.objects.filter(guest=guest)
     invites = invites.order_by('event')
+    extra_guests = Plus_One.objects.all()
     guest_form = GuestForm
-
+    plus_one_form = PlusOneForm
+    print(extra_guests)
     if request.method == 'POST':
         guest_form = guest_form(data=request.POST, instance=guest)
         if guest_form.is_valid():
@@ -136,6 +161,8 @@ def rsvp(request,pk):
         'guest_form': guest_form,
         'guest':guest,
         'invites':invites,
+        'extra_guests':extra_guests,
+        'plus_one_form':plus_one_form,
     })
   
 
@@ -159,6 +186,8 @@ def change_rsvp(request, pk):
             'guest':guest,
             'invite':invite,
     })
+
+
 
 @lockdown()
 def guest_list(request):
