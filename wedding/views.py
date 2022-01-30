@@ -312,6 +312,7 @@ def responses(request):
 
 
 
+
     return render(request, 'responses.html',{
         'invitations':invitations,
         'events':events,
