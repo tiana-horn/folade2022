@@ -124,7 +124,7 @@ body
 
 #menuToggle
 {
-  display: inline-block;
+  display: block;
   position: absolute;
   top: 30px;
   padding-left:25px;
@@ -139,8 +139,6 @@ body
   text-decoration: none;
   color: maroon;
   transition: color 0.3s ease;
-  display: inline-block;
-
 }
 
 #menuToggle a:hover
@@ -232,7 +230,6 @@ body
  */
 #menu
 {
-  display: inline-block;
   position: absolute;
   width: 100%;
   margin: -110px 0 0 -220px;

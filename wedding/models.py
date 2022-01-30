@@ -182,7 +182,3 @@ class BannerImage(models.Model):
     schedule_page = models.BooleanField(default=False)
     registry_page = models.BooleanField(default=False)
     faq_page = models.BooleanField(default=False)
-    
-    def clean(self):
-        if BannerImage.objects.get(faq_page=True).count() > 1:
-            raise ValidationError('Can only have one banner per page')
