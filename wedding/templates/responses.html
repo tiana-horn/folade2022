@@ -67,11 +67,11 @@
           but hey, it's pure CSS magic.
           -->
           <ul id="menu" class="mobilemenu">
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'story' %}" >Our Story</a> 
+            <a class="f2  hover-green no-underline black mv7 " href="{% url 'story' %}" >Our Story</a> 
             <br>
             <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Travel & Accommodations </a> 
+            <a class="f2  hover-green no-underline black  mv7 " href="{% url 'accomodations' %}" >Travel & <br>Accommodations </a> 
             <br>
             <a class="f2  hover-green no-underline black   mv7 " href="{% url 'party' %}" >Wedding Party</a> 
             <br>
@@ -101,17 +101,27 @@
             {% for event in events %}
             <div class="fl w-100 w-50-m w-33-l pa3-m pa4-l">
               <p class="f6 lh-copy measure">
-                <h2 class="lh-title f3 b mt0">{{ event.name }}</h2>
-                <br>
-                  {% if event.name in yesses %}
-                      {{ yesses }}
-                  {% endif %}
+                <h2 class="lh-title f3 b mv0">{{ event.name }}</h2>
+               
+                  {% for key,value in yesses_dict.items %}
+                      {% if key == event.name %}
+                      <h2 class=" f4 b mv0">Guests & Plus Ones attending: {{ value }}</h2>
+                      {% endif %}
+                  {% endfor %}
+                  <br>
                 {% for invited in invitations %}
                     {% if invited.event == event %}
                       {% if invited.attending %} 
                         {{ invited.guest }}<br>
                       {% endif %}
                     {% endif %}
+                {% endfor %}
+                <br>
+                <h2 class="lh-title f5 b mt0"> {{ event.name }} Plus Ones </h2>
+                {% for person in plus_ones %}
+                  {% if person.accompanying.event == event %}
+                    {{ person.name }} - coming with {{ person.accompanying.guest }}<br>
+                  {% endif %}
                 {% endfor %}
                 <br>
                 <div class="bt bb b--black-10"></div>
@@ -148,8 +158,7 @@
                     {% if invited.event == event %}
                       {% if invited.attending %} 
                       {% if invited.guest.food_allergies|length > 2 %}
-                              {{ invited.guest }}<br>
-                              {{ invited.guest.food_allergies }}<br>
+                              {{ invited.guest }} - {{ invited.guest.food_allergies }}<br>
 
                       {% endif %}
                       {% endif %}
@@ -158,12 +167,78 @@
                 <br>
                 <div class="bt bb b--black-10"></div>
 
+  
+   
+                <br>
                   <br>
 
               <p>
             </div>
             {% endfor %}
+
+            <br>
+            <br>
           </section>
+
+
+          <h2 class="lh-title tc schedcontainer f4 b mt0"> Guests interested in Aso Ebi 
+          {% for key,value in aso.items %}
+              : {{ value }}</h2>
+          {% endfor %}
+          <br>
+          {% for guest in guests %}
+              {% if guest.aso_ebi %}
+                    {{ guest.name }} <br>
+              {% endif %}
+          {% endfor %}
+          <div class="bt bb b--black-10"></div>
+
+          <br>
+
+          <h2 class="lh-title tc schedcontainer f4 b mt0"> Guests who have paid for Aso Ebi 
+          {% for key,value in paid.items %}
+            : {{ value }}</h2>
+          {% endfor %}
+          <br>
+          {% for guest in guests %}
+              {% if guest.aso_ebi_paid %}
+                    {{ guest.name }} <br>
+              {% endif %}
+          {% endfor %}
+          <div class="bt bb b--black-10"></div>
+
+          <br>
+
+          <h2 class="lh-title tc schedcontainer f4 b mt0"> Guests interested in Aso Ebi who haven't paid 
+          {% for key,value in not_paid.items %}
+              : {{ value }}</h2>
+          {% endfor %}
+          <br>
+          {% for guest in guests %}
+              {% if guest.aso_ebi%}
+                {% if guest.aso_ebi_paid == False %}
+                    {{ guest.name }} <br>
+                {% endif %}
+              {% endif %}
+          {% endfor %}
+          <div class="bt bb b--black-10"></div>
+
+          <br>
+
+          <h2 class="lh-title tc schedcontainer f4 b mt0"> Guests planning on staying in hotel block 
+              {% for key,value in hotel.items %}
+                : {{ value }}</h2>
+              {% endfor %}
+                  <br>
+          {% for guest in guests %}
+              {% if guest.hotel_accomodations %}
+                    {{ guest.name }} <br>
+              {% endif %}
+          {% endfor %}
+          <div class="bt bb b--black-10"></div>
+
+          <br>
+
       </article>
       
   {% endblock content %}

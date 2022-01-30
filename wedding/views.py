@@ -146,7 +146,6 @@ def rsvp(request,pk):
     extra_guests = Plus_One.objects.all()
     guest_form = GuestForm
     plus_one_form = PlusOneForm
-    print(extra_guests)
     if request.method == 'POST':
         guest_form = guest_form(data=request.POST, instance=guest)
         if guest_form.is_valid():
@@ -303,22 +302,57 @@ def hosts(request):
 def responses(request):
     invitations = Invitation.objects.all()
     events = Event.objects.all()
+    plus_ones = Plus_One.objects.all()
     guests = Guest.objects.all()
     yesses = defaultdict(int)
+    hotel = dict(block=0)
+    aso = dict(interested=0)
+    paid = dict(paid=0)
+    not_paid = dict(not_paid=0)
+
+    for guest in guests:
+        if guest.hotel_accomodations == True:
+            hotel['block']+=1
+        if guest.aso_ebi == True:
+            aso['interested']+=1
+            if guest.aso_ebi_paid == False:
+                not_paid['not_paid']+=1
+        if guest.aso_ebi_paid == True:
+            paid['paid']+=1
+    
     for invite in invitations:
         if invite.attending==True:
             yesses[invite.event.name]+= 1
-            print(str(dict(yesses)))
+    yesses_dict = dict(yesses)
 
-
-
+    for person in plus_ones:
+        for x in list(yesses_dict):
+            if person.accompanying.event.name == x:
+                yesses[x]+= 1
+    yesses_dict = dict(yesses)
 
     return render(request, 'responses.html',{
         'invitations':invitations,
         'events':events,
         'guests':guests,
         'yesses':yesses,
+        'yesses_dict':yesses_dict,
+        'plus_ones':plus_ones,
+        'hotel':hotel,
+        'aso':aso,
+        'paid':paid,
+        'not_paid':not_paid,
     })
+
+@lockdown()
+def delete_guest(request, pk):
+    person = Plus_One.objects.get(pk=pk)
+    invitation = person.accompanying
+
+    if request.method == "POST":
+          person.delete()
+          
+    return redirect('rsvp', pk=invitation.guest.pk)
 
 def bad_request_view(request, exception):
     return render(request, '400.html', status=400)

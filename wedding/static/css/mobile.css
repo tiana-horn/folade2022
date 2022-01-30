@@ -122,6 +122,7 @@ body
   margin-top:0%;
 }
 
+
 #menuToggle
 {
   display: block;
@@ -236,7 +237,7 @@ body
   padding-left: 430%;
   padding-right: 470%;
   padding-bottom: 50%;
-
+  white-space:nowrap;
   padding-top: 125px;
   text-align: left;
   background:mintcream;

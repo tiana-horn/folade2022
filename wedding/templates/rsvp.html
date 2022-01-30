@@ -68,7 +68,7 @@
             <br>
             <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Travel & Accommodations</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Travel & <br>Accommodations</a> 
             <br>
             <a class="f2  hover-green no-underline black   mv7 " href="{% url 'party' %}" >Wedding Party</a> 
             <br>
@@ -86,7 +86,7 @@
     <img class=" center topimg flex fl-w-100 pt0" src="https://folade.s3.us-east-2.amazonaws.com/static/img/PngItem_789758.png">
 
       <h1 class="f1 mw6 center mt5 imperial tc">rsvp</h1>
-            <div class="f5 mt1 ph4 pt1  tc ">
+            <div class="f5 mt1  pt1  tc ">
 
               <h5 class="f3 mt0 ph3 tc ">Hi {{ guest.name }}, please rsvp for {{ invites.count }} event{% if invites.count > 1 %}s {% endif %} </h5>
 
@@ -136,7 +136,7 @@
 
                   <h5 class="mv0 pv0 dib">                     
                     <form class="mt2  " role="form" action="{% url 'plus_one' pk=invite.pk %}" method="post">
-                      <label for="Name" class="f5 b db mb2">Are you bringing a plus one or extra guests?</label>
+                      <label for="Name" class="f4 b db mb2">Are you bringing a plus one or extra guests?</label>
                       {% csrf_token %}
                       {{ plus_one_form.as_p }}
                     <input type="submit" class="b white bg-green tc ba b--black bg-transparent grow f5" value="Add Plus One" />
@@ -145,8 +145,12 @@
 
                   {% for person in extra_guests %}
                     {% if person.accompanying == invite %}
-                      <h4>Additional Guest: {{ person.name }}</h4>
-                    {% endif %}
+                      <h4 class="f4">Additional Guest: {{ person.name }}
+                      <form method="POST" action="{% url 'delete_guest' pk=person.pk%}">
+                        {% csrf_token %}
+                      <button class="f6 link  bg-red" type="submit"><span>Remove Extra Guest</span></button>
+                      </form></h4>
+                      {% endif %}
                   {% endfor %}
 
                   <div class="pt2 pt3 bb b--black-40">
