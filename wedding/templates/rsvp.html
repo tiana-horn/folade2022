@@ -10,9 +10,16 @@
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
   {% block content %}
   <body class='forumfont ' >
+    <div class="floating-menu flex-wrap flex justify-between fl-100">
 
+      
+      <h1 class="tc  f1 fl w-100 f2 pt1  imperial ma0"> Fola & Lade </h1>
+      <h5 class="tc  f5 fl w-100 pt0 forumfont ma0"> Friday, April 29 - Saturday, April 30 </h5>
 
-    <nav class="dt w-100 mw8 center"> 
+      
+  </div>
+
+    <nav class="dt tc w-100 mw8 center"> 
       <div class="dtc w2 v-mid pa3">
       </div>
       
@@ -20,15 +27,16 @@
       <div class="dtc v-mid regmenu tr pt3 ph0">
         <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'story' %}" >Our Story</a> 
         <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'schedule' %}" >Schedule</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'accomodations' %}" > Accomodations</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'hosts' %}" >Hosts</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'registry' %}" >Registry</a> 
 
-        <div class="f2 fw4  black dn dib-l pv2 ph2 imperial"  >Fola & Lade </div> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
         <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'gallery' %}" >Gallery</a> 
 
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'registry' %}" >Registry</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'faq' %}" >FAQ</a> 
+        <div class="f1 fw3  black dn dib-l pl7 pv2 ph1 imperial"  >Fola & Lade </div> 
+
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'accomodations' %}" > Travel & Accommodations</a>
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 p12" href="{% url 'faq' %}" >FAQ</a> 
+ 
         <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph2 ba" href="{% url 'findguest' %}" >RSVP</a> 
       </div>
     </nav> 
@@ -60,9 +68,7 @@
             <br>
             <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Accomodations</a> 
-            <br>
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'hosts' %}" >Hosts</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Travel & <br>Accommodations</a> 
             <br>
             <a class="f2  hover-green no-underline black   mv7 " href="{% url 'party' %}" >Wedding Party</a> 
             <br>
@@ -80,7 +86,7 @@
     <img class=" center topimg flex fl-w-100 pt0" src="https://folade.s3.us-east-2.amazonaws.com/static/img/PngItem_789758.png">
 
       <h1 class="f1 mw6 center mt5 imperial tc">rsvp</h1>
-            <div class="f5 mt1 ph4 pt1  tc ">
+            <div class="f5 mt1  pt1  tc ">
 
               <h5 class="f3 mt0 ph3 tc ">Hi {{ guest.name }}, please rsvp for {{ invites.count }} event{% if invites.count > 1 %}s {% endif %} </h5>
 
@@ -114,6 +120,7 @@
                           <button class="pa2 mv1  bg-silver  bn" attending="False" type="submit">
                           I will not attend
                           </button>
+      
 
                      {% else%}
                           <button class="pa3 mv1   bg-silver bn" attending="True" type="submit">
@@ -127,16 +134,37 @@
                
                   </form>
 
+                  <h5 class="mv0 pv0 dib">                     
+                    <form class="mt2  " role="form" action="{% url 'plus_one' pk=invite.pk %}" method="post">
+                      <label for="Name" class="f4 b db mb2">Are you bringing a plus one or extra guests?</label>
+                      {% csrf_token %}
+                      {{ plus_one_form.as_p }}
+                    <input type="submit" class="b white bg-green tc ba b--black bg-transparent grow f5" value="Add Plus One" />
+                    </form>
+                  </h5>
+
+                  {% for person in extra_guests %}
+                    {% if person.accompanying == invite %}
+                      <h4 class="f4">Additional Guest: {{ person.name }}
+                      <form method="POST" action="{% url 'delete_guest' pk=person.pk%}">
+                        {% csrf_token %}
+                      <button class="f6 link  bg-red" type="submit"><span>Remove Extra Guest</span></button>
+                      </form></h4>
+                      {% endif %}
+                  {% endfor %}
+
                   <div class="pt2 pt3 bb b--black-40">
                   </div>
 
                 {% endfor %}
-                <h5 class="f3 mt2 pt1 ph3 tc ">
-                  One last thing! Do you have any dietary restrictions? <br>
-                </h5> 
                 <form class="mt2  " role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
                   {% csrf_token %}
-                  {{ guest_form.as_p }}
+                 <h2>Dietary Restrictions:{{ guest_form.diet }}</h2>
+                 <h2>Food Allergies: {{ guest_form.food_allergies }}</h2>
+                 <h2>Are you interested in Aso Ebi?:</h2><h2>{{ guest_form.aso_ebi }}</h2>
+                 <h2>Have you already paid for your Aso Ebi?</h2><h2>{{ guest_form.aso_ebi_paid }}</h2>
+                 <h2>Do you plan on staying in the hotel block?</h2><h2>{{ guest_form.hotel_accomodations }}</h2>
+
                   <input type="submit" class="b ph3 mt3 white bg-green ba b--black bg-transparent grow  f3" value="Submit" />
                 </form>
         

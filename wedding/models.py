@@ -23,6 +23,9 @@ class Song(models.Model):
 class Guest(models.Model):
     name = models.CharField(max_length=111)
     email = models.EmailField(max_length=111,blank=True)
+    aso_ebi = models.BooleanField(default=False,blank=True)
+    aso_ebi_paid = models.BooleanField(default=False,blank=True)
+    hotel_accomodations = models.BooleanField(default=False,blank=True)
     diet = models.CharField(
         max_length=10, null=True, blank=True, choices=DIET_CHOICES,default='none')
     food_allergies= models.CharField(max_length=777,blank=True)
@@ -46,13 +49,18 @@ class Invitation(models.Model):
     guest = models.ForeignKey(Guest, on_delete=models.CASCADE)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     attending = models.BooleanField()
-
     def __str__(self):
         return f'{self.guest} - {self.event}'
 
+class Plus_One(models.Model):
+    name = models.CharField(max_length=111)
+    accompanying = models.ForeignKey(Invitation, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
+
 class Accomodation(models.Model):
     title = models.CharField(max_length=222)
-    image = models.ImageField(upload_to='img', null=True, blank=True)
+    image = models.ImageField(upload_to='img', null=True)
     image_alt_text = models.CharField(max_length=111,blank=True)
     location = models.CharField(max_length=777,blank=True)
     phone = models.CharField(max_length=77,blank=True)
@@ -71,6 +79,8 @@ class Travel(models.Model):
     departure_time = models.TextField(max_length=1111,blank=True)
     venue_distance = models.CharField(max_length=222,blank=True)
     downtown_distance = models.CharField(max_length=222,blank=True)
+    image = models.ImageField(upload_to='img', null=True)
+    image_alt_text = models.CharField(max_length=111,blank=True)
 
 
     def __str__(self):
@@ -81,12 +91,12 @@ class StoryText(models.Model):
     image1_alt_text = models.CharField(max_length=111)
     p1_story_owner = models.CharField(null=True,max_length=222)
     p2_story_owner = models.CharField(null=True,max_length=222)
-    p1_part1 = models.TextField(max_length=1111)
-    p1_bold = models.CharField(max_length=222)
-    p1_part2 = models.TextField(max_length=1111)
-    p2_part1 = models.TextField(max_length=1111)
-    p2_bold = models.CharField(max_length=222)
-    p2_part2 = models.TextField(max_length=1111)
+    p1_part1 = models.TextField(max_length=77777)
+    p1_bold = models.CharField(max_length=777)
+    p1_part2 = models.TextField(max_length=77777)
+    p2_part1 = models.TextField(max_length=77777)
+    p2_bold = models.CharField(max_length=777)
+    p2_part2 = models.TextField(max_length=77777)
     image2 = models.ImageField(upload_to='img', null=True)
     image2_alt_text = models.CharField(max_length=111)
 
@@ -100,6 +110,8 @@ class WeddingPartyMember(models.Model):
     first_name = models.CharField(max_length=222)
     last_name = models.CharField(max_length=222)
     role = models.CharField(max_length=222)
+    bridal_side = models.BooleanField(default=False,null=True)
+    groom_side = models.BooleanField(default=False,null=True)
     description = models.TextField(max_length=777,blank=True)
 
     def __str__(self):
@@ -163,3 +175,10 @@ class WeddingPartyCarouselImage(models.Model):
 
     def __str__(self):
         return self.image_alt_text
+
+class BannerImage(models.Model):
+    image = models.ImageField(upload_to='img', null=True)
+    image_alt_text = models.CharField(max_length=111) 
+    schedule_page = models.BooleanField(default=False)
+    registry_page = models.BooleanField(default=False)
+    faq_page = models.BooleanField(default=False)

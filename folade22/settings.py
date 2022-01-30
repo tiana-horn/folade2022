@@ -53,7 +53,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 #Website password protection
-LOCKDOWN_PASSWORDS = ('test123',)
+LOCKDOWN_PASSWORDS = ('test123','ladeatifola',)
 
 
 # SECURITY WARNING: don't run with debug set to True in production!
@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     #third party apps
     'lockdown',
     'storages',
+    'django_extensions'
 
 ]
 

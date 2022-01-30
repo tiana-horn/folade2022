@@ -2,6 +2,22 @@
   font-family: 'Imperial Script', cursive;
 }
 
+.floating-menu {
+  background: mintcream;
+  padding: 5px;
+  width: 100%;
+  z-index: 100;
+}
+.floating-menu a, 
+.floating-menu h3,
+.floating-menu h1,
+.floating-menu h5 {
+  display: flex;
+  justify-content: center;
+  opacity:100%;
+}
+
+
 .topimg{
   padding-top: 0px;;
   margin-bottom:0%;
@@ -106,15 +122,15 @@ body
   margin-top:0%;
 }
 
+
 #menuToggle
 {
   display: block;
-  position: relative;
-  top: 50px;
-  left: 50px;
-  
-  z-index: 1;
-  
+  position: absolute;
+  top: 30px;
+  padding-left:25px;
+  z-index: 101;
+
   -webkit-user-select: none;
   user-select: none;
 }
@@ -123,21 +139,20 @@ body
 {
   text-decoration: none;
   color: maroon;
-  
   transition: color 0.3s ease;
 }
 
 #menuToggle a:hover
 {
-  color: maroon;
+  color: black;
 }
 
 
 #menuToggle input
 {
   display: block;
-  width: 40px;
-  height: 32px;
+  width: 80px;
+  height: 60px;
   position: absolute;
   top: -7px;
   left: -5px;
@@ -160,7 +175,6 @@ body
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  
   background:black;
   border-radius: 3px;
   
@@ -218,18 +232,21 @@ body
 #menu
 {
   position: absolute;
-  width: 90%;
-  margin: -110px 0 0 -80px;
-  padding: 50px;
+  width: 100%;
+  margin: -110px 0 0 -220px;
+  padding-left: 430%;
+  padding-right: 470%;
+  padding-bottom: 50%;
+  white-space:nowrap;
   padding-top: 125px;
   text-align: left;
-  background:#98ff98;
+  background:mintcream;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
   
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
+  transform-origin: 100% 0%;
+  transform: translate(-200%, 0);
   
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
@@ -289,19 +306,21 @@ body
   animation:fade3 infinite;
   animation-duration: 33s;
 
--webkit-animation:fade3 34s infinite;
+-webkit-animation:fade3 33s infinite;
 }
 
 @keyframes fade
 {
 0%   {opacity:1}
-5% {opacity:0}
-15%   {opacity:0}
+5% {opacity:1}
+10%   {opacity:0}
+20% {opacity:0}
 33%   {opacity:0}
 45%   {opacity: 0}
 66%   {opacity: 0}
 75%   {opacity: 0}
 90%   {opacity: 0}
+95%   {opacity: 1}
 100% {opacity: 1}
 }
 @keyframes fade2
@@ -310,7 +329,8 @@ body
 5% {opacity:0}
 15%   {opacity:0}
 33%   {opacity:1}
-45%   {opacity: 0}
+40%   {opacity: 0}
+50% {opacity:0}
 66%   {opacity: 0}
 75%   {opacity: 0}
 90%   {opacity: 0}
@@ -324,7 +344,8 @@ body
 33%   {opacity:0}
 45%   {opacity: 0}
 66%   {opacity:1}
-75%   {opacity: 0}
+70%   {opacity: 0}
+80% {opacity:0}
 90%   {opacity: 0}
 100% {opacity: 0}
 }

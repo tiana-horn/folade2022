@@ -20,7 +20,15 @@
   {% block content %}
  
   <body class="forumfont ">
-    <nav class="dt w-100 mw8 center"> 
+    <div class="floating-menu flex-wrap flex justify-between fl-100">
+
+      
+      <h1 class="tc  f1 fl w-100 f2 pt1  imperial ma0"> Fola & Lade </h1>
+      <h5 class="tc  f5 fl w-100 pt0 forumfont ma0"> Friday, April 29 - Saturday, April 30 </h5>
+
+      
+  </div>
+    <nav class="dt tc w-100 mw8 center"> 
       <div class="dtc w2 v-mid pa3">
       </div>
       
@@ -28,15 +36,16 @@
       <div class="dtc v-mid regmenu tr pt3 ph0">
         <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'story' %}" >Our Story</a> 
         <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'schedule' %}" >Schedule</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'accomodations' %}" > Accomodations</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'hosts' %}" >Hosts</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'registry' %}" >Registry</a> 
 
-        <div class="f2 fw4  black dn dib-l pv2 ph2 imperial"  >Fola & Lade </div> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
         <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'gallery' %}" >Gallery</a> 
 
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'registry' %}" >Registry</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'faq' %}" >FAQ</a> 
+        <div class="f1 fw3  black dn dib-l pl7 pv2 ph1 imperial"  >Fola & Lade </div> 
+
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'accomodations' %}" > Travel & Accommodations</a>
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 p12" href="{% url 'faq' %}" >FAQ</a> 
+ 
         <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph2 ba" href="{% url 'findguest' %}" >RSVP</a> 
       </div>
     </nav> 
@@ -68,9 +77,7 @@
             <br>
             <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Accomodations</a> 
-            <br>
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'hosts' %}" >Hosts</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Travel & <br>Accommodations</a> 
             <br>
             <a class="f2  hover-green no-underline black   mv7 " href="{% url 'party' %}" >Wedding Party</a> 
             <br>
@@ -102,6 +109,13 @@
           <div class="db pv4 ph3  no-underline black ">
             <div class="flex flex-column flex-row-ns">
 
+
+            {% if travel.image %}
+
+              <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
+                <img src="{{ travel.image.url }}" alt="{{ travel.image_alt_text }}" class="db">
+              </div>
+            {% endif %}
               <div class="w-100 tc  pl3-ns">
                 {% if travel.location %}
                   <h1 class="f4 fw1  mt0 lh-title">{{ travel.location}}</h1>
@@ -136,7 +150,7 @@
         {% for accomodation in accomodations %}
           <a class="db pv4 ph3  no-underline black " href="{{ accomodation.link }}">
             <div class=" tc flex flex-column flex-row-ns">
-              {% if accomodation.image and accomation.image_alt_text %}
+              {% if accomodation.image %}
 
                 <div class="pr3-ns mb4 mb0-ns w-100 w-40-ns">
                   <img src="{{ accomodation.image.url }}" alt="{{ accomodation.image_alt_text }}" class="db">

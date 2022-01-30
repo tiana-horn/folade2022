@@ -2,13 +2,14 @@ import gspread
 from django.contrib.auth import authenticate
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
-from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon, WeddingPartyCarouselImage
+from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon, WeddingPartyCarouselImage, BannerImage,Plus_One
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
-from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm
+from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm, PlusOneForm
 from lockdown.decorators import lockdown
+from collections import defaultdict
 import boto3
 import json
 import os
@@ -77,9 +78,16 @@ def interest(request):
 def gallery(request):
     song = Song.objects.get(page="gallery")
     pictures = GalleryImage.objects.all()
+    scripture_list = Scripture.objects.all()
+    scriptures = []
+    for i in range(3):
+        scriptures.append(scripture_list[i])
+
     return render(request, 'gallery.html', {
         'pictures':pictures,
         'song':song,
+        'scriptures':scriptures,
+
     })
 
 @lockdown()
@@ -99,10 +107,35 @@ def party(request):
 def registry(request):
     registry_links = RegistryLink.objects.all()
     dev_flag = ComingSoon.objects.all()
+    banner = BannerImage.objects.all()
 
     return render(request, 'registry.html', {
         'registry_links':registry_links,
         'dev_flag':dev_flag,
+        'banner':banner,
+    })
+
+@lockdown()
+def plus_one(request, pk):
+    invite = Invitation.objects.get(pk=pk)
+    guest = invite.guest
+
+    if request.method == "POST":
+        plus_one_form = PlusOneForm(request.POST)
+        if plus_one_form.is_valid():
+            plus_one = plus_one_form.save(commit=False)
+            plus_one.name = plus_one_form.cleaned_data['name']
+            plus_one.accompanying = invite
+            plus_one.save()
+            return redirect('rsvp', pk=guest.pk)
+
+        else: 
+            plus_one_form = plus_one_form(instance=invite)
+            extra_guests = Plus_One.objects.all()
+    return render(request, 'rsvp.html', {
+            'invite':invite,
+            'plus_one_form':PlusOneForm(),
+            'extra_guest':extra_guests,
     })
 
 @lockdown()
@@ -110,8 +143,9 @@ def rsvp(request,pk):
     guest = Guest.objects.get(pk=pk)
     invites = Invitation.objects.filter(guest=guest)
     invites = invites.order_by('event')
+    extra_guests = Plus_One.objects.all()
     guest_form = GuestForm
-
+    plus_one_form = PlusOneForm
     if request.method == 'POST':
         guest_form = guest_form(data=request.POST, instance=guest)
         if guest_form.is_valid():
@@ -126,6 +160,8 @@ def rsvp(request,pk):
         'guest_form': guest_form,
         'guest':guest,
         'invites':invites,
+        'extra_guests':extra_guests,
+        'plus_one_form':plus_one_form,
     })
   
 
@@ -150,6 +186,8 @@ def change_rsvp(request, pk):
             'invite':invite,
     })
 
+
+
 @lockdown()
 def guest_list(request):
     form = SearchForm
@@ -163,7 +201,7 @@ def guest_list(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             try: 
-                searchresults = Guest.objects.filter(name=name)
+                searchresults = Guest.objects.filter(name__iexact=name)
                 if len(searchresults) < 1 :
                     notFound = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
             except:
@@ -185,11 +223,15 @@ def success(request):
 def schedule(request):
     events = Event.objects.all()
     song = Song.objects.get(page="schedule")
+    banner = BannerImage.objects.all()
 
     return render(request, 'schedule.html', {
         'events':events,
         'song':song,
+        'banner':banner,
     })
+
+
 
 @lockdown()
 def story(request):
@@ -224,6 +266,8 @@ def accomodations(request):
 def faq(request):
     faqs = FAQ.objects.all()
     song = Song.objects.get(page="faq")
+    banner = BannerImage.objects.all()
+
     scripture_list = Scripture.objects.all()
     scriptures = []
     for i in range(3,6):
@@ -233,6 +277,7 @@ def faq(request):
         'faqs':faqs,
         'song':song,
         'scriptures':scriptures,
+        'banner':banner,
     })
 
 @lockdown()
@@ -257,13 +302,57 @@ def hosts(request):
 def responses(request):
     invitations = Invitation.objects.all()
     events = Event.objects.all()
+    plus_ones = Plus_One.objects.all()
     guests = Guest.objects.all()
+    yesses = defaultdict(int)
+    hotel = dict(block=0)
+    aso = dict(interested=0)
+    paid = dict(paid=0)
+    not_paid = dict(not_paid=0)
+
+    for guest in guests:
+        if guest.hotel_accomodations == True:
+            hotel['block']+=1
+        if guest.aso_ebi == True:
+            aso['interested']+=1
+            if guest.aso_ebi_paid == False:
+                not_paid['not_paid']+=1
+        if guest.aso_ebi_paid == True:
+            paid['paid']+=1
+    
+    for invite in invitations:
+        if invite.attending==True:
+            yesses[invite.event.name]+= 1
+    yesses_dict = dict(yesses)
+
+    for person in plus_ones:
+        for x in list(yesses_dict):
+            if person.accompanying.event.name == x:
+                yesses[x]+= 1
+    yesses_dict = dict(yesses)
 
     return render(request, 'responses.html',{
         'invitations':invitations,
         'events':events,
         'guests':guests,
+        'yesses':yesses,
+        'yesses_dict':yesses_dict,
+        'plus_ones':plus_ones,
+        'hotel':hotel,
+        'aso':aso,
+        'paid':paid,
+        'not_paid':not_paid,
     })
+
+@lockdown()
+def delete_guest(request, pk):
+    person = Plus_One.objects.get(pk=pk)
+    invitation = person.accompanying
+
+    if request.method == "POST":
+          person.delete()
+          
+    return redirect('rsvp', pk=invitation.guest.pk)
 
 def bad_request_view(request, exception):
     return render(request, '400.html', status=400)

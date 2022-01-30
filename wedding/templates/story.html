@@ -21,28 +21,15 @@
 
   <body class='forumfont ' >
 
+    <div class="floating-menu flex-wrap flex justify-between fl-100">
 
-    <nav class="dt w-100 mw8 center"> 
-      <div class="dtc w2 v-mid pa3">
-      </div>
       
-      
-      <div class="dtc v-mid regmenu tr pt3 ph0">
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'story' %}" >Our Story</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'schedule' %}" >Schedule</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'accomodations' %}" > Accomodations</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'hosts' %}" >Hosts</a> 
+        <h1 class="tc  f1 fl w-100 f2 pt1  imperial ma0"> Fola & Lade </h1>
+        <h5 class="tc  f5 fl w-100 pt0 forumfont ma0"> Friday, April 29 - Saturday, April 30 </h5>
 
-        <div class="f2 fw4  black dn dib-l pv2 ph2 imperial"  >Fola & Lade </div> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'gallery' %}" >Gallery</a> 
-
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'registry' %}" >Registry</a> 
-        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'faq' %}" >FAQ</a> 
-        <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph2 ba" href="{% url 'findguest' %}" >RSVP</a> 
-      </div>
-    </nav> 
-    <div class="mobilemenu black">
+        
+    </div>
+    <div class="mobilemenu  black">
       <nav role="navigation">
         <div id="menuToggle">
           <!--
@@ -65,16 +52,14 @@
           Too bad the menu has to be inside of the button
           but hey, it's pure CSS magic.
           -->
-          <ul id="menu" class="mobilemenu">
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'story' %}" >Our Story</a> 
+          <ul id="menu" class="mobilemenu ">
+            <a class="f2  hover-green no-underline black mv7 " href="{% url 'story' %}" >Our Story</a> 
             <br>
             <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Accomodations</a> 
+            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Travel & <br>Accommodations</a> 
             <br>
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'hosts' %}" >Hosts</a> 
-            <br>
-            <a class="f2  hover-green no-underline black   mv7 " href="{% url 'party' %}" >Wedding Party</a> 
+            <a class="f2  hover-green no-underline black mv7 " href="{% url 'party' %}" >Wedding Party</a> 
             <br>
             <a class="f2  hover-green no-underline black   mv7 " href="{% url 'gallery' %}" >Gallery</a> 
             <br>
@@ -87,6 +72,29 @@
         </div>
       </nav>
     </div>
+
+    <nav class="dt tc w-100 mw8 center"> 
+      <div class="dtc w2 v-mid pa3">
+      </div>
+      
+      
+      <div class="dtc v-mid regmenu tr pt3 ph0">
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'story' %}" >Our Story</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'schedule' %}" >Schedule</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph2" href="{% url 'registry' %}" >Registry</a> 
+
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'gallery' %}" >Gallery</a> 
+
+        <div class="f1 fw3  black dn dib-l pl7 pv2 ph1 imperial"  >Fola & Lade </div> 
+
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'party' %}" >Wedding Party</a> 
+        <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph2" href="{% url 'accomodations' %}" > Travel & Accommodations</a>
+        <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 p12" href="{% url 'faq' %}" >FAQ</a> 
+ 
+        <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph2 ba" href="{% url 'findguest' %}" >RSVP</a> 
+      </div>
+    </nav> 
+
     <img class=" center topimg flex fl-w-100 pt0" src="https://folade.s3.us-east-2.amazonaws.com/static/img/euca.png">
 
 
@@ -102,7 +110,7 @@
 
 
                 {% for part in story %}
-                <div class=" w-100 center tc f5 measure">
+                <div class=" w-75  center tc f6 measure">
                   <img class="mySlides" src="{{ part.image1.url }}" alt="{{ part.image2_alt_text }}" >
                   <img class="mySlides" src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" >
                 </div>
@@ -118,7 +126,7 @@
                       <p class="measure center lh-copy">
                       {{part.p2_part1}} <b class="f3"> {{ part.p2_bold }} </b>  {{ part.p2_part2 }}
                     </p>
-                <div class=" w-100 center tc f5 measure">
+                <div class=" w-75  center tc f6 measure">
                   <img class="mySlips" src="{{ part.image2.url }}" alt="{{ part.image2_alt_text }}" >
                   <img class="mySlips" src="{{ part.image1.url }}" alt="{{ part.image2_alt_text }}" >
                 </div>

@@ -1,7 +1,7 @@
 from django import forms
 from django.conf import settings
-from django.forms import ModelForm
-from wedding.models import Guest, Invitation
+from django.forms import ModelForm,Textarea
+from wedding.models import Guest, Invitation, Plus_One
 from django.contrib import auth
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -64,6 +64,12 @@ class SearchForm(forms.Form):
 class GuestForm(ModelForm):
     class Meta:
         model = Guest
-        fields = ('diet','food_allergies',)
+        yes_no = forms.RadioSelect(choices=[(True,'Yes'),(False,'No')])
+        fields = ('diet','food_allergies','aso_ebi','aso_ebi_paid','hotel_accomodations',)
+        widgets = {'aso_ebi':yes_no,'aso_ebi_paid':yes_no,'hotel_accomodations':yes_no}
 
 
+class PlusOneForm(ModelForm):
+    class Meta:
+        model = Plus_One
+        fields = ('name',)

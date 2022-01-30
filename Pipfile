@@ -17,6 +17,7 @@ django-heroku = "*"
 django-filter = "*"
 pillow = "*"
 django-storages = "*"
+django-extensions = "*"
 
 [dev-packages]
 
