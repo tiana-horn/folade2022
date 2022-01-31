@@ -1,4 +1,4 @@
-name,event,attending
+guest,event,attending
 Fola Omofoye,Church Wedding Ceremony,False
 Simeon Omofoye,Church Wedding Ceremony,False
 Adedoyin Omofoye,Church Wedding Ceremony,False
@@ -351,7 +351,8 @@ Uncle Moses Chukwuma,Church Wedding Ceremony,False
 ",Church Wedding Ceremony,False
 "Uncle Yomi Adebo
 ",Church Wedding Ceremony,False
-"Aunty Funmi Adebo",Church Wedding Ceremony,False
+"Aunty Funmi Adebo
+",Church Wedding Ceremony,False
 Aunty Josephine Ozougwu,Church Wedding Ceremony,False
 Uncle Aja Ozogwu,Church Wedding Ceremony,False
 Uncle Victor Ozumba,Church Wedding Ceremony,False
@@ -774,7 +775,8 @@ Uncle Moses Chukwuma,Wedding Reception,False
 ",Wedding Reception,False
 "Uncle Yomi Adebo
 ",Wedding Reception,False
-"Aunty Funmi Adebo",Wedding Reception,False
+"Aunty Funmi Adebo
+",Wedding Reception,False
 Aunty Josephine Ozougwu,Wedding Reception,False
 Uncle Aja Ozogwu,Wedding Reception,False
 Uncle Victor Ozumba,Wedding Reception,False
