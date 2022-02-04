@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Forum&family=Imperial+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-  <link rel="stylesheet" href="{% static 'css/style.css?v=777' %}">
-  <link rel="stylesheet" media="screen and (max-width: 1024px)" href="{% static 'css/mobile.css?v=777' %}"/>
+  <link rel="stylesheet" href="https://folade.s3.us-east-2.amazonaws.com/static/css/style.css">
+  <link rel="stylesheet" media="screen and (max-width: 1024px)" href="https://folade.s3.us-east-2.amazonaws.com/static/css/mobile.css"/>
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/favicon.ico"/>
 
 </head>
@@ -29,7 +29,24 @@
 
 {% endblock content %}
 
+
+
 <footer class="pv5 pt7 mt7 footer ph3 ph5-m ph6-l mid-gray">
+  <small class="f4 db pb3  tc">Wedding Weekend Countdown</small>
+  <div id="timer" class=" pb4 timer" >
+    <div class="number-list">
+      <div class="item" data-days="">00</div>
+      <div class="item" data-hours="">00</div>
+      <div class="item" data-minutes="">00</div>
+      <div class="item" data-seconds="">00</div>
+    </div>
+    <div class="unit-list">
+      <div class="item">Days</div>
+      <div class="item">Hours</div>
+      <div class="item">Minutes</div>
+      <div class="item">Seconds</div>
+    </div>
+  </div>
   <small class="f4 db pb1 tc"><b>#ForeverFolade2022</b></small>
   <small class="f6 db tc">© 2022 <b class="ttu">Fola & Lade</b>, All Rights Reserved</small>
   <div class="tc mt3">
@@ -38,6 +55,8 @@
     <a href="{% url 'faq' %}" class="f6 dib ph2 link mid-gray dim">FAQ</a>
     <a class="f6 dib ph2 link mid-gray dim" href="{% url 'findguest' %}"><span>RSVP</span></a>
   </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://folade.s3.us-east-2.amazonaws.com/static/js/timer.js" type="text/javascript" ></script>
 </footer>
 {% block footer %}
 

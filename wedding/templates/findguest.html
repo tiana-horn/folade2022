@@ -108,7 +108,7 @@
                         Click your name to continue
                     </h5>
                         {% for result in searchresults %}
-                        <a class="no-underline black grow" href="{% url 'rsvp' pk=result.pk %}"> 
+                        <a class="no-underline black grow" href="{% url 'rsvp' pk=result.pk name=result.name %}"> 
                         <h2 class=" tc f3 errorcontainer "> 
                             {{ result.name }} - {{ result.email }}<br />  
                             </h2> 

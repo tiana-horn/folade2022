@@ -113,6 +113,7 @@ class WeddingPartyMember(models.Model):
     bridal_side = models.BooleanField(default=False,null=True)
     groom_side = models.BooleanField(default=False,null=True)
     description = models.TextField(max_length=777,blank=True)
+    order = models.IntegerField(null=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'

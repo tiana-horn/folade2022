@@ -92,7 +92,7 @@ def gallery(request):
 
 @lockdown()
 def party(request):
-    party = WeddingPartyMember.objects.all()
+    party = WeddingPartyMember.objects.all().order_by('order')
     song = Song.objects.get(page="party")
     dev_flag = ComingSoon.objects.all()
     carouselpics = WeddingPartyCarouselImage.objects.all()
@@ -127,7 +127,7 @@ def plus_one(request, pk):
             plus_one.name = plus_one_form.cleaned_data['name']
             plus_one.accompanying = invite
             plus_one.save()
-            return redirect('rsvp', pk=guest.pk)
+            return redirect('rsvp', pk=guest.pk, name=guest.name)
 
         else: 
             plus_one_form = plus_one_form(instance=invite)
@@ -139,7 +139,7 @@ def plus_one(request, pk):
     })
 
 @lockdown()
-def rsvp(request,pk):
+def rsvp(request,pk,name):
     guest = Guest.objects.get(pk=pk)
     invites = Invitation.objects.filter(guest=guest)
     invites = invites.order_by('event')
@@ -173,12 +173,12 @@ def change_rsvp(request, pk):
         if invite.attending==True:
             invite.attending=False
             invite.save()
-            return redirect('rsvp', pk=guest.pk)
+            return redirect('rsvp', pk=guest.pk, name=guest.name)
 
         else: 
             invite.attending=True
             invite.save()
-            return redirect('rsvp', pk=guest.pk)
+            return redirect('rsvp', pk=guest.pk, name=guest.name)
 
             
     return render(request, 'rsvp.html', {
@@ -352,7 +352,7 @@ def delete_guest(request, pk):
     if request.method == "POST":
           person.delete()
           
-    return redirect('rsvp', pk=invitation.guest.pk)
+    return redirect('rsvp', pk=invitation.guest.pk, name=invitation.guest.name)
 
 def bad_request_view(request, exception):
     return render(request, '400.html', status=400)

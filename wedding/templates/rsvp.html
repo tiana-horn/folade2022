@@ -157,7 +157,7 @@
                   </div>
 
                 {% endfor %}
-                <form class="mt2  " role="form" action="{% url 'rsvp' pk=guest.pk %}" method="post">
+                <form class="mt2  " role="form" action="{% url 'rsvp' pk=guest.pk name=guest.name %}" method="post">
                   {% csrf_token %}
                  <h2>Dietary Restrictions:{{ guest_form.diet }}</h2>
                  <h2>Food Allergies: {{ guest_form.food_allergies }}</h2>

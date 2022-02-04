@@ -350,3 +350,59 @@ body
 100% {opacity: 0}
 }
 
+/* Countdown Timer */
+#timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.number-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.number-list .item {
+  width: 60px;
+  height: 60px;
+  background: #006741;
+  margin-right: 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+  font-family: 'Forum', cursive;
+}
+.unit-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.unit-list .item {
+  width: 60px;
+  margin-right: 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #006741;
+  font-weight: 500;
+  font-family: 'Forum', cursive;
+}
+
+.timer-end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #006741;
+  font-weight: 700;
+  font-family: 'Forum', cursive;
+}

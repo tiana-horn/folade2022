@@ -57,9 +57,12 @@ LOCKDOWN_PASSWORDS = ('test123','ladeatifola',)
 
 
 # SECURITY WARNING: don't run with debug set to True in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#SECURE_SSL_REDIRECT = True
+
+ALLOWED_HOSTS = ['127.0.0.1:8000','foreverfolade2022','quiet-shelf-25006.herokuapp']
 
 
 # Application definition
