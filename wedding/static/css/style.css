@@ -43,8 +43,19 @@ button:hover {
   cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/pointer.png), auto ;
 }
 
-.homescreenimg {
-  background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/IMG_4149.jpg);
+.homescreenimg1 {
+  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/desktop.jpg);
+  background-size: cover !important;
+}
+
+.homescreenimg2 {
+  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/desktop2.jpg);
+  background-size: cover !important;
+
+}
+
+.homescreenimg3 {
+  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/desktop3.jpeg);
   background-size: cover !important;
 
 }
@@ -61,7 +72,13 @@ button:hover {
   margin-top:0%;
 }
 
-
+.whitespace {
+  max-width: 70%;
+  max-height: 50%;
+  margin-right: 15%;
+  margin-left: 15%;
+  margin-top:0%;
+}
 
 .schedcontainer {
     max-width: 60%;
@@ -165,6 +182,10 @@ animation-duration: 33s;
 }
 
 /* Countdown Timer */
+.timercontainer {
+  margin-top:50%;
+}
+
 #timer {
   display: flex;
   flex-direction: column;

@@ -183,3 +183,18 @@ class BannerImage(models.Model):
     schedule_page = models.BooleanField(default=False)
     registry_page = models.BooleanField(default=False)
     faq_page = models.BooleanField(default=False)
+
+class HomeImage(models.Model):
+    image1mobile = models.ImageField(upload_to='img', null=True, blank=True)
+    image1mobile_alt_text = models.CharField(max_length=111,null=True, blank=True) 
+    image2mobile = models.ImageField(upload_to='img', null=True, blank=True)
+    image2mobile_alt_text = models.CharField(max_length=111, blank=True) 
+    image3mobile = models.ImageField(upload_to='img', null=True, blank=True)
+    image3mobile_alt_text = models.CharField(max_length=111, blank=True) 
+    image1desktop = models.ImageField(upload_to='img', null=True, blank=True)
+    image1desktop_alt_text = models.CharField(max_length=111, null=True, blank=True) 
+    image2desktop = models.ImageField(upload_to='img', null=True, blank=True)
+    image2desktop_alt_text = models.CharField(max_length=111, blank=True) 
+    image3desktop = models.ImageField(upload_to='img', null=True, blank=True)
+    image3desktop_alt_text = models.CharField(max_length=111, blank=True) 
+
