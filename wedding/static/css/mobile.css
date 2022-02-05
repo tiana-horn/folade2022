@@ -71,10 +71,29 @@ button:hover {
   cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/ring.png), auto ;
 }
 
-.homescreenimg {
-  background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/splashscreen2.png);
-  height:100vh;
+.homescreenimg1 {
+  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/mobile.png);
+  height:100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
+}
+
+.homescreenimg2 {
+  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/mobile2.png);
+  height:100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.homescreenimg3 {
+  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/mobile3.png);
+  height:100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .blackback {
@@ -115,6 +134,14 @@ body
 }
 
 .errorcontainer {
+  max-width: 70%;
+  max-height: 50%;
+  margin-right: 15%;
+  margin-left: 15%;
+  margin-top:0%;
+}
+
+.whitespace {
   max-width: 70%;
   max-height: 50%;
   margin-right: 15%;
@@ -163,6 +190,19 @@ body
   z-index: 2; /* and place it over the hamburger */
   
   -webkit-touch-callout: none;
+}
+
+.storyPart {
+  width:100%;
+  text-align: center;
+  display: block;
+  flex: space-evenly;
+  background-color:#98ff98;
+  border: none;
+}
+.storyPart :hover ::selection{
+  background-color:mintcream;
+  color: black;
 }
 
 /*
@@ -350,3 +390,70 @@ body
 100% {opacity: 0}
 }
 
+/* Countdown Timer */
+.timercontainer {
+  margin-top:70%;
+}
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.number-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.number-list .item {
+  width: 60px;
+  height: 60px;
+  background: #006741;
+  margin-right: 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+  font-family: 'Forum', cursive;
+}
+.unit-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.unit-list .item {
+  width: 60px;
+  margin-right: 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #006741;
+  font-weight: 500;
+  font-family: 'Forum', cursive;
+}
+
+.timer-end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #006741;
+  font-weight: 700;
+  font-family: 'Forum', cursive;
+}

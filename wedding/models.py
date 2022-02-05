@@ -113,6 +113,7 @@ class WeddingPartyMember(models.Model):
     bridal_side = models.BooleanField(default=False,null=True)
     groom_side = models.BooleanField(default=False,null=True)
     description = models.TextField(max_length=777,blank=True)
+    order = models.IntegerField(null=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
@@ -182,3 +183,18 @@ class BannerImage(models.Model):
     schedule_page = models.BooleanField(default=False)
     registry_page = models.BooleanField(default=False)
     faq_page = models.BooleanField(default=False)
+
+class HomeImage(models.Model):
+    image1mobile = models.ImageField(upload_to='img', null=True, blank=True)
+    image1mobile_alt_text = models.CharField(max_length=111,null=True, blank=True) 
+    image2mobile = models.ImageField(upload_to='img', null=True, blank=True)
+    image2mobile_alt_text = models.CharField(max_length=111, blank=True) 
+    image3mobile = models.ImageField(upload_to='img', null=True, blank=True)
+    image3mobile_alt_text = models.CharField(max_length=111, blank=True) 
+    image1desktop = models.ImageField(upload_to='img', null=True, blank=True)
+    image1desktop_alt_text = models.CharField(max_length=111, null=True, blank=True) 
+    image2desktop = models.ImageField(upload_to='img', null=True, blank=True)
+    image2desktop_alt_text = models.CharField(max_length=111, blank=True) 
+    image3desktop = models.ImageField(upload_to='img', null=True, blank=True)
+    image3desktop_alt_text = models.CharField(max_length=111, blank=True) 
+
