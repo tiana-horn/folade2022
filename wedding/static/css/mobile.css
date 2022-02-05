@@ -192,6 +192,19 @@ body
   -webkit-touch-callout: none;
 }
 
+.storyPart {
+  width:100%;
+  text-align: center;
+  display: block;
+  flex: space-evenly;
+  background-color:#98ff98;
+  border: none;
+}
+.storyPart :hover ::selection{
+  background-color:mintcream;
+  color: black;
+}
+
 /*
  * Just a quick hamburger
  */

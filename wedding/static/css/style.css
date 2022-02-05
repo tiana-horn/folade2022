@@ -2,7 +2,20 @@
   font-family: 'Imperial Script', cursive;
 }
 
+.storyPart {
+  width:100%;
+  text-align: center;
+  padding: 15px 35px;
+  display: block;
+  background-color: #98ff98;
+  border: none;
 
+}
+
+.storyPart :hover ::selection{
+  background-color:mintcream;
+  color: black;
+}
 
 .fadeColor{
   background: linear-gradient(to bottom, white, #ffffe2, #98ff98 );
@@ -180,6 +193,8 @@ animation-duration: 33s;
 90%   {opacity: 0}
 100% {opacity: 0}
 }
+
+
 
 /* Countdown Timer */
 .timercontainer {
