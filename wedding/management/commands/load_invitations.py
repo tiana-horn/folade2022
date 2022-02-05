@@ -17,7 +17,8 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
-
+        print("Deleting all invitations!")
+        Invitation.objects.all().delete()
         with open(get_path('invitations.csv'), 'r') as file:
             reader = csv.DictReader(file)
             i = 0

@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.template.loader import get_template
-from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm, PlusOneForm
+from wedding.forms import InterestForm, AccessForm, SearchForm, GuestForm, PlusOneForm, DeleteGuestsForm
 from lockdown.decorators import lockdown
 from collections import defaultdict
 import boto3
@@ -355,6 +355,24 @@ def delete_guest(request, pk):
           person.delete()
           
     return redirect('rsvp', pk=invitation.guest.pk, name=invitation.guest.name)
+
+@lockdown()
+def upload(request):
+    delete_all_guests = DeleteGuestsForm
+    if request.method == 'POST':
+        delete_all_guests = delete_all_guests(data=request.POST)
+        if delete_guests.is_valid():
+            sure = delete_guests.form.cleaned_data['sure']
+            if sure == True:
+                Guest.objects.all().delete()
+            else:
+                pass
+    else:
+        delete_all_guests = DeleteGuestsForm
+
+    return render(request, 'upload.html', {
+        'delete_all_guests':delete_all_guests,
+    })
 
 def bad_request_view(request, exception):
     return render(request, '400.html', status=400)

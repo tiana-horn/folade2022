@@ -198,3 +198,6 @@ class HomeImage(models.Model):
     image3desktop = models.ImageField(upload_to='img', null=True, blank=True)
     image3desktop_alt_text = models.CharField(max_length=111, blank=True) 
 
+class MassUpload(models.Model):
+    guest_list = models.FileField()
+    invitation_list = models.FileField()
