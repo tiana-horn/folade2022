@@ -17,8 +17,7 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
-        print("Deleting all guests!")
-        Guest.objects.all().delete()
+
 
         with open(get_path('guests.csv'), 'r') as file:
             reader = csv.DictReader(file)
