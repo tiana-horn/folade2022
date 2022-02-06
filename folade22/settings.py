@@ -53,7 +53,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 #Website password protection
-LOCKDOWN_PASSWORDS = ('test123','ladeatifola',)
+LOCKDOWN_PASSWORDS = ('test123','ladeatifola','madebytiana',)
 
 
 # SECURITY WARNING: don't run with debug set to True in production!
