@@ -154,9 +154,29 @@
                       </div>
                     </div>
 
+                    {% if part.video %}
                     <div id="headingTwo">
                       <h2 class="mb-0 grow br-pill">
                         <button class="collapsed mt2 br-pill bg-green black storyPart " type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
+                          <div class="tc pt1 f1">Proposal </div>
+                        </button>
+                      </h2>
+                    </div>
+                    <div id="multiCollapseExample2" class="collapse multi-collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                      <div class="card-body">
+                      <div class=" center tc ">
+                        <video class="whitespace" controls>
+                              <source src="{{ part.video.url }}" >
+                          </video>
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+
+
+                    <div id="headingThree">
+                      <h2 class="mb-0 grow br-pill">
+                        <button class="collapsed mt2 br-pill bg-green black storyPart " type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">
                           {% if part.p2_story_owner %}
                           <div class="tc pt1 f1">{{ part.p2_story_owner }}
                           </div>
@@ -164,7 +184,7 @@
                         </button>
                       </h2>
                     </div>
-                    <div id="multiCollapseExample2" class="collapse multi-collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div id="multiCollapseExample3" class="collapse multi-collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                       <div class="card-body">
                         <p class="  f3 measure center tl lh-copy">
                           {{part.p2_part1}} 
