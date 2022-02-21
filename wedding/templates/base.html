@@ -22,6 +22,86 @@
 
 
 {% endblock header %}
+      
+<div class="floating-menu flex-wrap flex justify-between fl-100">
+
+      
+  <h1 class="tc  f1 fl w-100 f2 pt1  imperial ma0"> Fola & Lade </h1>
+  <h5 class="tc  f5 fl w-100 pt0 forumfont ma0"> Friday, April 29 - Saturday, April 30 </h5>
+
+  
+</div>
+<div class="mobilemenu  black">
+<nav role="navigation">
+  <div id="menuToggle">
+    <!--
+    A fake / hidden checkbox is used as click reciever,
+    so you can use the :checked selector on it.
+    -->
+    <input type="checkbox" />
+    
+    <!--
+    Some spans to act as a hamburger.
+    
+    They are acting like a real hamburger,
+    not that McDonalds stuff.
+    -->
+    <span></span>
+    <span></span>
+    <span></span>
+    
+    <!--
+    Too bad the menu has to be inside of the button
+    but hey, it's pure CSS magic.
+    -->
+    <ul id="menu" class="mobilemenu ">
+      <a class="f2  hover-green no-underline black mv7 " href="{% url 'home' %}" >Home</a> 
+      <br>
+      <a class="f2  hover-green no-underline black mv7 " href="{% url 'story' %}" >Our Story</a> 
+      <br>
+      <a class="f2  hover-green no-underline black   mv7 " href="{% url 'schedule' %}" >Schedule</a> 
+      <br>
+      <a class="f2  hover-green no-underline black   mv7 " href="{% url 'accomodations' %}" >Travel & <br>Accommodations</a> 
+      <br>
+      <a class="f2  hover-green no-underline black mv7 " href="{% url 'party' %}" >Wedding Party</a> 
+      <br>
+      <a class="f2  hover-green no-underline black   mv7 " href="{% url 'gallery' %}" >Gallery</a> 
+      <br>
+      <a class="f2  hover-green no-underline black   mb7  mv7 " href="{% url 'registry' %}" >Registry</a>
+      <br> 
+      <a class="f2  hover-green no-underline black   mv7 " href="{% url 'faq' %}" >FAQ</a> 
+      <br>
+      <a class="f2  hover-green no-underline black  mv7  ba" href="{% url 'findguest' %}" >RSVP</a> 
+    </ul>
+  </div>
+</nav>
+</div>
+
+<nav class="dt tc w-100 mw8 center"> 
+<div class="dtc w2 v-mid pa3">
+</div>
+
+
+<div class="dtc v-mid regmenu tr pt3 ph0">
+  <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph1" href="{% url 'home' %}" >Home</a> 
+  <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph1" href="{% url 'story' %}" >Our Story</a> 
+  <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph1" href="{% url 'schedule' %}" >Schedule</a> 
+  <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 ph1" href="{% url 'registry' %}" >Registry</a> 
+
+  <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph1" href="{% url 'gallery' %}" >Gallery</a> 
+
+  <div class="f1 fw3  black dn dib-l pl7 pv2 ph1 imperial"  >Fola & Lade </div> 
+
+  <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph1" href="{% url 'party' %}" >Wedding Party</a> 
+  <a class="f4 fw4 hover-green no-underline black dn dib-l pv2 ph1" href="{% url 'accomodations' %}" > Travel & Accommodations</a>
+  <a class="f4 fw4 hover-green no-underline black dn dib-ns pv2 p12" href="{% url 'faq' %}" >FAQ</a> 
+
+  <a class="f4 fw4 hover-green no-underline black dib ml2 pv2 ph1 ba" href="{% url 'findguest' %}" >RSVP</a> 
+</div>
+</nav>      
+      
+      
+      
 
 
 {% block content %}
@@ -49,6 +129,10 @@
   </div>
   <small class="f4 db pb1 tc"><b>#ForeverFolade2022</b></small>
   <small class="f6 db tc">© 2022 <b class="ttu">Fola & Lade</b>, All Rights Reserved</small>
+  <div class="tc" >
+    <a target="_blank" href="https://www.fiverr.com/share/KbweKb" class="f6 target_blank tc ph2 mid-gray dim">Website made with love by Tiazure Creations</a>
+  </div>
+  
   <div class="tc mt3">
     <a href="{% url 'schedule' %}" class="f6 dib ph2 link mid-gray dim">Schedule</a>
     <a href="{% url 'accomodations' %}" class="f6 dib ph2 link mid-gray dim">Travel & Accommodations</a>

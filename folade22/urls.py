@@ -22,6 +22,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('', wedding_views.home, name='home'),
+    path('accounts/', include('registration.backends.default.urls')),
     path('admin/', admin.site.urls),
     path('gallery/', wedding_views.gallery, name='gallery'),
     path('interest/', wedding_views.interest, name='interest'),

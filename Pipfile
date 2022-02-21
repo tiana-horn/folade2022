@@ -18,6 +18,7 @@ django-filter = "*"
 pillow = "*"
 django-storages = "*"
 django-extensions = "*"
+django-registration-redux = "*"
 
 [dev-packages]
 

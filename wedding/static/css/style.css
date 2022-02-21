@@ -7,13 +7,13 @@
   text-align: center;
   padding: 15px 35px;
   display: block;
-  background-color: #98ff98;
+  background-color: rgb(131, 187, 140);
   border: none;
 
 }
 
 .storyPart :hover ::selection{
-  background-color:mintcream;
+  background-color:rgb(131, 187, 140);
   color: black;
 }
 

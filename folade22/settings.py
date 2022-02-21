@@ -59,15 +59,20 @@ LOCKDOWN_PASSWORDS = ('test123','ladeatifola','madebytiana',)
 # SECURITY WARNING: don't run with debug set to True in production!
 DEBUG = False
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
 
-ALLOWED_HOSTS = ['127.0.0.1:8000','foreverfolade2022','quiet-shelf-25006.herokuapp']
+#ALLOWED_HOSTS = ['foreverfolade2022','quiet-shelf-25006.herokuapp']
+
+
+ALLOWED_HOSTS =['*']
+
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

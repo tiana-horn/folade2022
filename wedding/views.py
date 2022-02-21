@@ -1,5 +1,6 @@
 import gspread
 from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 from oauth2client.service_account import ServiceAccountCredentials
 from django.shortcuts import render
 from wedding.models import User, Guest, Event, Invitation, Accomodation, StoryText, WeddingPartyMember, RegistryLink, GalleryImage, Host, FAQ, Travel, Song, Scripture, ComingSoon, WeddingPartyCarouselImage, BannerImage,Plus_One,HomeImage
@@ -65,10 +66,11 @@ def interest(request):
                 sheet.insert_row(row)
 
     # Show success message, if other messages are added update conditional on index
-                django_message = "Thank you for expressing interest in attending our wedding! Someone will be in contact with you shortly"
+                django_message = "Thank you for expressing interest in attending our wedding! Someone will be in contact with you shortly."
                 messages.add_message(request, messages.INFO, django_message)
             except:
-                Http404
+                django_message = "We're sorry, we were unable to capture your submission. Please try again or contact Fola and Lade if the problem persists."
+                messages.add_message(request, messages.INFO, django_message)
 
             return redirect('interest')
 
@@ -82,7 +84,7 @@ def gallery(request):
     pictures = GalleryImage.objects.all()
     scripture_list = Scripture.objects.all()
     scriptures = []
-    for i in range(3):
+    for i in range(3,6):
         scriptures.append(scripture_list[i])
 
     return render(request, 'gallery.html', {
@@ -98,11 +100,17 @@ def party(request):
     song = Song.objects.get(page="party")
     dev_flag = ComingSoon.objects.all()
     carouselpics = WeddingPartyCarouselImage.objects.all()
+    scripture_list = Scripture.objects.all()
+    scriptures = []
+    for i in range(3):
+        scriptures.append(scripture_list[i])
     return render(request, 'party.html', {
         'party':party,
         'song':song,
         'dev_flag':dev_flag,
         'carouselpics':carouselpics,
+        'scriptures':scriptures,
+
     })
 
 @lockdown()
@@ -110,11 +118,16 @@ def registry(request):
     registry_links = RegistryLink.objects.all()
     dev_flag = ComingSoon.objects.all()
     banner = BannerImage.objects.all()
-
+    scripture_list = Scripture.objects.all()
+    scriptures = []
+    for i in range(6,9):
+        scriptures.append(scripture_list[i])
     return render(request, 'registry.html', {
         'registry_links':registry_links,
         'dev_flag':dev_flag,
         'banner':banner,
+        'scriptures':scriptures,
+
     })
 
 @lockdown()
@@ -205,7 +218,8 @@ def guest_list(request):
             try: 
                 searchresults = Guest.objects.filter(name__iexact=name)
                 if len(searchresults) < 1 :
-                    notFound = "Sorry, we couldn't find your name. Please check your invitation or contact Fola & Lade if you think there is an error"
+                    notFound = "Sorry, we couldn't find your name. Please double check your invitation, contact Fola & Lade, or enter your information on our interest page if you think there is an error. "                          
+
             except:
                 pass
 
@@ -226,11 +240,16 @@ def schedule(request):
     events = Event.objects.all()
     song = Song.objects.get(page="schedule")
     banner = BannerImage.objects.all()
-
+    scripture_list = Scripture.objects.all()
+    scriptures = []
+    for i in range(3):
+        scriptures.append(scripture_list[i])
     return render(request, 'schedule.html', {
         'events':events,
         'song':song,
         'banner':banner,
+        'scriptures':scriptures,
+
     })
 
 
@@ -301,50 +320,52 @@ def hosts(request):
     })
 
 @lockdown()
+@login_required
 def responses(request):
-    invitations = Invitation.objects.all()
-    events = Event.objects.all()
-    plus_ones = Plus_One.objects.all()
-    guests = Guest.objects.all()
-    yesses = defaultdict(int)
-    hotel = dict(block=0)
-    aso = dict(interested=0)
-    paid = dict(paid=0)
-    not_paid = dict(not_paid=0)
+    if request.user.is_superuser:
+        invitations = Invitation.objects.all()
+        events = Event.objects.all()
+        plus_ones = Plus_One.objects.all()
+        guests = Guest.objects.all()
+        yesses = defaultdict(int)
+        hotel = dict(block=0)
+        aso = dict(interested=0)
+        paid = dict(paid=0)
+        not_paid = dict(not_paid=0)
 
-    for guest in guests:
-        if guest.hotel_accomodations == True:
-            hotel['block']+=1
-        if guest.aso_ebi == True:
-            aso['interested']+=1
-            if guest.aso_ebi_paid == False:
-                not_paid['not_paid']+=1
-        if guest.aso_ebi_paid == True:
-            paid['paid']+=1
-    
-    for invite in invitations:
-        if invite.attending==True:
-            yesses[invite.event.name]+= 1
-    yesses_dict = dict(yesses)
+        for guest in guests:
+            if guest.hotel_accomodations == True:
+                hotel['block']+=1
+            if guest.aso_ebi == True:
+                aso['interested']+=1
+                if guest.aso_ebi_paid == False:
+                    not_paid['not_paid']+=1
+            if guest.aso_ebi_paid == True:
+                paid['paid']+=1
+        
+        for invite in invitations:
+            if invite.attending==True:
+                yesses[invite.event.name]+= 1
+        yesses_dict = dict(yesses)
 
-    for person in plus_ones:
-        for x in list(yesses_dict):
-            if person.accompanying.event.name == x:
-                yesses[x]+= 1
-    yesses_dict = dict(yesses)
+        for person in plus_ones:
+            for x in list(yesses_dict):
+                if person.accompanying.event.name == x:
+                    yesses[x]+= 1
+        yesses_dict = dict(yesses)
 
-    return render(request, 'responses.html',{
-        'invitations':invitations,
-        'events':events,
-        'guests':guests,
-        'yesses':yesses,
-        'yesses_dict':yesses_dict,
-        'plus_ones':plus_ones,
-        'hotel':hotel,
-        'aso':aso,
-        'paid':paid,
-        'not_paid':not_paid,
-    })
+        return render(request, 'responses.html',{
+            'invitations':invitations,
+            'events':events,
+            'guests':guests,
+            'yesses':yesses,
+            'yesses_dict':yesses_dict,
+            'plus_ones':plus_ones,
+            'hotel':hotel,
+            'aso':aso,
+            'paid':paid,
+            'not_paid':not_paid,
+        })
 
 @lockdown()
 def delete_guest(request, pk):
