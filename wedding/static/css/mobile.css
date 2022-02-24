@@ -197,11 +197,11 @@ body
   text-align: center;
   display: block;
   flex: space-evenly;
-  background-color:#98ff98;
+  background-color:#006741;
   border: none;
 }
 .storyPart :hover ::selection{
-  background-color:mintcream;
+  background-color:#006741;
   color: black;
 }
 

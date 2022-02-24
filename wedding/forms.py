@@ -73,3 +73,6 @@ class PlusOneForm(ModelForm):
     class Meta:
         model = Plus_One
         fields = ('name',)
+
+class DeleteGuestsForm(forms.Form):
+    Sure = forms.ChoiceField(label='Testing', widget=forms.RadioSelect(choices=[(True,'Yes'),(False,'No')]))

@@ -22,6 +22,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('', wedding_views.home, name='home'),
+    path('accounts/', include('registration.backends.default.urls')),
     path('admin/', admin.site.urls),
     path('gallery/', wedding_views.gallery, name='gallery'),
     path('interest/', wedding_views.interest, name='interest'),
@@ -33,6 +34,7 @@ urlpatterns = [
     path('plue_one/<pk>', wedding_views.plus_one, name='plus_one'),
     path('delete_guest/<pk>', wedding_views.delete_guest, name='delete_guest'),
     path('responses/', wedding_views.responses, name='responses'),
+    path('upload/', wedding_views.upload, name='upload'),
     path('schedule/', wedding_views.schedule, name='schedule'),
     path('story/', wedding_views.story, name='story'),
     path('faq/', wedding_views.faq, name='faq'),

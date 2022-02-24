@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  {% block title %}
+  <title> Responses </title>
+  {% endblock title %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+  {% block content %}
+
+  <body class='forumfont ' >
+    <article class="pa3 tc pa5-ns">
+        <article class="cf pa3 mw9 center">
+          <header class="fl w-100 tc pa3-m pa4-l mb3 mb0-l">
+            <h2 class="lh-title f3 b mt0">
+              Step 1: Upload Guest List
+              <br>
+                Step 2: Upload Invitations 
+                <br>
+                Note: Name on invitations must match the guest list exactly. CSV file should match the upload template
+            </h2>
+          </header>
+
+          <h5 class="mv0 pv0 dib">                     
+            <form class="mt2  " role="form" action="{% url 'upload' %}" method="post">
+              <label for="Sure" class="f4 b db mb2">Are you sure you would like to delete ALL guests from the database? This is not reversible. 
+                <br>  
+                (You can delete guests individually in the admin dashboard)
+              </label>
+              {% csrf_token %}
+              {{ delete_all_guests.sure }}
+            <input type="submit" class="b white bg-green tc ba b--black bg-transparent grow f5" value="Delete All Guests" />
+            </form>
+          </h5>
+
+          <br>
+
+        </article>
+    </article>
+      
+  {% endblock content %}
+  {% block footer %}
+  {% endblock footer %}
+
+</body>
+
+</html>

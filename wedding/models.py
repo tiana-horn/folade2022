@@ -99,7 +99,7 @@ class StoryText(models.Model):
     p2_part2 = models.TextField(max_length=77777)
     image2 = models.ImageField(upload_to='img', null=True)
     image2_alt_text = models.CharField(max_length=111)
-
+    video = models.FileField(upload_to='img',null=True)
     def clean(self):
         if StoryText.objects.exists() and not self.pk:
             raise ValidationError('The Story page can only have one story. Please edit the existing story object to make changes')
@@ -198,3 +198,6 @@ class HomeImage(models.Model):
     image3desktop = models.ImageField(upload_to='img', null=True, blank=True)
     image3desktop_alt_text = models.CharField(max_length=111, blank=True) 
 
+class MassUpload(models.Model):
+    guest_list = models.FileField()
+    invitation_list = models.FileField()

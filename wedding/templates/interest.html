@@ -1,13 +1,20 @@
-{% extends 'base.html' %}
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
   <title> Folade2022 </title>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="description" content="Forever Folade 2022"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Imperial+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://folade.s3.us-east-2.amazonaws.com/static/css/style.css">
+    <link rel="stylesheet" media="screen and (max-width: 1024px)" href="https://folade.s3.us-east-2.amazonaws.com/static/css/mobile.css"/>
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/favicon.ico"/>
+  
   </head>
 
   {% block content %}
@@ -29,7 +36,7 @@
                   </div>
                   </div>
                   <div class="schedcontainer ">
-                    {% if messages.INFO %}
+                    {% if messages %}
                     {% for message in messages %}
                         
                         <h5 class="{{ message.tags }} f3 pa4 ma4 ">
@@ -38,7 +45,9 @@
                     {% endfor %}
                     {%else%} 
                     <h5 class="f3 mt3 mv2 ph3 tc container">Interested in attending our wedding?</h5> 
-                    <h5 class="f4 mt2 tc ph3 container">Fill out this form & we will be in contact</h5>   
+                    <h5 class="f4 mt2 tc ph3 container">Fill out this form & we will be in contact!
+                      <br>
+                      Please note that this is not a formal RSVP</h5>   
 
                     <br>
                 
@@ -47,13 +56,48 @@
                         {% csrf_token %}
                         {{ form.as_table }}
                         <br>
-                        <button class="b ph3 mt3 input-reset white bg-green ba b--black bg-transparent grow pointer f4" type = "send">Express Interest</button>
+                        <button class="b ph3 mt3 input-reset bg-green mint ba b--green bw3 bg-transparent grow pointer f4" type = "send">Express Interest</button>
                     </form>
                     </div>
                     {% endif %}
                   </div>
                  
-
+                  <footer class="pv5 pt7 mt7 footer ph3 ph5-m ph6-l mid-gray">
+                    <small class="f4 db pb3  tc">Wedding Weekend Countdown</small>
+                    <div id="timer" class=" pb4 timer" >
+                      <div class="number-list">
+                        <div class="item" data-days="">00</div>
+                        <div class="item" data-hours="">00</div>
+                        <div class="item" data-minutes="">00</div>
+                        <div class="item" data-seconds="">00</div>
+                      </div>
+                      <div class="unit-list">
+                        <div class="item">Days</div>
+                        <div class="item">Hours</div>
+                        <div class="item">Minutes</div>
+                        <div class="item">Seconds</div>
+                      </div>
+                    </div>
+                    <small class="f4 db pb1 tc"><b>#ForeverFolade2022</b></small>
+                    <small class="f6 db tc">© 2022 <b class="ttu">Fola & Lade</b>, All Rights Reserved</small>
+                    <div class="tc" >
+                      <a target="_blank" href="https://www.fiverr.com/share/KbweKb" class="f6 underline tc ph2 mid-gray dim">Custom Websites by Tiana</a>
+                    </div>
+                    
+                  </footer>
+                {% if song.link %}
+                <iframe class="middle pb1" width="0%" height="0" src="{{song.link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe> 
+                {% else %}
+                <div></div>
+                {% endif %}
+            
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" samesite="None"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                <script src="https://folade.s3.us-east-2.amazonaws.com/static/js/timer.js" type="text/javascript" ></script>
+                <script src="https://folade.s3.us-east-2.amazonaws.com/static/js/carousel.js" type="text/javascript" ></script>
+                </body>
+            
                   {% endblock content %}
                   {% block footer %}
                   {% endblock footer %}
