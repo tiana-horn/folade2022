@@ -57,7 +57,7 @@ LOCKDOWN_PASSWORDS = ('test123','ladeatifola','madebytiana',)
 
 
 # SECURITY WARNING: don't run with debug set to True in production!
-DEBUG = False
+DEBUG = True
 
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # SECURE_SSL_REDIRECT = True

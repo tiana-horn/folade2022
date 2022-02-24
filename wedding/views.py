@@ -368,28 +368,33 @@ def responses(request):
         })
 
 @lockdown()
+@login_required
 def delete_guest(request, pk):
-    person = Plus_One.objects.get(pk=pk)
-    invitation = person.accompanying
+    if request.user.is_superuser:
 
-    if request.method == "POST":
-          person.delete()
+        person = Plus_One.objects.get(pk=pk)
+        invitation = person.accompanying
+
+        if request.method == "POST":
+            person.delete()
           
     return redirect('rsvp', pk=invitation.guest.pk, name=invitation.guest.name)
 
 @lockdown()
+@login_required
 def upload(request):
-    delete_all_guests = DeleteGuestsForm
-    if request.method == 'POST':
-        delete_all_guests = delete_all_guests(data=request.POST)
-        if delete_guests.is_valid():
-            sure = delete_guests.form.cleaned_data['sure']
-            if sure == True:
-                Guest.objects.all().delete()
-            else:
-                pass
-    else:
+    if request.user.is_superuser:
         delete_all_guests = DeleteGuestsForm
+        if request.method == 'POST':
+            delete_all_guests = delete_all_guests(data=request.POST)
+            if delete_guests.is_valid():
+                sure = delete_guests.form.cleaned_data['sure']
+                if sure == True:
+                    Guest.objects.all().delete()
+                else:
+                    pass
+        else:
+            delete_all_guests = DeleteGuestsForm
 
     return render(request, 'upload.html', {
         'delete_all_guests':delete_all_guests,
