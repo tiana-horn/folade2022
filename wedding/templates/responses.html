@@ -83,9 +83,9 @@
                 {% for invited in invitations %}
                     {% if invited.event == event %}
                       {% if invited.attending %} 
-                      {% if invited.guest.food_allergies|length > 2 %}
-                              {{ invited.guest }} - {{ invited.guest.food_allergies }}<br>
+                      {% if invited.guest.food_allergies|length >= 1 and invited.guest.food_allergies not in no_allergies %}
 
+                              {{ invited.guest }} - {{ invited.guest.food_allergies }}<br>
                       {% endif %}
                       {% endif %}
                     {% endif %}
@@ -93,6 +93,35 @@
                 <br>
                 <div class="bt bb b--black-10"></div>
 
+                <h2 class="lh-title f4 b mt0"> {{ event.name }} Missing Emails </h2>
+                <br>
+                {% for invited in invitations %}
+                    {% if invited.event == event %}
+                      {% if invited.attending %} 
+                        {% if invited.guest.email|length == 0 %}
+                          {{ invited.guest }}<br>
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <br>
+                <div class="bt bb b--black-10"></div>
+
+                <h2 class="lh-title f4 b mt0"> {{ event.name }} Email List </h2>
+                <br>
+                {% for invited in invitations %}
+                    {% if invited.event == event %}
+                      {% if invited.attending %} 
+                         {% if invited.guest.email|length > 0 %}
+
+                          {{ invited.guest.email }}<br>
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <br>
+
+               
   
    
                 <br>
