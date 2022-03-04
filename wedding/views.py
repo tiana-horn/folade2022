@@ -332,6 +332,7 @@ def responses(request):
         aso = dict(interested=0)
         paid = dict(paid=0)
         not_paid = dict(not_paid=0)
+        no_allergies = ['False','None','na','NA','N/A','No','none','no','Falsenone']
 
         for guest in guests:
             if guest.hotel_accomodations == True:
@@ -365,6 +366,7 @@ def responses(request):
             'aso':aso,
             'paid':paid,
             'not_paid':not_paid,
+            'no_allergies':no_allergies,
         })
 
 @lockdown()
