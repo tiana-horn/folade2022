@@ -1,0 +1,468 @@
+.imperial {
+    font-family: 'Imperial Script', cursive;
+  }
+  
+  .floating-menu {
+    background: mintcream;
+    padding: 5px;
+    width: 100%;
+    z-index: 100;
+  }
+  .floating-menu a, 
+  .floating-menu h3,
+  .floating-menu h1,
+  .floating-menu h5 {
+    display: flex;
+    justify-content: center;
+    opacity:100%;
+  }
+  
+  
+  .topimg{
+    padding-top: 0px;;
+    margin-bottom:0%;
+    width: 100%;
+  }
+  
+  a:hover,
+  button:hover {
+    cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/pointer.png), auto ;
+  }
+  
+  .fadeColor{
+    background: linear-gradient(to bottom, white, #ffffe2, #98ff98 );
+    height:100vh;
+    margin-bottom: 100%;
+  
+  }
+  
+  .middle {
+    width:30%;
+    margin-right:35%;
+    margin-left:35%;
+  }
+  
+  .flip {
+    transform: rotate(90deg);
+    width: 100%;
+    z-index: 100;
+    display:flex;
+  }
+  
+  .footer {
+    margin-bottom: 10%;
+  }
+  
+  .mint{
+    background-color: #98ff98;
+  }
+  
+  .opaq {
+    opacity: 0;
+    z-index: 2; 
+  }
+  
+  .left {
+    text-align: left;
+  }
+  
+  .forumfont {
+    font-family: 'Forum', cursive;
+    cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/ring.png), auto ;
+  }
+  
+  .homescreenimg1 {
+    background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/mobile1.png);
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+  }
+  
+  .homescreenimg2 {
+    background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/mobile2.png);
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .homescreenimg3 {
+    background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/mobile3.png);
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .homescreenimg4 {
+    background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/mobile4.png);
+    height:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .blackback {
+    background-color: rgba(0, 0, 0, .8);
+    height:100vh;
+  }
+  
+  .schedcontainer {
+    max-width: 100%;
+    margin-right: 0%;
+    margin-left: 0%;
+    margin-top:0%;
+  }
+  
+  .partycontainer {
+      max-width: 60%;
+      margin-right: 20%;
+      margin-left: 20%;
+      margin-top:0%;
+    }
+  
+  .regmenu{
+    display:none;
+  }
+  
+    /* hamburger menu below */
+    
+  body
+  {
+    margin: 0;
+    padding: 0;
+  
+  }
+  
+  .mobilemenu{
+    color: black;
+  
+  }
+  
+  .errorcontainer {
+    max-width: 70%;
+    max-height: 50%;
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-top:0%;
+  }
+  
+  .whitespace {
+    max-width: 70%;
+    max-height: 50%;
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-top:0%;
+  }
+  
+  
+  #menuToggle
+  {
+    display: block;
+    position: absolute;
+    top: 30px;
+    padding-left:25px;
+    z-index: 101;
+  
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  #menuToggle a
+  {
+    text-decoration: none;
+    color: maroon;
+    transition: color 0.3s ease;
+  }
+  
+  #menuToggle a:hover
+  {
+    color: black;
+  }
+  
+  
+  #menuToggle input
+  {
+    display: block;
+    width: 80px;
+    height: 60px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    
+    cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/pointer.png), auto ;
+    
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+    
+    -webkit-touch-callout: none;
+  }
+  
+  .storyPart {
+    width:100%;
+    text-align: center;
+    display: block;
+    flex: space-evenly;
+    background-color:#006741;
+    border: none;
+  }
+  .storyPart :hover ::selection{
+    background-color:#006741;
+    color: black;
+  }
+  
+  /*
+   * Just a quick hamburger
+   */
+  #menuToggle span
+  {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background:black;
+    border-radius: 3px;
+    
+    z-index: 1;
+    
+    transform-origin: 4px 0px;
+    
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+  
+  #menuToggle span:first-child
+  {
+    transform-origin: 0% 0%;
+  }
+  
+  #menuToggle span:nth-last-child(2)
+  {
+    transform-origin: -50% 100%;
+  }
+  
+  /* 
+   * Transform all the slices of hamburger
+   * into a crossmark.
+   */
+  #menuToggle input:checked ~ span
+  {
+    opacity: 1;
+    transform: rotate(90deg) ;
+    background:black;
+  }
+  
+  /*
+   * But let's hide the middle one.
+   */
+  #menuToggle input:checked ~ span:nth-last-child(3)
+  {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  
+  /*
+   * Ohyeah and the last one should go the other direction
+   */
+  #menuToggle input:checked ~ span:nth-last-child(2)
+  {
+    transform:  translate(-14px, -14px);
+  }
+  
+  /*
+   * Make this absolute positioned
+   * at the top left of the screen
+   */
+  #menu
+  {
+    position: absolute;
+    width: 100%;
+    margin: -110px 0 0 -220px;
+    padding-left: 430%;
+    padding-right: 470%;
+    padding-bottom: 50%;
+    white-space:nowrap;
+    padding-top: 125px;
+    text-align: left;
+    background:mintcream;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+    
+    transform-origin: 100% 0%;
+    transform: translate(-200%, 0);
+    
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  }
+  
+  #menu li
+  {
+    padding: 0;
+  }
+  
+  /*
+   * And let's slide it in from the left
+   */
+  #menuToggle input:checked ~ ul
+  {
+    transform: none;
+  }
+  
+  
+  /* Scripture carousel */
+  .scripture
+  {
+      width: 50%;
+      margin-right: 25%;
+      margin-left: 25%;
+      margin-top:5%;
+  }
+  
+  .slider {
+    width: 100%;
+    position:relative;
+  
+  
+  }
+  .slide1,.slide2,.slide3 {
+    width: 50%;
+    margin-right:25%;
+    margin-left:25%;
+    position: absolute;
+  
+  }
+  .slide1 {
+      background-size: cover;
+    animation:fade infinite;
+    animation-duration: 33s;
+  -webkit-animation:fade 33s infinite;
+  
+  } 
+  .slide2 {
+      background-size: cover;
+    animation:fade2 infinite;
+    animation-duration: 33s;
+  
+  -webkit-animation:fade2 33s infinite;
+  }
+  .slide3 {
+      background-size: cover;
+    animation:fade3 infinite;
+    animation-duration: 33s;
+  
+  -webkit-animation:fade3 33s infinite;
+  }
+  
+  @keyframes fade
+  {
+  0%   {opacity:1}
+  5% {opacity:1}
+  10%   {opacity:0}
+  20% {opacity:0}
+  33%   {opacity:0}
+  45%   {opacity: 0}
+  66%   {opacity: 0}
+  75%   {opacity: 0}
+  90%   {opacity: 0}
+  95%   {opacity: 1}
+  100% {opacity: 1}
+  }
+  @keyframes fade2
+  {
+  0%   {opacity:0}
+  5% {opacity:0}
+  15%   {opacity:0}
+  33%   {opacity:1}
+  40%   {opacity: 0}
+  50% {opacity:0}
+  66%   {opacity: 0}
+  75%   {opacity: 0}
+  90%   {opacity: 0}
+  100% {opacity: 0}
+  }
+  @keyframes fade3
+  {
+  0%   {opacity:0}
+  5% {opacity:0}
+  15%   {opacity:0}
+  33%   {opacity:0}
+  45%   {opacity: 0}
+  66%   {opacity:1}
+  70%   {opacity: 0}
+  80% {opacity:0}
+  90%   {opacity: 0}
+  100% {opacity: 0}
+  }
+  
+  /* Countdown Timer */
+  .timercontainer {
+    margin-top:70%;
+  }
+  .timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  #timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .number-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .number-list .item {
+    width: 60px;
+    height: 60px;
+    background: #006741;
+    margin-right: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    font-weight: 700;
+    font-family: 'Forum', cursive;
+  }
+  .unit-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .unit-list .item {
+    width: 60px;
+    margin-right: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #006741;
+    font-weight: 500;
+    font-family: 'Forum', cursive;
+  }
+  
+  .timer-end {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #006741;
+    font-weight: 700;
+    font-family: 'Forum', cursive;
+  }
+  
