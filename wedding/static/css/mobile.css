@@ -96,6 +96,14 @@ button:hover {
   background-size: cover;
 }
 
+.homescreenimg4 {
+  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/mobile3.png);
+  height:100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .blackback {
   background-color: rgba(0, 0, 0, .8);
   height:100vh;

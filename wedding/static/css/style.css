@@ -73,6 +73,12 @@ button:hover {
 
 }
 
+.homescreenimg4 {
+  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/desktop3.jpeg);
+  background-size: cover !important;
+
+}
+
 .blackback {
   background-color: rgba(0, 0, 0, .8);
 }
