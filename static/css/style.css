@@ -1,0 +1,272 @@
+.imperial {
+    font-family: 'Imperial Script', cursive;
+  }
+  
+  .storyPart {
+    width:100%;
+    text-align: center;
+    padding: 15px 35px;
+    display: block;
+    background-color: #006741;
+    border: none;
+  
+  }
+  
+  .storyPart :hover ::selection{
+    background-color:rgb(131, 187, 140);
+    color: black;
+  }
+  
+  .fadeColor{
+    background: linear-gradient(to bottom, white, #ffffe2, #98ff98 );
+    margin-bottom: 100%;
+  }
+  
+  .middle {
+    width:30%;
+    margin-right:35%;
+    margin-left:35%;
+  }
+  
+  .footer {
+    margin-bottom: 0%;
+  }
+  
+  .hide {
+    display:none;
+    width:0%;
+  }
+  
+  .opaq {
+    opacity: 0;
+    z-index: 2; 
+  }
+  
+  .left {
+    text-align: left;
+  }
+  
+  .forumfont {
+    font-family: 'Forum', cursive;
+    cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/ring.png), auto ;
+  }
+  
+  a:hover,
+  button:hover {
+    cursor: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/wedding/static/img/pointer.png), auto ;
+  }
+  
+  .homescreenimg1 {
+    background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/desktop1.png);
+    background-size: cover !important;
+  }
+  
+  .homescreenimg2 {
+    background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/desktop2.jpeg);
+    background-size: cover !important;
+  
+  }
+  
+  .homescreenimg3 {
+    background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/desktop3.jpeg);
+    background-size: cover !important;
+  
+  }
+  
+  .homescreenimg4 {
+    background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/desktop4.png);
+    background-size: cover !important;
+  
+  }
+  
+  .blackback {
+    background-color: rgba(0, 0, 0, .8);
+  }
+  
+  .errorcontainer {
+    max-width: 60%;
+    max-height: 50%;
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-top:0%;
+  }
+  
+  .whitespace {
+    max-width: 70%;
+    max-height: 50%;
+    margin-right: 15%;
+    margin-left: 15%;
+    margin-top:0%;
+  }
+  
+  .schedcontainer {
+      max-width: 60%;
+      margin-right: 20%;
+      margin-left: 20%;
+      margin-top:0%;
+    }
+  @media(min-width:1025px) {
+    .mobilemenu{
+      display:none;
+    }
+  }
+  @media(min-width:1025px) {
+    .floating-menu {
+      display:none;
+      width:0%;
+      height:0%;
+    }
+  }
+  /* Scripture carousel */
+  .Row {
+    display: table;
+    width: 100%; 
+    table-layout: fixed; 
+    border-spacing: 5px; 
+  }
+  .slider {
+  width: 100%;
+  
+  position:relative;
+  
+  }
+  .slide1,.slide2,.slide3 {
+  width: 50%;
+  margin-right:25%;
+  margin-left:25%;
+  position: absolute;
+  
+  }
+  .slide1 {
+    background-size: cover;
+  animation:fade infinite;
+  animation-duration: 33s;
+  -webkit-animation:fade 33s infinite;
+  
+  } 
+  .slide2 {
+    background-size: cover;
+  animation:fade2 infinite;
+  animation-duration: 33s;
+  
+  -webkit-animation:fade2 33s infinite;
+  }
+  .slide3 {
+    background-size: cover;
+  animation:fade3 infinite;
+  animation-duration: 33s;
+  
+  -webkit-animation:fade3 33s infinite;
+  }
+  
+  @keyframes fade
+  {
+    0%   {opacity:1}
+    5% {opacity:1}
+    10%   {opacity:0}
+    20% {opacity:0}
+    33%   {opacity:0}
+    45%   {opacity: 0}
+    66%   {opacity: 0}
+    75%   {opacity: 0}
+    90%   {opacity: 0}
+    95%   {opacity: 1}
+    100% {opacity: 1}
+  }
+  @keyframes fade2
+  {
+    0%   {opacity:0}
+  5% {opacity:0}
+  15%   {opacity:0}
+  33%   {opacity:1}
+  40%   {opacity: 0}
+  50% {opacity:0}
+  66%   {opacity: 0}
+  75%   {opacity: 0}
+  90%   {opacity: 0}
+  100% {opacity: 0}
+  }
+  @keyframes fade3
+  {
+    0%   {opacity:0}
+  5% {opacity:0}
+  15%   {opacity:0}
+  33%   {opacity:0}
+  45%   {opacity: 0}
+  66%   {opacity:1}
+  70%   {opacity: 0}
+  80% {opacity:0}
+  90%   {opacity: 0}
+  100% {opacity: 0}
+  }
+  
+  
+  
+  /* Countdown Timer */
+  .timercontainer {
+    margin-top:50%;
+  }
+  
+  #timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .number-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .number-list .item {
+    width: 60px;
+    height: 60px;
+    background: #006741;
+    margin-right: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    font-weight: 700;
+    font-family: 'Forum', cursive;
+  }
+  .unit-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .unit-list .item {
+    width: 60px;
+    margin-right: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #006741;
+    font-weight: 500;
+    font-family:'Forum', cursive;
+  }
+  
+  .timer-end {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #006741;
+    font-weight: 700;
+    font-family: 'Forum', cursive;
+  }
+  
