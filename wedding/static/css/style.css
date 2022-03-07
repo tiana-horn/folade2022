@@ -57,24 +57,24 @@ button:hover {
 }
 
 .homescreenimg1 {
-  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/desktop.jpg);
+  background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/desktop1.png);
   background-size: cover !important;
 }
 
 .homescreenimg2 {
-  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/desktop2.jpg);
+  background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/desktop2.jpeg);
   background-size: cover !important;
 
 }
 
 .homescreenimg3 {
-  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/desktop3.jpeg);
+  background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/desktop3.jpeg);
   background-size: cover !important;
 
 }
 
 .homescreenimg4 {
-  background-image: url(https://folade.s3.us-east-2.amazonaws.com/static/img/desktop3.jpeg);
+  background-image: url(https://raw.githubusercontent.com/tiana-horn/folade2022/main/media/Media/desktop4.png);
   background-size: cover !important;
 
 }

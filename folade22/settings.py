@@ -62,7 +62,7 @@ DEBUG = False
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # SECURE_SSL_REDIRECT = True
 
-# ALLOWED_HOSTS = ['foreverfolade2022','quiet-shelf-25006.herokuapp']
+#ALLOWED_HOSTS = ['foreverfolade2022','quiet-shelf-25006.herokuapp']
 
 
 ALLOWED_HOSTS =['*']
