@@ -13,6 +13,7 @@ import django_heroku
 from django.contrib.messages import constants as messages
 from pathlib import Path
 import os
+import dj_database_url
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -57,7 +58,9 @@ LOCKDOWN_PASSWORDS = ('test123','ladeatifola','madebytiana',)
 
 
 # SECURITY WARNING: don't run with debug set to True in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # SECURE_SSL_REDIRECT = True
@@ -65,7 +68,7 @@ DEBUG = False
 #ALLOWED_HOSTS = ['foreverfolade2022','quiet-shelf-25006.herokuapp']
 
 
-ALLOWED_HOSTS =['*']
+# ALLOWED_HOSTS =['*']
 
 
 
@@ -134,13 +137,7 @@ WSGI_APPLICATION = 'folade22.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'foladeDB',
-        'USER': 'foladeDB',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600),
 }
 
 
