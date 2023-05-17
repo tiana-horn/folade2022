@@ -54,7 +54,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 #Website password protection
-LOCKDOWN_PASSWORDS = ('test123','ladeatifola','madebytiana',)
+LOCKDOWN_PASSWORDS = ('test123','ladeatifola','MadeByTiana',)
 
 
 # SECURITY WARNING: don't run with debug set to True in production!
@@ -63,7 +63,7 @@ DEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = True
 
 #ALLOWED_HOSTS = ['foreverfolade2022','quiet-shelf-25006.herokuapp']
 
